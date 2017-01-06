@@ -1,32 +1,85 @@
-PCSX2 is an open source Playstation 2 emulator. Its purpose is to mimic the the PS2 hardware, using a combination of MIPS CPU [Interpreters](http://en.wikipedia.org/wiki/Interpreter_\(computing\)), [Recompilers](http://en.wikipedia.org/wiki/Dynamic_recompilation) and a [Virtual Machine](http://en.wikipedia.org/wiki/Virtual_machine) which manages hardware states and PS2 system memory.
+# pcsx2-1.4.0-rr
+pcsx2-rr(https://code.google.com/archive/p/pcsx2-rr/)を公式安定バージョンの1.4.0にマージ？したものです。
 
-# Project Details
+# 追加機能
+##メニューバー
+Movie
+ Record :Recordモードになります。ファイルを選んでそのファイルにキー情報を書き込みます。
+ Play   :Replayモードになります。選んだキーファイル通りにキーを入力します。
+ Stop   :ファイルを閉じます。ファイルクローズをするので終了したら呼んでください。
+※Record,PlayともにStop状態で始まります。Pキーを押してください。
 
-The PCSX2 project has been running for more than ten years. Once able to run only a few public domain demos, recent versions enable many games to work at full speed, including popular titles such as *Final Fantasy X* or *Devil May Cry 3*. Visit the *[PCSX2 homepage](http://pcsx2.net)* to check the latest compatibility status of games (with more than 2000 titles tested), or ask your doubts in the *[Official forums](http://forums.pcsx2.net/)*.
+##ショートカットキー
+P     : pause/unpauseの切り替え
+space : frame advance
+R     : キームービーの再生モードから録画モードへの切り替え
 
-The latest officially released version is *1.2.1* (SVN r5875).
-Installers and binaries for both Windows and Linux are available from **[our homepage](http://pcsx2.net/)**.
+# キームービー作成想定手順
+1.ゲームを始める前にRecord/Playを始めます。
+2.Boot CDVDからゲームを起動します。
+　※(full)と(fast)ですが、fastで起動したキーファイルはfast専用になりそう（未検証）
+　　同じ起動方法で起動する方がいいと思います。
+3.停止していますので、Pキーで動かします。
+4.Playで始めた場合は再開した場所までいき、そこでRキーを押します。
+5.ゲーム中は以下の手順でTASを作っていきます。
+P    :pause/unpause
+space:frame advance
+F1       :QS
+F2       :toggle save slot(+1)
+SHIFT+F2 :toggle save slot(-1)
+F3       :QL
 
-| ![KOF 2002](https://dl.dropboxusercontent.com/u/743491/PCSX2/KoF2002.jpg "KOF 2002") | ![Final Fantasy XII](https://dl.dropboxusercontent.com/u/743491/PCSX2/FinalFantasyXII.jpg "Final Fantasy XII") | ![Odin Sphere](https://dl.dropboxusercontent.com/u/743491/PCSX2/OdinSphere.jpg "Odin Sphere")
-|:----:|:----:|:----:|
+# 録画想定手順
+1.ゲームを始める前にPlayで始めます。
+2.ゲームを始めたら止まっていると思いますので、F12キーで録画を開始します。
+　※録画ファイルの保存場所は権限のある場所にしてください(windows10だとCドライブ以下は権限がないのでホームディレクトリ推奨)
+　※権限がない等で保存されない場合でも警告等ありませんのでファイルができているか確認したほうがいいです。
+　※音ファイルは別にpcsx2のexeファイルと同じディレクトリに「recorde.wav」で作成されます。
+　※音ファイルと映像ファイルを同期させるために録画中はPauseやQL,QSはしない方がいい気がします。
 
-# System Requirements
 
-## Minimum
-* Windows/Linux OS
-* CPU: Any that supports SSE2 (Pentium 4 and up, Athlon64 and up)
-* GPU: Any that supports Pixel Shader model 2.0, except Nvidia FX series (broken SM2.0, too slow anyway)
-* 512MB RAM (note Vista needs at least 2GB to run reliably)
+# ビルド方法(2017/1/6現在)
+環境は windows10 です。
 
-## Recommended
-* Windows Vista / Windows 7 (32bit or 64bit) with the [latest DirectX](https://www.microsoft.com/en-us/download/details.aspx?id=8109)
-* CPU: Intel Core 2 Duo @ 3.2ghz or better
-* GPU: 8800gt or better (for Direct3D10 support)
-* RAM: 1GB on Linux/Windows XP, 2GB or more on Vista
+用意するもの
 
-**Note**: Because of copyright issues, and the complexity of trying to work around it, you need a BIOS dump extracted from a legitimately owned Playstation 2 console to use the emulator.
+Visual Studio Comunnity 2015(https://www.visualstudio.com/vs/community/)
+※デフォルト設定だとC++が足りないので、カスタムインストールでC++関係も入れてください。
+DirectX Software Development Kit (June 2010)(https://www.microsoft.com/en-us/download/details.aspx?id=6812)
+※デフォルト設定のインストールでおｋです。
 
-**Note:** PCSX2 mainly takes advantage of 2 CPU cores. As of r4865 PCSX2 can now take advantage of a 3rd core using the MTVU speedhack. This can be a significant speedup on CPUs with 3+ cores, however on GS limited games (or on dual core CPUs) it may be a slowdown.
+あとは、ソースコード内の「PCSX2_suite.sln」が開けると思うので開いてビルドでいけるはずです。
 
-| ![Pro Evo 2009](https://dl.dropboxusercontent.com/u/743491/PCSX2/ProEvo2009.jpg "Pro Evo 2009") | ![Megaman X8](https://dl.dropboxusercontent.com/u/743491/PCSX2/MegamanX8.jpg "Megaman X8") | ![TOTA](https://dl.dropboxusercontent.com/u/743491/PCSX2/TOTA.jpg "TOTA")
-|:----:|:----:|:----:|
+
+
+# ソースコードの変更箇所
+元のコードから変更している箇所にはすべてコメントで
+//--TAS--//
+を入れてあります。これで検索かければわかると思います。
+
+
+
+
+
+# その他
+## キーファイルですが、pcsx2のp2mファイルとは互換性がありません。
+## ゲーム画面だけフリーズした時
+メインメニューにフォーカスをあててからゲーム画面にフォーカスするとなおります。
+原因は分かりませんがEmu側でいろいろやってるタイミングに何かすると起こるっぽいです。
+
+## ゲーム画面だけフリーズした時2
+ゲーム起動中でpause中にコントローラの設定などメインフレームを動かすと固まる場合があります。
+その時はシステムのメニューから中断→再開とすると治ります。
+
+
+## pscx2事態がフリーズする
+滅多にないと思いますが、もしあったら再起動です…
+
+
+
+------------------------
+**Licence**
+公式のライセンスをそのまま適用しています。
+[License GNU LGPL](http://www.gnu.org/licenses/lgpl.html)
+
+
