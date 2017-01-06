@@ -163,6 +163,12 @@ enum MenuIdentifiers
 	MenuId_Debug_MemoryDump,
 	MenuId_Debug_Logging,		// dialog for selection additional log options
 	MenuId_Config_ResetAll,
+
+	//--TAS--//
+	MenuId_KeyMovie_Record,
+	MenuId_KeyMovie_Play,
+	MenuId_KeyMovie_Stop,
+	//-------//
 };
 
 namespace Exception
@@ -616,7 +622,12 @@ protected:
 	void CleanupOnExit();
 	void OpenWizardConsole();
 	void PadKeyDispatch( const keyEvent& ev );
-	
+	//--TAS--//
+public:
+	void TAS_PadKeyDispatch(const keyEvent& ev) { PadKeyDispatch(ev); }
+protected:
+	//-------//
+
 	void HandleEvent(wxEvtHandler* handler, wxEventFunction func, wxEvent& event) const;
 	void HandleEvent(wxEvtHandler* handler, wxEventFunction func, wxEvent& event);
 

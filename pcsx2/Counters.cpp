@@ -31,6 +31,8 @@
 
 #include "Sio.h"
 
+#include "TAS/TAS.h" //--TAS--//
+
 using namespace Threading;
 
 extern u8 psxhblankgate;
@@ -505,6 +507,10 @@ __fi void rcntUpdate_vSync()
 	}
 	else	// VSYNC end / VRENDER begin
 	{
+		//--TAS--//
+		TAS_StopCheck();
+		//-------//
+
 		VSyncStart(vsyncCounter.sCycle);
 
 

@@ -940,7 +940,8 @@ AppConfig::UiTemplateOptions::UiTemplateOptions()
 	OutputField			= L"Field";
 	OutputProgressive	= L"Progressive";
 	OutputInterlaced	= L"Interlaced";
-	TitleTemplate		= L"Slot: ${slot} | Speed: ${speed} (${vfps}) | Limiter: ${limiter} | ${gsdx} | ${omodei} | ${cpuusage}";
+	//TitleTemplate		= L"Slot: ${slot} | Speed: ${speed} (${vfps}) | Limiter: ${limiter} | ${gsdx} | ${omodei} | ${cpuusage}";
+	TitleTemplate		= L"Frame: ${frame} | Slot: ${slot} | Speed: ${speed} (${vfps}) | Limiter: ${limiter} | ${gsdx} | ${omodei} | ${cpuusage}";//--TAS--//
 }
 
 void AppConfig::UiTemplateOptions::LoadSave(IniInterface& ini)

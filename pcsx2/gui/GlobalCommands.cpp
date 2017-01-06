@@ -30,6 +30,8 @@
 #include "DebugTools/Debug.h"
 #include "R3000A.h"
 
+#include "TAS/TAS.h"	//--TAS--//
+
 // renderswitch - tells GSdx to go into dx9 sw if "renderswitch" is set.
 bool renderswitch = false;
 
@@ -444,6 +446,21 @@ namespace Implementations
 		if( GSFrame* gsframe = wxGetApp().GetGsFramePtr() )
 			gsframe->ShowFullScreen( !gsframe->IsFullScreen() );
 	}
+
+	//--TAS--//
+	void TAS_FrameAdvance()
+	{
+		TAS_FrameAdvanceDoit();
+	}
+	void TAS_MovieReadToggle()
+	{
+		TAS_MovieReadToggleDoit();
+	}
+	void TAS_Pause()
+	{
+		TAS_PauseDoit();
+	}
+	//-------//
 }
 
 // --------------------------------------------------------------------------------------
@@ -586,6 +603,11 @@ static const GlobalCommandDescriptor CommandDeclarations[] =
 		NULL,
 		NULL,
 	},
+	//--TAS--//
+	{ "TAS_FrameAdvance",Implementations::TAS_FrameAdvance,NULL,NULL, },
+	{ "TAS_MovieReadToggle",Implementations::TAS_MovieReadToggle,NULL,NULL, },
+	{ "TAS_Pause",Implementations::TAS_Pause,NULL,NULL, },
+	//-------//
 
 	// Command Declarations terminator:
 	// (must always be last in list!!)

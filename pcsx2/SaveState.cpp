@@ -235,7 +235,9 @@ SaveStateBase& SaveStateBase::FreezeInternals()
 
 	if( IsLoading() )
 		PostLoadPrep();
-		
+	
+	TAS_movieFreeze();	//--TAS--//
+
 	return *this;
 }
 

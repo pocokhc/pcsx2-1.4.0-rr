@@ -241,6 +241,12 @@ void MainEmuFrame::ConnectMenus()
 	ConnectMenu( MenuId_Console_Stdio,		Menu_ShowConsole_Stdio );
 
 	ConnectMenu( MenuId_About,				Menu_ShowAboutBox );
+
+	//--TAS--//
+	ConnectMenu(MenuId_KeyMovie_Record, Menu_KeyMovie_Record);
+	ConnectMenu(MenuId_KeyMovie_Play, Menu_KeyMovie_Play);
+	ConnectMenu(MenuId_KeyMovie_Stop, Menu_KeyMovie_Stop);
+	//-------//
 }
 
 void MainEmuFrame::InitLogBoxPosition( AppConfig::ConsoleLogOptions& conf )
@@ -320,6 +326,7 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 	, m_menuConfig	( *new wxMenu() )
 	, m_menuMisc	( *new wxMenu() )
 	, m_menuDebug	( *new wxMenu() )
+	, m_menuMovieDlg(*new wxMenu())	//--TAS--//
 
 	, m_LoadStatesSubmenu( *MakeStatesSubMenu( MenuId_State_Load01, MenuId_State_LoadBackup ) )
 	, m_SaveStatesSubmenu( *MakeStatesSubMenu( MenuId_State_Save01 ) )
@@ -343,6 +350,7 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 	m_menubar.Append( &m_menuConfig,	_("&Config") );
 	m_menubar.Append( &m_menuMisc,		_("&Misc") );
 	m_menubar.Append( &m_menuDebug,		_("&Debug") );
+	m_menubar.Append(&m_menuMovieDlg, _("&Movie"));	//--TAS--//
 
 	SetMenuBar( &m_menubar );
 
@@ -525,6 +533,12 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 #ifdef PCSX2_DEVBUILD
 	m_menuDebug.Append(MenuId_Debug_Logging,	_("Logging..."),			wxEmptyString);
 #endif
+
+	//--TAS--//
+	m_menuMovieDlg.Append(MenuId_KeyMovie_Record, _("Record"));
+	m_menuMovieDlg.Append(MenuId_KeyMovie_Play, _("Play"));
+	m_menuMovieDlg.Append(MenuId_KeyMovie_Stop, _("Stop"));
+	//-------//
 
 	m_MenuItem_Console.Check( g_Conf->ProgLogBox.Visible );
 

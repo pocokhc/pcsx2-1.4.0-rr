@@ -22,6 +22,9 @@
 #include "GS.h"
 #include "MSWstuff.h"
 
+#include "TAS/TAS.h" //--TAS--//
+#include "Counters.h" //--TAS--// use "g_FrameCount"
+
 #include <wx/utils.h>
 
 static const KeyAcceleratorCode FULLSCREEN_TOGGLE_ACCELERATOR_GSPANEL=KeyAcceleratorCode( WXK_RETURN ).Alt();
@@ -75,6 +78,12 @@ void GSPanel::InitDefaultAccelerators()
 	m_Accels->Map( AAC( WXK_F12 ),				"Sys_RecordingToggle" );
 
 	m_Accels->Map( FULLSCREEN_TOGGLE_ACCELERATOR_GSPANEL,		"FullscreenToggle" );
+
+	//--TAS--//
+	m_Accels->Map(AAC(WXK_SPACE), "TAS_FrameAdvance");
+	m_Accels->Map(AAC(wxKeyCode('p')), "TAS_Pause");
+	m_Accels->Map(AAC(wxKeyCode('r')), "TAS_MovieReadToggle");
+	//-------//
 }
 
 GSPanel::GSPanel( wxWindow* parent )
@@ -595,6 +604,7 @@ void GSFrame::OnUpdateTitle( wxTimerEvent& evt )
 	wxString omodei = (smode2 & 1) ? templates.OutputInterlaced : templates.OutputProgressive;
 
 	wxString title = templates.TitleTemplate;
+	title.Replace(L"${frame}", pxsFmt(L"%d", g_FrameCount));	//--TAS--//
 	title.Replace(L"${slot}",		pxsFmt(L"%d", States_GetCurrentSlot()));
 	title.Replace(L"${limiter}",	limiterStr);
 	title.Replace(L"${speed}",		pxsFmt(L"%3d%%", lround(per)));
