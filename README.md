@@ -92,6 +92,6 @@ DirectX Software Development Kit (June 2010)(<https://www.microsoft.com/en-us/do
 
 ------------------------
 **Licence**  
-公式のライセンスをそのまま適用しています。  
+公式のライセンス通りです。  
 [License GNU LGPL](http://www.gnu.org/licenses/lgpl.html)  
 
