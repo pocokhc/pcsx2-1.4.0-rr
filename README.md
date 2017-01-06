@@ -4,14 +4,14 @@ pcsx2-rr(<https://code.google.com/archive/p/pcsx2-rr/>)を公式安定バージョンの1.4
   
 
 # 追加機能
-##メニューバー
+###メニューバー
 * Movie
 	* Record :Recordモードになります。ファイルを選んでそのファイルにキー情報を書き込みます。
 	* Play   :Replayモードになります。選んだキーファイル通りにキーを入力します。
 	* Stop   :ファイルを閉じます。ファイルクローズをするので終了したら呼んでください。
 ※Record,PlayともにStop状態で始まります。Pキーを押してください。  
 
-##ショートカットキー
+###ショートカットキー
 * P     : pause/unpauseの切り替え
 * space : frame advance
 * R     : キームービーの再生モードから録画モードへの切り替え
