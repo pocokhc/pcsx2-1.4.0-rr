@@ -1,12 +1,12 @@
 # pcsx2-1.4.0-rr
 pcsx2-1.4.0にTAS作成のための機能を追加した非公式エミュレータです。  
-pcsx2-rr(<https://code.google.com/archive/p/pcsx2-rr/>)を参考にしています。
+pcsx2-rr(<https://code.google.com/archive/p/pcsx2-rr/>)を参考にしています。  
 ただ、だいぶ中身が変わっており単純なマージはできなかったのでかなりソースコードは変わっています。  
   
 
 # TAS
 実際に作ってみたTASはこちらの動画となります。  
-[dummy]()  
+[【TAS】チュウリップ part0(WIP)【pcsx2-1.4.0-rr】](http://www.nicovideo.jp/watch/sm30385451)  
   
 
 # ダウンロード
