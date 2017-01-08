@@ -41,6 +41,18 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 |space|frame advance|
 |R|キームービーの再生モードから録画モードへの切り替え|
 
+# ショートカットキー(非公式)
+
+|ボタン|機能|
+|---|---|
+|F1～F10|save|
+|shift + F1～F10|load|
+※F1～F10に割り当てられている公式のショートカットは使用できません。  
+※insertキーは絶対に押さないで下さい。  
+※キー配置を変えたい場合は下記ファイルをいじってください。また、公式のキー配置に戻したい場合はファイル自体を削除してください。  
+./inis_1.4.0/PCSX2-rr_keys.ini  
+
+
 # キームービー作成想定手順
 1. ゲームを始める前にRecord/Playを実行します。  
 2. Boot CDVDからゲームを起動します。  
@@ -50,15 +62,7 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 4. 作成を再開したい場合は、Playで始めて作成を再開した場所までいき、そこでRキーを押します。  
 5. ゲーム中は以下の手順でTASを作っていきます。  
 
-|ボタン|機能|
-|---|---|
-|P    |pause/unpause|
-|space|frame advance|
-|F1       |QS|
-|F2       |toggle save slot(+1)|
-|SHIFT+F2 |toggle save slot(-1)|
-|F3       |QL|
-※その他ショートカットキーはpscx2公式ページを参照
+
 
 # 録画想定手順
 1. ゲームを始める前にPlayで始めます。
@@ -98,6 +102,7 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
   
 * ショートカットキーのキーコンフィグがしたい！  
 私もしたいのですが、これ本家からありません…orz  
+→ありましたorz  
 
 * ゲーム画面でキーが反応しない時  
 条件は不明ですが、一定時間何もしていないとなる時があります。  
