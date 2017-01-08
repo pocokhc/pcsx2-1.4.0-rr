@@ -43,6 +43,8 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 
 # ショートカットキー(非公式)
 
+*すいません、今この機能うまく動いていません。公式のキー配置を使用してください。*
+
 |ボタン|機能|
 |---|---|
 |F1～F10|save|
