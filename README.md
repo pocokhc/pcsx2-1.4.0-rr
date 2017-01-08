@@ -120,7 +120,7 @@ save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚
 * desync‚Í‰ðŒˆ‚³‚ê‚½H  
 ‘½•ª‚³‚ê‚½‚ÆM‚¶‚½‚¢‚Å‚·B  
 ƒL[ƒtƒ@ƒCƒ‹‚ÍŠ®‘S‚É“à•”‚Ìframe’PˆÊ‚ÅŠÇ—‚·‚é‚æ‚¤‚É‚µ‚Ä‚¢‚é‚Ì‚ÅAEmu‘¤‚Å‚Ç‚ê‚¾‚¯frameŠÇ—‚ª‚Å‚«‚Ä‚¢‚é‚©ŽŸ‘æ‚Å‚·B  
-Œ»ó‚Ídesync‚ÍŠm”F‚µ‚Ä‚¢‚Ü‚¹‚ñB
+Œ»ó‚Ídesync‚ÍŠm”F‚µ‚Ä‚¢‚Ü‚¹‚ñB  
   
 * p2m2ƒtƒ@ƒCƒ‹(ƒL[ƒ€[ƒr[ƒtƒ@ƒCƒ‹)‚ª‚â‚½‚çƒTƒCƒY‚ª‘å‚«‚¢  
 Œ»óAƒTƒCƒY“xŠOŽ‹‚ÅƒL[‚Ìî•ñ‚·‚×‚Ä‚ð•Û‘¶‚µ‚Ä‚¢‚Ü‚·B  
