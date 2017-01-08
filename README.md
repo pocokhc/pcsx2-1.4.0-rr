@@ -30,7 +30,7 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 |Record|Recordƒ‚[ƒh‚Åƒtƒ@ƒCƒ‹‚ðŠJ‚«‚Ü‚·Bƒtƒ@ƒCƒ‹‚Ì’†g‚Í‰Šú‰»‚³‚ê‚Ü‚·B|
 |Play|Replayƒ‚[ƒh‚Åƒtƒ@ƒCƒ‹‚ðŠJ‚«‚Ü‚·B|
 |Stop|ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚Ü‚·Bƒtƒ@ƒCƒ‹ƒNƒ[ƒY‚ð‚·‚é‚Ì‚ÅI—¹‚µ‚½‚çŒÄ‚ñ‚Å‚­‚¾‚³‚¢B|
-¦Record,Play‚Æ‚à‚ÉStopó‘Ô‚ÅŽn‚Ü‚è‚Ü‚·BPƒL[‚ð‰Ÿ‚µ‚ÄÄ¶‚µ‚Ä‚­‚¾‚³‚¢B
+¦Record,Play‚Æ‚à‚ÉStopó‘Ô‚ÅŽn‚Ü‚è‚Ü‚·BPƒL[‚ð‰Ÿ‚µ‚ÄÄ¶‚µ‚Ä‚­‚¾‚³‚¢B  
   
   
 * ƒVƒ‡[ƒgƒJƒbƒgƒL[
@@ -65,7 +65,7 @@ F5,F7,PAGE_UP,DELETE,HOME,INSERT ƒL[‚ÍŽg—p‚µ‚È‚¢•û‚ª‚¢‚¢‚Å‚·B
  |F2       |toggle save slot(+1)|
  |SHIFT+F2 |toggle save slot(-1)|
  |F3       |QL|
-¦‚»‚Ì‘¼ƒVƒ‡[ƒgƒJƒbƒgƒL[‚Ípscx2ŒöŽ®ƒy[ƒW‚ð[ŽQÆ](http://wiki.pcsx2.net/index.php/Hotkeys)
+¦‚»‚Ì‘¼ƒVƒ‡[ƒgƒJƒbƒgƒL[‚Ípscx2ŒöŽ®ƒy[ƒW‚ð[ŽQÆ](http://wiki.pcsx2.net/index.php/Hotkeys)  
 ¦save‚Ì’ˆÓ“_  
 save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚Æ‚ðŠm”F‚µ‚½‚Ù‚¤‚ª‚¢‚¢‚Å‚·B  
   
@@ -131,6 +131,10 @@ save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚
 Œ»óAƒTƒCƒY“xŠOŽ‹‚ÅƒL[‚Ìî•ñ‚·‚×‚Ä‚ð•Û‘¶‚µ‚Ä‚¢‚Ü‚·B  
 ‰ðÍ‚µ‚Ä•K—v‚Èî•ñ‚¾‚¯‚É‚·‚ê‚Î‚à‚¤­‚µŒ¸‚è‚Ü‚·‚ªc  
 ‚Ü‚½AƒL[ƒtƒ@ƒCƒ‹‚ÌƒZ[ƒu‚ÌŽd•ûã 3FFFFFFƒtƒŒ[ƒ€(310ŽžŠÔ)‚Ü‚Å‚µ‚©˜^‰æ‚Å‚«‚Ü‚¹‚ñB‚»‚Ìê‡‚Ìƒtƒ@ƒCƒ‹ƒTƒCƒY‚Í4GB‚Ù‚Ç‚Å‚·‚ªc  
+
+* windowƒ^ƒCƒgƒ‹‚Ìframe”‚ÌXV‚ª’x‚¢  
+ˆê’èŽüŠú–ˆ‚ÉXV‚³‚ê‚é‚æ‚¤‚ÅcAƒŠƒAƒ‹ƒ^ƒCƒ€‚ÌŽÀ‘•‚Í•Û—¯‚É‚µ‚Ä‚¢‚Ü‚·B  
+pause’†‚Å‚àXV‚³‚ê‚é‚½‚ßA¡‚Ìframe”‚ð’m‚è‚½‚¢ê‡‚Ípause‚µ‚Ä­‚µ‘Ò‚Á‚Ä‚­‚¾‚³‚¢B  
 
 
 # ‚»‚Ì‘¼(ì¬‘¤)
