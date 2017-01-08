@@ -63,7 +63,6 @@ save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚
 @“¯‚¶‹N“®•û–@‚Å‹N“®‚·‚é•û‚ª‚¢‚¢‚ÆŽv‚¢‚Ü‚·B  
 3. ’âŽ~‚µ‚Ä‚¢‚Ü‚·‚Ì‚ÅAPƒL[‚Å“®‚©‚µ‚Ü‚·B  
 4. ì¬‚ðÄŠJ‚µ‚½‚¢ê‡‚ÍAPlay‚ÅŽn‚ß‚Äì¬‚ðÄŠJ‚µ‚½êŠ‚Ü‚Å‚¢‚«A‚»‚±‚ÅRƒL[‚ð‰Ÿ‚µ‚Ü‚·B  
-5. ƒQ[ƒ€’†‚ÍˆÈ‰º‚ÌŽè‡‚ÅTAS‚ðì‚Á‚Ä‚¢‚«‚Ü‚·B  
 
 
 
