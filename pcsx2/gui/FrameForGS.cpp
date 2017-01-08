@@ -83,6 +83,28 @@ void GSPanel::InitDefaultAccelerators()
 	m_Accels->Map(AAC(WXK_SPACE), "TAS_FrameAdvance");
 	m_Accels->Map(AAC(wxKeyCode('p')), "TAS_Pause");
 	m_Accels->Map(AAC(wxKeyCode('r')), "TAS_MovieReadToggle");
+	// 使わないコマンドを設定
+	// WXK_NONE is error
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot0");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot1");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot2");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot3");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot4");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot5");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot6");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot7");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot8");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot9");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot0");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot1");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot2");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot3");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot4");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot5");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot6");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot7");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot8");
+	m_Accels->Map(AAC(WXK_COMMAND), "States_LoadSlot9");
 	//-------//
 }
 

@@ -460,6 +460,36 @@ namespace Implementations
 	{
 		TAS_PauseDoit();
 	}
+	void States_SaveSlot(int slot)
+	{
+		States_SetCurrentSlot(slot);
+		States_FreezeCurrentSlot();
+	}
+	void States_LoadSlot(int slot)
+	{
+		States_SetCurrentSlot(slot);
+		States_DefrostCurrentSlot();
+	}
+	void States_SaveSlot0() { States_SaveSlot(0); }
+	void States_SaveSlot1() { States_SaveSlot(1); }
+	void States_SaveSlot2() { States_SaveSlot(2); }
+	void States_SaveSlot3() { States_SaveSlot(3); }
+	void States_SaveSlot4() { States_SaveSlot(4); }
+	void States_SaveSlot5() { States_SaveSlot(5); }
+	void States_SaveSlot6() { States_SaveSlot(6); }
+	void States_SaveSlot7() { States_SaveSlot(7); }
+	void States_SaveSlot8() { States_SaveSlot(8); }
+	void States_SaveSlot9() { States_SaveSlot(9); }
+	void States_LoadSlot0() { States_LoadSlot(0); }
+	void States_LoadSlot1() { States_LoadSlot(1); }
+	void States_LoadSlot2() { States_LoadSlot(2); }
+	void States_LoadSlot3() { States_LoadSlot(3); }
+	void States_LoadSlot4() { States_LoadSlot(4); }
+	void States_LoadSlot5() { States_LoadSlot(5); }
+	void States_LoadSlot6() { States_LoadSlot(6); }
+	void States_LoadSlot7() { States_LoadSlot(7); }
+	void States_LoadSlot8() { States_LoadSlot(8); }
+	void States_LoadSlot9() { States_LoadSlot(9); }
 	//-------//
 }
 
@@ -607,6 +637,26 @@ static const GlobalCommandDescriptor CommandDeclarations[] =
 	{ "TAS_FrameAdvance",Implementations::TAS_FrameAdvance,NULL,NULL, },
 	{ "TAS_MovieReadToggle",Implementations::TAS_MovieReadToggle,NULL,NULL, },
 	{ "TAS_Pause",Implementations::TAS_Pause,NULL,NULL, },
+	{ "States_SaveSlot0",Implementations::States_SaveSlot0,NULL,NULL, },
+	{ "States_SaveSlot1",Implementations::States_SaveSlot1,NULL,NULL, },
+	{ "States_SaveSlot2",Implementations::States_SaveSlot2,NULL,NULL, },
+	{ "States_SaveSlot3",Implementations::States_SaveSlot3,NULL,NULL, },
+	{ "States_SaveSlot4",Implementations::States_SaveSlot4,NULL,NULL, },
+	{ "States_SaveSlot5",Implementations::States_SaveSlot5,NULL,NULL, },
+	{ "States_SaveSlot6",Implementations::States_SaveSlot6,NULL,NULL, },
+	{ "States_SaveSlot7",Implementations::States_SaveSlot7,NULL,NULL, },
+	{ "States_SaveSlot8",Implementations::States_SaveSlot8,NULL,NULL, },
+	{ "States_SaveSlot9",Implementations::States_SaveSlot9,NULL,NULL, },
+	{ "States_LoadSlot0",Implementations::States_LoadSlot0,NULL,NULL, },
+	{ "States_LoadSlot1",Implementations::States_LoadSlot1,NULL,NULL, },
+	{ "States_LoadSlot2",Implementations::States_LoadSlot2,NULL,NULL, },
+	{ "States_LoadSlot3",Implementations::States_LoadSlot3,NULL,NULL, },
+	{ "States_LoadSlot4",Implementations::States_LoadSlot4,NULL,NULL, },
+	{ "States_LoadSlot5",Implementations::States_LoadSlot5,NULL,NULL, },
+	{ "States_LoadSlot6",Implementations::States_LoadSlot6,NULL,NULL, },
+	{ "States_LoadSlot7",Implementations::States_LoadSlot7,NULL,NULL, },
+	{ "States_LoadSlot8",Implementations::States_LoadSlot8,NULL,NULL, },
+	{ "States_LoadSlot9",Implementations::States_LoadSlot9,NULL,NULL, },
 	//-------//
 
 	// Command Declarations terminator:
