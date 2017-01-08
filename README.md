@@ -51,7 +51,10 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 ※insertキーは絶対に押さないで下さい。  
 ※キー配置を変えたい場合は下記ファイルをいじってください。また、公式のキー配置に戻したい場合はファイル自体を削除してください。  
 ./inis_1.4.0/PCSX2-rr_keys.ini  
-
+  
+※saveの注意点  
+saveした後すぐにsaveを行うとうまくいかないときがあります。consoleでsaveできたことを確認したほうがいいです。  
+  
 
 # キームービー作成想定手順
 1. ゲームを始める前にRecord/Playを実行します。  
