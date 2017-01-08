@@ -169,6 +169,7 @@ void TAS_FrameAdvanceDoit()
 void TAS_MovieReadToggleDoit()
 {
 	if (key_movie_mode == REPLAY) {
+		key_movie_header.FrameMax = g_FrameCount;
 		key_movie_mode = RECORD;
 		Console.WriteLn(Color_StrongBlue, "Record mode change.");
 	}
@@ -231,6 +232,10 @@ void SaveStateBase::TAS_movieFreeze()
 
 	if (IsLoading()) {
 		key_movie_header.Rerecs++;
+		if (key_movie_fp != NULL) {
+			rewind(key_movie_fp);
+			fwrite(&key_movie_header, sizeof(key_movie_header), 1, key_movie_fp);
+		}
 	}
 }
 
