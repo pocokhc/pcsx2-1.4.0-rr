@@ -18,6 +18,8 @@ windows10のみビルド後の実行ファイルを置いておきます。
 You need the Visual C++ 2015 x86 Redistributable for this version to work.  
 Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=48145)  
   
+実行環境は公式と同じです。  
+一応 [windows10](https://www.microsoft.com/ja-jp/software-download/windows10)をVM上で新規にインストールした状態で起動できたことを確認しています。  
 
 # 追加機能
 * メニューバー
@@ -74,12 +76,15 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
   
 用意するもの  
 * Visual Studio Comunnity 2015(<https://www.visualstudio.com/vs/community/>)  
-※デフォルト設定だとC++が足りないので、カスタムインストールでC++関係も入れてください。  
+※デフォルト設定だとC++が足りないので、  
+  カスタム→プログラミング言語→Visual C++にチェックを入れてインストールしてください。  
 * DirectX Software Development Kit (June 2010)(<https://www.microsoft.com/en-us/download/details.aspx?id=6812>)  
-※デフォルト設定のインストールでおｋです。  
+※デフォルト設定のインストールでおｋです。追加で.NET Framework3.5が必要なので追加しますか？と聞かれる場合はインストールしておきます。  
   
 あとは、ソースコード内の「PCSX2_suite.sln」が開けると思うので開いてビルドでいけるはずです。  
   
+[windows10](https://www.microsoft.com/ja-jp/software-download/windows10)をVM上で新規にインストールした状態でビルドできたことを確認しています。  
+
 
 # ソースコードの変更箇所
 元のコードから変更している箇所にはすべてコメントで  
@@ -91,6 +96,9 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 # その他(使う側)
 * キーファイルですが、pcsx2のp2mファイルとは互換性がありません。  
   
+* ショートカットキーのキーコンフィグがしたい！  
+私もしたいのですが、これ本家からありません…orz  
+
 * ゲーム画面でキーが反応しない時  
 条件は不明ですが、一定時間何もしていないとなる時があります。  
 その場合は、メインメニューにフォーカスをあててからゲーム画面にフォーカスしなおすとなおります。  
