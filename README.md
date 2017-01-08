@@ -1,5 +1,5 @@
 # pcsx2-1.4.0-rr
-pcsx2-1.4.0にTAS作成のための機能を追加した非公式エミュレータです。  
+[pcsx2-1.4.0](https://github.com/PCSX2/pcsx2)にTAS作成のための機能を追加した非公式エミュレータです。  
 pcsx2-rr(<https://code.google.com/archive/p/pcsx2-rr/>)を参考にしています。  
 ただ、だいぶ中身が変わっており単純なマージはできなかったのでかなりソースコードは変わっています。  
   
@@ -69,6 +69,8 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
   
 
 # ビルド方法(windows10)
+  
+公式と同じビルド方法です。  
   
 用意するもの  
 * Visual Studio Comunnity 2015(<https://www.visualstudio.com/vs/community/>)  
