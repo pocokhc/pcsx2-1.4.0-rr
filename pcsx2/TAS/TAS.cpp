@@ -31,6 +31,7 @@ static uint stopFrameCount = false;
 static bool fStop = false;
 static bool fStart = false;
 static bool fFrameAdvance = false;
+static bool fPauseState = false;
 
 
 //----------------------------------
@@ -192,7 +193,7 @@ void TAS_PauseDoit()
 
 bool TAS_isStop()
 {
-	return CoreThread.IsPaused();
+	return (fPauseState && CoreThread.IsOpen() && CoreThread.IsPaused());
 }
 //-----------------------------------------------
 // Counters(CoreThread)“à‚Ì’âŽ~”»’è—p
@@ -207,10 +208,9 @@ void TAS_StopCheck()
 		}
 	}
 	if (fStop && CoreThread.IsOpen() && CoreThread.IsRunning()) {
-		//Console.WriteLn(Color_StrongBlue, "pause %d", g_FrameCount);
-		//CoreThread.Pause();
 		CoreThread.PauseSelf();	//self‚¶‚á‚È‚¢‚ÆŽ~‚Ü‚ç‚È‚¢
 		stopFrameCount = g_FrameCount;
+		fPauseState = true;
 	}
 }
 void TAS_StartCheck()
@@ -218,7 +218,7 @@ void TAS_StartCheck()
 	if (fStart && CoreThread.IsOpen() && CoreThread.IsPaused()) {
 		CoreThread.Resume();
 		fStart = false;
-		//Console.WriteLn(Color_StrongBlue, "run %d", g_FrameCount);
+		fPauseState = false;
 	}
 }
 
