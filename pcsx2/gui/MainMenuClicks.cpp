@@ -29,6 +29,8 @@
 
 #include "Utilities/IniInterface.h"
 
+#include "TAS/KeyMovie.h"//--TAS--//
+
 using namespace Dialogs;
 
 void MainEmuFrame::Menu_SysSettings_Click(wxCommandEvent &event)
@@ -599,3 +601,37 @@ void MainEmuFrame::Menu_ShowAboutBox(wxCommandEvent &event)
 {
 	AppOpenDialog<AboutBoxDialog>( this );
 }
+
+//--TAS--//
+void MainEmuFrame::Menu_KeyMovie_Record(wxCommandEvent &event)
+{
+	Menu_KeyMovie_Open(false);
+}
+void MainEmuFrame::Menu_KeyMovie_Play(wxCommandEvent &event)
+{
+	Menu_KeyMovie_Open(true);
+}
+void MainEmuFrame::Menu_KeyMovie_Stop(wxCommandEvent &event)
+{
+	KeyMovie_Stop();
+}
+void MainEmuFrame::Menu_KeyMovie_Open(bool fReadOnly)
+{
+	KeyMovie_Stop();
+
+	// wxFileDialog
+	wxFileDialog openFileDialog(this, _("Select P2M2 record file."), L"", L"",
+		L"p2m2 file(*.p2m2)|*.p2m2",
+		wxFD_OPEN);
+	if (openFileDialog.ShowModal() == wxID_CANCEL)
+	{
+		// cancel
+		return;
+	}
+	wxString path = openFileDialog.GetPath();
+
+	// start
+	KeyMovie_Start(path.c_str(), fReadOnly);
+}
+//------//
+

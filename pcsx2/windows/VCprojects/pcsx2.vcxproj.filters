@@ -880,10 +880,10 @@
     <ClCompile Include="..\..\Linux\LnxConsolePipe.cpp">
       <Filter>AppHost\Linux</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\TAS\TasMovieDlg.cpp">
+    <ClCompile Include="..\..\TAS\MovieControle.cpp">
       <Filter>TAS</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\TAS\TAS.cpp">
+    <ClCompile Include="..\..\TAS\KeyMovie.cpp">
       <Filter>TAS</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1320,7 +1320,10 @@
     <ClInclude Include="..\..\CDVD\CompressedFileReaderUtils.h">
       <Filter>System\ISO</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\TAS\TAS.h">
+    <ClInclude Include="..\..\TAS\MovieControle.h">
+      <Filter>TAS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TAS\KeyMovie.h">
       <Filter>TAS</Filter>
     </ClInclude>
   </ItemGroup>
