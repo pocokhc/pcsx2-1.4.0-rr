@@ -169,6 +169,10 @@ enum MenuIdentifiers
 	MenuId_KeyMovie_Play,
 	MenuId_KeyMovie_Stop,
 	//-------//
+
+	//--LuaFrame--//
+	MenuId_Lua_Open,
+	//------------//
 };
 
 namespace Exception
@@ -501,6 +505,7 @@ protected:
 	wxWindowID			m_id_GsFrame;
 	wxWindowID			m_id_ProgramLogBox;
 	wxWindowID			m_id_Disassembler;
+	wxWindowID			m_id_LuaFrame;//--LuaFrame--//
 
 	wxKeyEvent			m_kevt;
 
@@ -525,7 +530,8 @@ public:
 	GSFrame*			GetGsFramePtr() const		{ return (GSFrame*)wxWindow::FindWindowById( m_id_GsFrame ); }
 	MainEmuFrame*		GetMainFramePtr() const		{ return (MainEmuFrame*)wxWindow::FindWindowById( m_id_MainFrame ); }
 	DisassemblyDialog*	GetDisassemblyPtr() const	{ return (DisassemblyDialog*)wxWindow::FindWindowById(m_id_Disassembler); }
-	
+	LuaFrame*			GetLuaFramePtr() const { return (LuaFrame*)wxWindow::FindWindowById(m_id_LuaFrame); }//--LuaFrame--//
+
 	void enterDebugMode();
 	void leaveDebugMode();
 	void resetDebugger();

@@ -154,6 +154,9 @@
     <Filter Include="TAS">
       <UniqueIdentifier>{b3e4d65b-8623-4ed0-8cc9-794ebc336a78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="lua">
+      <UniqueIdentifier>{d6739054-74fa-4cc7-83f6-44d55c06470f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Utilities\folderdesc.txt">
@@ -886,6 +889,12 @@
     <ClCompile Include="..\..\TAS\TAS.cpp">
       <Filter>TAS</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lua\LuaFrame.cpp">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua\LuaEngine.cpp">
+      <Filter>lua</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Patch.h">
@@ -1322,6 +1331,12 @@
     </ClInclude>
     <ClInclude Include="..\..\TAS\TAS.h">
       <Filter>TAS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua\LuaFrame.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua\LuaEngine.h">
+      <Filter>lua</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -112,6 +112,7 @@ protected:
 	wxMenu&			m_menuMisc;
 	wxMenu&			m_menuDebug;
 	wxMenu&			m_menuMovieDlg;	//--TAS--//
+	wxMenu&			m_menuLuaDlg;	//--LuaFrame--//
 
 	wxMenu&			m_LoadStatesSubmenu;
 	wxMenu&			m_SaveStatesSubmenu;
@@ -206,6 +207,10 @@ protected:
 	void Menu_KeyMovie_Play(wxCommandEvent &event);
 	void Menu_KeyMovie_Open(bool fReadOnly);
 	//-------//
+
+	//--LuaFrame--//
+	void Menu_Lua_Open_Click(wxCommandEvent &event);
+	//------------//
 
 	void _DoBootCdvd();
 	bool _DoSelectIsoBrowser( wxString& dest );

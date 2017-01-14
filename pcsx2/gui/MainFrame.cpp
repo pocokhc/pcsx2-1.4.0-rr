@@ -247,6 +247,10 @@ void MainEmuFrame::ConnectMenus()
 	ConnectMenu(MenuId_KeyMovie_Play, Menu_KeyMovie_Play);
 	ConnectMenu(MenuId_KeyMovie_Stop, Menu_KeyMovie_Stop);
 	//-------//
+
+	//--LuaFrame--//
+	ConnectMenu(MenuId_Lua_Open, Menu_Lua_Open_Click);
+	//------------//
 }
 
 void MainEmuFrame::InitLogBoxPosition( AppConfig::ConsoleLogOptions& conf )
@@ -327,6 +331,7 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 	, m_menuMisc	( *new wxMenu() )
 	, m_menuDebug	( *new wxMenu() )
 	, m_menuMovieDlg(*new wxMenu())	//--TAS--//
+	, m_menuLuaDlg(*new wxMenu())	//--LuaFrame--//
 
 	, m_LoadStatesSubmenu( *MakeStatesSubMenu( MenuId_State_Load01, MenuId_State_LoadBackup ) )
 	, m_SaveStatesSubmenu( *MakeStatesSubMenu( MenuId_State_Save01 ) )
@@ -351,6 +356,7 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 	m_menubar.Append( &m_menuMisc,		_("&Misc") );
 	m_menubar.Append( &m_menuDebug,		_("&Debug") );
 	m_menubar.Append(&m_menuMovieDlg, _("&Movie"));	//--TAS--//
+	m_menubar.Append(&m_menuLuaDlg, _("&Lua"));	//--LuaFrame--//
 
 	SetMenuBar( &m_menubar );
 
@@ -539,6 +545,10 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 	m_menuMovieDlg.Append(MenuId_KeyMovie_Play, _("Play"));
 	m_menuMovieDlg.Append(MenuId_KeyMovie_Stop, _("Stop"));
 	//-------//
+	
+	//--LuaFrame--//
+	m_menuLuaDlg.Append(MenuId_Lua_Open, _("Open"));
+	//------------//
 
 	m_MenuItem_Console.Check( g_Conf->ProgLogBox.Visible );
 
