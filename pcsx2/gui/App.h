@@ -168,6 +168,8 @@ enum MenuIdentifiers
 	MenuId_KeyMovie_Record,
 	MenuId_KeyMovie_Play,
 	MenuId_KeyMovie_Stop,
+	MenuId_KeyMovie_ConvertP2M,
+	MenuId_KeyMovie_ConvertOld,
 	//-------//
 };
 
