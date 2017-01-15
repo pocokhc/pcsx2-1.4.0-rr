@@ -6,17 +6,7 @@
 #include "MovieControle.h"
 
 
-//----------------------------------
-// Movie FrameAdvance/stop/start
-//----------------------------------
-static uint stopFrameCount = false;
-
-static bool fStop = false;
-static bool fStart = false;
-static bool fFrameAdvance = false;
-static bool fPauseState = false;
-
-
+MovieControle g_MovieControle;
 
 
 //-----------------------------------------------
@@ -25,14 +15,14 @@ static bool fPauseState = false;
 // CoreThread‚ª’âŽ~‚µ‚Ä‚¢‚éŠÔ‚ÍwxFrame‚Ì“ü—Í‚ª“®‚­Žd‘g‚Ý‚Á‚Û‚¢
 //-----------------------------------------------
 
-bool Movie_isStop()
+bool MovieControle::isStop()
 {
 	return (fPauseState && CoreThread.IsOpen() && CoreThread.IsPaused());
 }
 //-----------------------------------------------
 // Counters(CoreThread)“à‚Ì’âŽ~”»’è—p
 //-----------------------------------------------
-void Movie_StartCheck()
+void MovieControle::StartCheck()
 {
 	if (fStart && CoreThread.IsOpen() && CoreThread.IsPaused()) {
 		CoreThread.Resume();
@@ -41,7 +31,7 @@ void Movie_StartCheck()
 	}
 }
 
-void Movie_StopCheck()
+void MovieControle::StopCheck()
 {
 	if (fFrameAdvance) {
 		if (stopFrameCount < g_FrameCount) {
@@ -61,27 +51,29 @@ void Movie_StopCheck()
 //----------------------------------
 // shortcut key
 //----------------------------------
-void Movie_FrameAdvance()
+void MovieControle::FrameAdvance()
 {
 	fFrameAdvance = true;
 	fStop = false;
 	fStart = true;
 }
-void Movie_TogglePause()
+void MovieControle::TogglePause()
 {
 	fStop = !fStop;
 	if (fStop == false) {
 		fStart = true;
 	}
 }
-void Movie_Pause()
+void MovieControle::Pause()
 {
 	fStop = true;
+	fFrameAdvance = false;
 }
-void Movie_UnPause()
+void MovieControle::UnPause()
 {
 	fStop = false;
 	fStart = true;
+	fFrameAdvance = false;
 }
 
 

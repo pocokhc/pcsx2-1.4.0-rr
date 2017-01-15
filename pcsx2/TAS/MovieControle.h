@@ -2,18 +2,34 @@
 #ifndef __MOVIE_CONTROLE_H__
 #define __MOVIE_CONTROLE_H__
 
-// movie controle
-bool Movie_isStop();
-void Movie_StartCheck();
-void Movie_StopCheck();
+class MovieControle {
+public:
 
-// shortcut key
-void Movie_FrameAdvance();
-void Movie_TogglePause();
+	// movie controle main function
+	bool isStop();
+	void StartCheck();
+	void StopCheck();
 
-// public function
-void Movie_Pause();
-void Movie_UnPause();
+	// shortcut key
+	void FrameAdvance();
+	void TogglePause();
 
+	// doit
+	void Pause();
+	void UnPause();
+	
+	// getter
+	bool getStopFlag() { return (fStop || fFrameAdvance); }
+
+private:
+	uint stopFrameCount = false;
+
+	bool fStop = false;
+	bool fStart = false;
+	bool fFrameAdvance = false;
+	bool fPauseState = false;
+
+};
+extern MovieControle g_MovieControle;
 
 #endif

@@ -453,15 +453,15 @@ namespace Implementations
 	//--TAS--//
 	void TAS_FrameAdvance()
 	{
-		Movie_FrameAdvance();
+		g_MovieControle.FrameAdvance();
 	}
 	void TAS_KeyMovieRecodeModeOn()
 	{
-		KeyMovie_RecordModeOn();
+		g_KeyMovie.RecordModeOn();
 	}
 	void TAS_Pause()
 	{
-		Movie_TogglePause();
+		g_MovieControle.TogglePause();
 	}
 	void States_SaveSlot(int slot)
 	{

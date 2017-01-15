@@ -175,7 +175,7 @@ SIO_WRITE sioWriteController(u8 data)
 
 	default: 
 		sio.buf[sio.bufCount] = PADpoll(data);
-		KeyMovie_ControllerInterrupt(data, sio.port,sio.bufCount,sio.buf);//--TAS--//
+		g_KeyMovie.ControllerInterrupt(data, sio.port,sio.bufCount,sio.buf);//--TAS--//
 		break;
 	}
 

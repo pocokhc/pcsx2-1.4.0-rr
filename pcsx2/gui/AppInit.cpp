@@ -71,6 +71,11 @@ void Pcsx2App::OpenMainFrame()
 	DisassemblyDialog* disassembly = new DisassemblyDialog( mainFrame );
 	m_id_Disassembler = disassembly->GetId();
 
+	//--TAS--//
+	KeyEditor* keyEditor = new KeyEditor(mainFrame);
+	m_id_KeyEditor = keyEditor->GetId();
+	//-------//
+
 	if (g_Conf->EmuOptions.Debugger.ShowDebuggerOnStart)
 		disassembly->Show();
 
@@ -725,6 +730,7 @@ Pcsx2App::Pcsx2App()
 	m_id_GsFrame		= wxID_ANY;
 	m_id_ProgramLogBox	= wxID_ANY;
 	m_id_Disassembler	= wxID_ANY;
+	m_id_KeyEditor		= wxID_ANY;//--TAS--//
 	m_ptr_ProgramLog	= NULL;
 
 	SetAppName(L"PCSX2-rr");	//--TAS--//

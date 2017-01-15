@@ -597,7 +597,7 @@ void Pcsx2App::HandleEvent(wxEvtHandler* handler, wxEventFunction func, wxEvent&
 {
 	try {
 		//--TAS--//
-		if (Movie_isStop()) {
+		if (g_MovieControle.isStop()) {
 			//ストップ中はGSFrameのキーイベントも停止するのでここからキー入力を取得
 			//それに伴ってGSFrameで設定してあるショートカットキーも使えない
 			if (PADkeyEvent != NULL) {
@@ -608,7 +608,7 @@ void Pcsx2App::HandleEvent(wxEvtHandler* handler, wxEventFunction func, wxEvent&
 				}
 			}
 		}
-		Movie_StartCheck();
+		g_MovieControle.StartCheck();
 		//-------//
 		(handler->*func)(event);
 	}
@@ -1040,7 +1040,7 @@ void Pcsx2App::OnProgramLogClosed( wxWindowID id )
 
 void Pcsx2App::OnMainFrameClosed( wxWindowID id )
 {
-	KeyMovie_Stop();//--TAS--//
+	g_KeyMovie.Stop();//--TAS--//
 
 	// Nothing threaded depends on the mainframe (yet) -- it all passes through the main wxApp
 	// message handler.  But that might change in the future.

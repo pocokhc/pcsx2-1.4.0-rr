@@ -25,6 +25,7 @@
 #include "AppCommon.h"
 #include "AppCoreThread.h"
 #include "RecentIsoList.h"
+#include "TAS/KeyEditor.h"//--TAS--//
 
 class DisassemblyDialog;
 
@@ -503,6 +504,7 @@ protected:
 	wxWindowID			m_id_GsFrame;
 	wxWindowID			m_id_ProgramLogBox;
 	wxWindowID			m_id_Disassembler;
+	wxWindowID			m_id_KeyEditor;//--TAS--//
 
 	wxKeyEvent			m_kevt;
 
@@ -527,7 +529,8 @@ public:
 	GSFrame*			GetGsFramePtr() const		{ return (GSFrame*)wxWindow::FindWindowById( m_id_GsFrame ); }
 	MainEmuFrame*		GetMainFramePtr() const		{ return (MainEmuFrame*)wxWindow::FindWindowById( m_id_MainFrame ); }
 	DisassemblyDialog*	GetDisassemblyPtr() const	{ return (DisassemblyDialog*)wxWindow::FindWindowById(m_id_Disassembler); }
-	
+	KeyEditor *			GetKeyEditorPtr() const		{ return (KeyEditor*)wxWindow::FindWindowById(m_id_KeyEditor); }//--TAS--//
+
 	void enterDebugMode();
 	void leaveDebugMode();
 	void resetDebugger();
