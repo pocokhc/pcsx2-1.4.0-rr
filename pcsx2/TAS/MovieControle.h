@@ -23,7 +23,7 @@ public:
 
 private:
 	uint stopFrameCount = false;
-
+	
 	bool fStop = false;
 	bool fStart = false;
 	bool fFrameAdvance = false;

@@ -889,6 +889,12 @@
     <ClCompile Include="..\..\TAS\KeyEditor.cpp">
       <Filter>TAS</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\TAS\PadData.cpp">
+      <Filter>TAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TAS\KeyMovieOnFile.cpp">
+      <Filter>TAS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Patch.h">
@@ -1330,6 +1336,12 @@
       <Filter>TAS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\TAS\KeyEditor.h">
+      <Filter>TAS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TAS\PadData.h">
+      <Filter>TAS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TAS\KeyMovieOnFile.h">
       <Filter>TAS</Filter>
     </ClInclude>
   </ItemGroup>

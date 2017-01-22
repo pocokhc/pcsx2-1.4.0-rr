@@ -206,6 +206,7 @@ protected:
 	void Menu_KeyMovie_Play(wxCommandEvent &event);
 	void Menu_KeyMovie_ConvertP2M(wxCommandEvent &event);
 	void Menu_KeyMovie_ConvertOld(wxCommandEvent &event);
+	void Menu_KeyMovie_OpenKeyEditor(wxCommandEvent &event);
 	//-------//
 
 	void _DoBootCdvd();

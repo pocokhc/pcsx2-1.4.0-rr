@@ -171,6 +171,7 @@ enum MenuIdentifiers
 	MenuId_KeyMovie_Stop,
 	MenuId_KeyMovie_ConvertP2M,
 	MenuId_KeyMovie_ConvertOld,
+	MenuId_KeyMovie_OpenKeyEditor,
 	//-------//
 };
 

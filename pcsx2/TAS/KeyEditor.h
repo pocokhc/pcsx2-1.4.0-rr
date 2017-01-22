@@ -3,7 +3,9 @@
 #define __KEY_EDITOR_H__
 
 #include <wx/wx.h>
+#include <wx/listctrl.h>
 
+#include "PadData.h"
 
 class KeyEditor : public wxFrame
 {
@@ -14,33 +16,52 @@ public:
 	void FrameUpdate();
 	
 private:
-	void DrawHeader();
-	void DrawList();
+	
+	void DrawKeyFrameList(long frame);
+	void DrawKeyButtonCheck();
 
 private:
-	wxTextCtrl* infoText;
+
+	long frameListStartFrame = 0;
+
+private:
 	wxListBox * frameList;
+
 	wxStatusBar* statusbar;
 	
-	wxTextCtrl* keyText1;
-	wxTextCtrl* keyText2;
+	wxTextCtrl* keyTextView;
+	wxTextCtrl* keyTextEdit;
 
-	wxTextCtrl* frameText;
+	wxTextCtrl* frameTextFoeMove;
+	wxTextCtrl*	analogKeyText[PadDataAnalogKeysSize];
 
+	wxCheckListBox* keyCheckList1;
 
 private:
 	void OnClose(wxCloseEvent& evt);
-	void OnActivate(wxCloseEvent& evt);
 
-	void OnConsoleAuthor(wxCommandEvent& event);
-	void OnUpdate(wxCommandEvent& event);
-	void OnDelete(wxCommandEvent& event);
-	void OnInsert(wxCommandEvent& event);
-	void OnCopy(wxCommandEvent& event);
-	void OnDrawFrame(wxCommandEvent& event);
+	void OnMenuAuthor(wxCommandEvent& event);
+	void OnMenuKeyMovieInfo(wxCommandEvent& event);
+
+	void OnBtnUpdate(wxCommandEvent& event);
+	void OnBtnDelete(wxCommandEvent& event);
+	void OnBtnInsert(wxCommandEvent& event);
+	void OnBtnCopy(wxCommandEvent& event);
+
+	void OnBtnDrawFrame(wxCommandEvent& event);
+	void OnBtnDrawNowFrame(wxCommandEvent& event);
 
 	void OnListBox(wxCommandEvent& event);
-	
+	void OnCheckList_NormalKey1(wxCommandEvent& event);
+
+	void OnText_Edit(wxCommandEvent& event);
+
+	void _OnText_Analog(int num);
+	void OnText_Analog1(wxCommandEvent& event);
+	void OnText_Analog2(wxCommandEvent& event);
+	void OnText_Analog3(wxCommandEvent& event);
+	void OnText_Analog4(wxCommandEvent& event);
+
 
 	wxDECLARE_EVENT_TABLE();
 };

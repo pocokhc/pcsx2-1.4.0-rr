@@ -79,9 +79,9 @@ void GSPanel::InitDefaultAccelerators()
 	m_Accels->Map( FULLSCREEN_TOGGLE_ACCELERATOR_GSPANEL,		"FullscreenToggle" );
 
 	//--TAS--//
-	m_Accels->Map(AAC(WXK_SPACE), "TAS_FrameAdvance");
-	m_Accels->Map(AAC(wxKeyCode('p')), "TAS_Pause");
-	m_Accels->Map(AAC(wxKeyCode('r')), "TAS_KeyMovieRecodeModeOn");
+	m_Accels->Map(AAC(WXK_SPACE), "FrameAdvance");
+	m_Accels->Map(AAC(wxKeyCode('p')), "TogglePause");
+	m_Accels->Map(AAC(wxKeyCode('r')), "KeyMovieModeToggle");
 	// 使わないコマンドを設定
 	// WXK_NONE is error
 	m_Accels->Map(AAC(WXK_COMMAND), "States_SaveSlot0");

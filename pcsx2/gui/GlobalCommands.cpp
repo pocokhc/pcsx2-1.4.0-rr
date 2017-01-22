@@ -451,17 +451,17 @@ namespace Implementations
 	}
 
 	//--TAS--//
-	void TAS_FrameAdvance()
+	void FrameAdvance()
 	{
 		g_MovieControle.FrameAdvance();
 	}
-	void TAS_KeyMovieRecodeModeOn()
-	{
-		g_KeyMovie.RecordModeOn();
-	}
-	void TAS_Pause()
+	void TogglePause()
 	{
 		g_MovieControle.TogglePause();
+	}
+	void KeyMovieModeToggle()
+	{
+		g_KeyMovie.RecordModeToggle();
 	}
 	void States_SaveSlot(int slot)
 	{
@@ -637,9 +637,9 @@ static const GlobalCommandDescriptor CommandDeclarations[] =
 		NULL,
 	},
 	//--TAS--//
-	{ "TAS_FrameAdvance",Implementations::TAS_FrameAdvance,NULL,NULL, },
-	{ "TAS_KeyMovieRecodeModeOn",Implementations::TAS_KeyMovieRecodeModeOn,NULL,NULL, },
-	{ "TAS_Pause",Implementations::TAS_Pause,NULL,NULL, },
+	{ "FrameAdvance",Implementations::FrameAdvance,NULL,NULL, },
+	{ "TogglePause",Implementations::TogglePause,NULL,NULL, },
+	{ "KeyMovieModeToggle",Implementations::KeyMovieModeToggle,NULL,NULL, },
 	{ "States_SaveSlot0",Implementations::States_SaveSlot0,NULL,NULL, },
 	{ "States_SaveSlot1",Implementations::States_SaveSlot1,NULL,NULL, },
 	{ "States_SaveSlot2",Implementations::States_SaveSlot2,NULL,NULL, },

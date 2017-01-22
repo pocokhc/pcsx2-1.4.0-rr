@@ -1,5 +1,6 @@
 #include "PrecompiledHeader.h"
 
+
 #include "app.h"	//Counters.hをincludeするのに必要
 #include "Counters.h"	// use"g_FrameCount"
 
@@ -8,21 +9,32 @@
 #include "MovieControle.h"
 
 #include <string>
-
+#include <wx/joystick.h>
 
 enum {
-	ID_ConsoleAuthor = 1,
+	ID_MenuAuthor = 1,
+	ID_MenuKeyMovieInfo,
 
-	ID_Update,
-	ID_Insert,
-	ID_Delete,
-	ID_Copy,
-	ID_ListBox,
-	ID_DrawFrame,
+	ID_List_KeyFrame,
+	ID_Text_Edit,
+
+	ID_Btn_Update,
+	ID_Btn_Insert,
+	ID_Btn_Delete,
+	ID_Btn_Copy,
+	ID_Btn_DrawFrame,
+	ID_Btn_DrawNowFrame,
+
+	ID_CheckList_NormalKey1,
+
+	ID_Text_AnalogKey1,
+	ID_Text_AnalogKey2,
+	ID_Text_AnalogKey3,
+	ID_Text_AnalogKey4,
+
 };
 
 wxBEGIN_EVENT_TABLE(KeyEditor, wxFrame)
-	//EVT_ACTIVATE(KeyEditor::OnActivate)
 	EVT_CLOSE(KeyEditor::OnClose)
 wxEND_EVENT_TABLE()
 
@@ -31,9 +43,10 @@ KeyEditor::KeyEditor(wxWindow * parent)
 {
 	// menu bar
 	wxMenu *menuFile = new wxMenu;
-	menuFile->Append(ID_ConsoleAuthor, _("&set author"));
+	menuFile->Append(ID_MenuAuthor, L"&set author");
+	menuFile->Append(ID_MenuKeyMovieInfo, L"&KeyMovieInfo");
 	wxMenuBar *menuBar = new wxMenuBar;
-	menuBar->Append(menuFile, _("&menu"));
+	menuBar->Append(menuFile, L"&menu");
 	SetMenuBar(menuBar);
 
 	// panel
@@ -41,49 +54,73 @@ KeyEditor::KeyEditor(wxWindow * parent)
 	int y = 2;
 	wxPanel *panel = new wxPanel(this, wxID_ANY);
 
-	// listbox
-	frameList = new wxListBox(panel, ID_ListBox, wxPoint(x, y),wxSize(230,460));
-
-	// text
-	x += 230 + 5;
-	infoText = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(x, y), wxSize(200, 250) , wxTE_MULTILINE);
-
-	// key
-	y += 250;
-	keyText1 = new wxTextCtrl(panel, wxID_ANY, "1", wxPoint(x, y), wxSize(400, 50), wxTE_MULTILINE);
-	keyText1->Disable();
-	y += 50;
-	new wxButton(panel, ID_Copy, _("copy"), wxPoint(x, y));
-	y += 30;
-	keyText2 = new wxTextCtrl(panel, wxID_ANY, "2", wxPoint(x, y), wxSize(400, 50), wxTE_MULTILINE);
-
-	// button
-	y += 50;
-	int w = 90;
-	new wxButton(panel, ID_Update, _("update"), wxPoint(x,y));
-	new wxButton(panel, ID_Insert, _("insert"), wxPoint(x+w, y));
-	new wxButton(panel, ID_Delete, _("delete"), wxPoint(x + w * 2, y));
 	
-	y += 30;
-	new wxButton(panel, ID_DrawFrame, _("draw frame:"), wxPoint(x, y));
-	frameText = new wxTextCtrl(panel, wxID_ANY, "100", wxPoint(x+w, y), wxSize(100, 25));
+
+
+	// listbox
+	frameList = new wxListBox(panel, ID_List_KeyFrame, wxPoint(x, y),wxSize(250,460));
+	x += 250 + 5;
+	
+	// key
+	keyTextView = new wxTextCtrl(panel, wxID_ANY, L"", wxPoint(x, y), wxSize(420, 25));
+	keyTextView->Disable();
+	y += 25;
+	new wxButton(panel, ID_Btn_Copy, L"copy", wxPoint(x, y));
+	y += 28;
+	keyTextEdit = new wxTextCtrl(panel, ID_Text_Edit, L"", wxPoint(x, y), wxSize(420, 25));
+	y += 25;
+	wxArrayString tmp;
+	for (int i = 0; i < PadDataNormalKeysSize; i++) {
+		tmp.Add(PadDataNormalKeys[i]);
+	}
+	keyCheckList1 = new wxCheckListBox(panel, ID_CheckList_NormalKey1, wxPoint(x, y), wxSize(90, 300), tmp);
+	x += 90+5;
+	
+	// analog
+	for (int i = 0; i < PadDataAnalogKeysSize; i++) {
+		(new wxTextCtrl(panel, wxID_ANY, PadDataAnalogKeys[i] , wxPoint(x, y), wxSize(100, 28)))->Disable();
+		analogKeyText[i] = new wxTextCtrl(panel, (ID_Text_AnalogKey1+i), "", wxPoint(x + 100, y), wxSize(80, 28));
+		y += 28;
+	}
+	
+	// button
+	int w = 90;
+	new wxButton(panel, ID_Btn_Update, L"update", wxPoint(x,y));
+	new wxButton(panel, ID_Btn_Insert, L"insert", wxPoint(x+w, y));
+	new wxButton(panel, ID_Btn_Delete, L"delete", wxPoint(x+w*2, y));
+	y += 28+20;
+	frameTextFoeMove = new wxTextCtrl(panel, wxID_ANY, L"100", wxPoint(x, y), wxSize(80, 25));
+	y += 28;
+	new wxButton(panel, ID_Btn_DrawFrame, L"draw frame:", wxPoint(x, y));
+	new wxButton(panel, ID_Btn_DrawNowFrame, L"draw now frame", wxPoint(x + w, y));
 
 	// status bar
 	statusbar = CreateStatusBar();
-	statusbar->SetStatusText(_("key editor open"));
-
+	statusbar->SetStatusText(L"key editor open");
 
 	// event
-	Bind(wxEVT_COMMAND_MENU_SELECTED, &KeyEditor::OnConsoleAuthor, this, ID_ConsoleAuthor);
+	Bind(wxEVT_COMMAND_MENU_SELECTED, &KeyEditor::OnMenuAuthor, this, ID_MenuAuthor);
+	Bind(wxEVT_COMMAND_MENU_SELECTED, &KeyEditor::OnMenuKeyMovieInfo, this, ID_MenuKeyMovieInfo);
 	// button
-	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnUpdate, this, ID_Update);
-	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnInsert, this, ID_Insert);
-	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnDelete, this, ID_Delete);
-	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnCopy, this, ID_Copy);
-	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnDrawFrame, this, ID_DrawFrame);
-	
+	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnBtnUpdate, this, ID_Btn_Update);
+	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnBtnInsert, this, ID_Btn_Insert);
+	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnBtnDelete, this, ID_Btn_Delete);
+	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnBtnCopy, this, ID_Btn_Copy);
+	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnBtnDrawFrame, this, ID_Btn_DrawFrame);
+	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &KeyEditor::OnBtnDrawNowFrame, this, ID_Btn_DrawNowFrame);
+
 	//list box
-	Bind(wxEVT_COMMAND_LISTBOX_SELECTED, &KeyEditor::OnListBox, this, ID_ListBox);
+	Bind(wxEVT_COMMAND_LISTBOX_SELECTED, &KeyEditor::OnListBox, this, ID_List_KeyFrame);
+
+	//checklist
+	Bind(wxEVT_CHECKLISTBOX, &KeyEditor::OnCheckList_NormalKey1, this, ID_CheckList_NormalKey1);
+	
+	//text
+	Bind(wxEVT_TEXT, &KeyEditor::OnText_Edit, this, ID_Text_Edit);
+	Bind(wxEVT_TEXT, &KeyEditor::OnText_Analog1, this, ID_Text_AnalogKey1);
+	Bind(wxEVT_TEXT, &KeyEditor::OnText_Analog2, this, ID_Text_AnalogKey2);
+	Bind(wxEVT_TEXT, &KeyEditor::OnText_Analog3, this, ID_Text_AnalogKey3);
+	Bind(wxEVT_TEXT, &KeyEditor::OnText_Analog4, this, ID_Text_AnalogKey4);
 
 	
 }
@@ -91,10 +128,28 @@ void KeyEditor::OnClose(wxCloseEvent& evt)
 {
 	Hide();
 }
-void KeyEditor::OnActivate(wxCloseEvent& evt)
+void KeyEditor::OnMenuAuthor(wxCommandEvent& event)
 {
-	frameText->SetValue(wxString::Format("%d", g_FrameCount));
+	wxTextEntryDialog* dlg = new wxTextEntryDialog(NULL, L"input author.");
+	if (dlg->ShowModal() != wxID_OK) {
+		return;
+	}
+	g_KeyMovieHeader.setAuthor(dlg->GetValue());
+	g_KeyMovieData.writeHeader();
 }
+void KeyEditor::OnMenuKeyMovieInfo(wxCommandEvent& event)
+{
+	wxString s = L"";
+	s += wxString::Format(L"Ver:%d\n", g_KeyMovieHeader.version);
+	s += wxString::Format(L"Author:%s\n", g_KeyMovieHeader.author);
+	s += wxString::Format(L"Emu:%s\n", g_KeyMovieHeader.emu);
+	s += wxString::Format(L"CD:%s\n", g_KeyMovieHeader.cdrom);
+	s += wxString::Format(L"MaxFrame:%d\n", g_KeyMovieData.getMaxFrame());
+	s += wxString::Format(L"UndoCount:%d\n", g_KeyMovieData.getUndoCount());
+
+	wxMessageBox(s, L"KeyMovie file header info", wxOK | wxICON_INFORMATION);
+}
+
 //-------------------------------
 // every frame
 //-------------------------------
@@ -102,140 +157,187 @@ void KeyEditor::FrameUpdate()
 {
 	if (g_FrameCount == 0)return;
 
-	wxString pauseMessage = g_MovieControle.getStopFlag() ? "[pause]" : "[run]";
+	wxString pauseMessage = g_MovieControle.getStopFlag() ? L"[pause]" : L"[run]";
 	wxString recordMessage = "";
 	if (g_KeyMovie.getModeState() == KeyMovie::RECORD) {
-		recordMessage = "[record]";
+		recordMessage = L"[record]";
 	}
 	else if (g_KeyMovie.getModeState() == KeyMovie::REPLAY) {
-		recordMessage = "[replay]";
+		recordMessage = L"[replay]";
 	}
-	SetTitle(wxString::Format("frame:%d ", g_FrameCount)+ pauseMessage+ recordMessage);
+	SetTitle(wxString::Format(L"%d / %d ", g_FrameCount, g_KeyMovieData.getMaxFrame())+ pauseMessage+ recordMessage );
 	
 }
-void KeyEditor::DrawList()
+
+//-------------------------------
+// draw
+//-------------------------------
+void KeyEditor::DrawKeyFrameList(long selectFrame)
 {
-	long selectFrame;
-	if( !frameText->GetValue().ToLong(&selectFrame) )return;
-	
 	// 表示するフレーム数をきめる
-	int start = selectFrame - 200;
-	int end = selectFrame +200;
+	int start = selectFrame - 100;
+	unsigned int end = selectFrame +100;
 	if (start < 0) {
 		start = 0;
 	}
-	if (end > g_KeyMovie.getMaxFrame()) {
-		end = g_KeyMovie.getMaxFrame();
-	}
-
+	frameListStartFrame = start;
+	wxString selectKeyStr = "";
 	frameList->Clear();
-	for (uint i = start; i < end; i++)
+	for (unsigned long i = start; i < end; i++)
 	{
 		PadData key;
-		g_KeyMovie.getPadData(key, i);
-		wxString s = "";
-		if (i > 0){
-			for (int slot = 0; slot < 10; slot++) {
-				if (g_KeyMovie.getSaveFrame(slot) == i) {
-					s += wxString::Format("[save%d]", slot);
-				}
-			}
+		g_KeyMovieData.getPadData(key, i);
+		frameList->Append(wxString::Format("%d [%s]", i, key.serialize()));
+		if (selectFrame == i) {
+			selectKeyStr = key.serialize();
 		}
-		frameList->Append( s+key.getString());
 	}
 	// select
-	uint selectIndex = selectFrame -start;
-	if (0 <= selectIndex && selectIndex < frameList->GetCount()) {
+	long selectIndex = selectFrame - start;
+	if (0 <= selectIndex && selectIndex < (signed)frameList->GetCount())
+	{
 		frameList->SetSelection(selectIndex);
-		keyText1->SetValue(frameList->GetString(selectIndex));
+		keyTextView->ChangeValue(selectKeyStr);
 	}
 }
-void KeyEditor::DrawHeader()
+void KeyEditor::DrawKeyButtonCheck()
 {
-	KeyMovieHeader & header = g_KeyMovie.getHeader();
-	infoText->SetLabelText("");
-	std::ostream stream(infoText);
-	stream << "MaxFrame:" << g_KeyMovie.getMaxFrame() << std::endl;
-	stream << "UndoCount:" << g_KeyMovie.getUndoCount() << std::endl;
-	stream << "KeyFile version:" << (int)header.version << std::endl;
-	stream << "Auther:" << header.auther << std::endl;
-	for (int slot = 0; slot < 10; slot++) {
-		long frame = g_KeyMovie.getSaveFrame(slot);
-		stream << "save" << slot << ":" << frame << " frame" << std::endl;
+	PadData key;
+	key.deserialize(keyTextEdit->GetValue());
+	auto key1 = key.getNormalKeys(0);
+	for (int i = 0; i < PadDataNormalKeysSize;i++) {
+		keyCheckList1->Check( i , key1[PadDataNormalKeys[i]]);
 	}
-	stream.flush();
+	auto key2 = key.getAnalogKeys(0);
+	for (int i = 0; i < PadDataAnalogKeysSize; i++) {
+		analogKeyText[i]->ChangeValue(wxString::Format(L"%d", key2.at(PadDataAnalogKeys[i])));
+	}
+
 }
 
 //----------------------------------------------
 // event
 //----------------------------------------------
-void KeyEditor::OnConsoleAuthor(wxCommandEvent& event)
-{
-	wxTextEntryDialog* dlg = new wxTextEntryDialog(NULL,"input author.");
-	if (dlg->ShowModal() != wxID_OK) {
-		return;
-	}
-	wxString val = dlg->GetValue();
-	int max = sizeof(g_KeyMovie.getHeader().auther) - 1;
-	strncpy(g_KeyMovie.getHeader().auther, val.c_str(),max);
-	g_KeyMovie.getHeader().auther[max] = 0;
 
-	DrawHeader();
-}
-void KeyEditor::OnUpdate(wxCommandEvent& event)
+void KeyEditor::OnBtnUpdate(wxCommandEvent& event)
 {
-	if (frameList->GetSelection() == wxNOT_FOUND)return;
-	PadData key1;
-	key1.setString(frameList->GetStringSelection());
-	PadData key2;
-	key2.setString(keyText2->GetValue());
-	key2.frame = key1.frame;
-	if (g_KeyMovie.UpdateKeyFrame(key2)) {
-		frameText->SetValue(wxString::Format("%d", key2.frame));
-		DrawHeader();
-		DrawList();
-	}
-}
-void KeyEditor::OnInsert(wxCommandEvent& event)
-{
-	if (frameList->GetSelection() == wxNOT_FOUND)return;
-	PadData key1;
-	key1.setString(frameList->GetStringSelection());
-	PadData key2;
-	key2.setString(keyText2->GetValue());
-	key2.frame = key1.frame;
-	if (g_KeyMovie.InsertKeyFrame(key2)) {
-		frameText->SetValue(wxString::Format("%d", key2.frame));
-		DrawHeader();
-		DrawList();
-	}
-}
-void KeyEditor::OnDelete(wxCommandEvent& event)
-{
-	if (frameList->GetSelection() == wxNOT_FOUND)return;
+	int select = frameList->GetSelection();
+	if (select == wxNOT_FOUND)return;
+	long frame = select + frameListStartFrame;
 	PadData key;
-	key.setString(frameList->GetStringSelection());
-	if (g_KeyMovie.DeleteKeyFrame(key.frame)) {
-		frameText->SetValue(wxString::Format("%d",key.frame));
-		DrawHeader();
-		DrawList();
+	key.deserialize(keyTextEdit->GetValue());
+	if (g_KeyMovieData.UpdatePadData(frame, key))
+	{
+		frameTextFoeMove->ChangeValue(wxString::Format(L"%d", frame));
+		DrawKeyFrameList(frame);
+	}
+	
+}
+void KeyEditor::OnBtnInsert(wxCommandEvent& event)
+{
+	int select = frameList->GetSelection();
+	if (select == wxNOT_FOUND)return;
+	long frame = select + frameListStartFrame;
+	PadData key;
+	key.deserialize(keyTextEdit->GetValue());
+	if (g_KeyMovieData.InsertPadData(frame,key))
+	{
+		frameTextFoeMove->ChangeValue(wxString::Format(L"%d", frame));
+		DrawKeyFrameList(frame);
+	}
+
+}
+void KeyEditor::OnBtnDelete(wxCommandEvent& event)
+{
+	int select = frameList->GetSelection();
+	if (select == wxNOT_FOUND)return;
+	long frame = select + frameListStartFrame;
+	if (g_KeyMovieData.DeletePadData(frame))
+	{
+		frameTextFoeMove->ChangeValue(wxString::Format(L"%d",frame));
+		DrawKeyFrameList(frame);
 	}
 }
-void KeyEditor::OnCopy(wxCommandEvent& event)
+void KeyEditor::OnBtnCopy(wxCommandEvent& event)
 {
-	keyText2->SetValue(keyText1->GetValue());
+	keyTextEdit->ChangeValue(keyTextView->GetValue());
+	DrawKeyButtonCheck();
+}
+void KeyEditor::OnText_Edit(wxCommandEvent& event)
+{
+	DrawKeyButtonCheck();
 }
 void KeyEditor::OnListBox(wxCommandEvent& event)
 {
-	if (frameList->GetSelection() == wxNOT_FOUND)return;
-	wxString s = frameList->GetStringSelection();
-	keyText1->SetValue(s);
+	int select = frameList->GetSelection();
+	if (select == wxNOT_FOUND)return;
+	long frame = select + frameListStartFrame;
+	PadData key;
+	g_KeyMovieData.getPadData(key,frame);
+	keyTextView->ChangeValue(key.serialize());
+	frameTextFoeMove->ChangeValue(wxString::Format(L"%d", frame));
 }
 
-void KeyEditor::OnDrawFrame(wxCommandEvent& event)
+void KeyEditor::OnBtnDrawFrame(wxCommandEvent& event)
 {
-	DrawHeader();
-	DrawList();
+	long selectFrame;
+	if (frameTextFoeMove->GetValue().ToLong(&selectFrame))
+	{
+		DrawKeyFrameList(selectFrame);
+	}
 }
+void KeyEditor::OnBtnDrawNowFrame(wxCommandEvent& event)
+{
+	frameTextFoeMove->ChangeValue(wxString::Format(L"%d", g_FrameCount));
+	DrawKeyFrameList(g_FrameCount);
+}
+void KeyEditor::OnCheckList_NormalKey1(wxCommandEvent& event)
+{
+	PadData key;
+	key.deserialize(keyTextEdit->GetValue());
+	if (!key.fExistKey)return;
 
+	auto tmpkey = key.getNormalKeys(0);
+	for (unsigned int i = 0; i < keyCheckList1->GetCount(); i++)
+	{
+		tmpkey[keyCheckList1->GetString(i)] = keyCheckList1->IsChecked(i);
+	}
+	key.setNormalKeys(0,tmpkey);
+	keyTextEdit->ChangeValue(key.serialize());
+}
+void KeyEditor::_OnText_Analog(int num)
+{
+	PadData key;
+	key.deserialize(keyTextEdit->GetValue());
+	if (!key.fExistKey)return;
+
+	auto tmpkey = key.getAnalogKeys(0);
+
+	try {
+		tmpkey[PadDataAnalogKeys[num]] = std::stoi( analogKeyText[num]->GetValue().ToStdString(), NULL, 10);
+	}
+	catch (std::invalid_argument e) {/*none*/ }
+	catch (std::out_of_range e) {/*none*/ }
+
+	key.setAnalogKeys(0, tmpkey);
+	wxString s = key.serialize();
+	keyTextEdit->ChangeValue(s);
+
+}
+void KeyEditor::OnText_Analog1(wxCommandEvent& event)
+{
+	_OnText_Analog(0);
+}
+void KeyEditor::OnText_Analog2(wxCommandEvent& event)
+{
+	_OnText_Analog(1);
+}
+void KeyEditor::OnText_Analog3(wxCommandEvent& event)
+{
+	_OnText_Analog(2);
+}
+void KeyEditor::OnText_Analog4(wxCommandEvent& event)
+{
+	_OnText_Analog(3);
+}
 
