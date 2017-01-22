@@ -4,22 +4,6 @@
 
 #include "PadData.h"
 
-/*
-File
-header
-block1
-block2
-block3
-...
-
-block[
-	u8 id= 1 or 54
-
-]
-
-*/
-
-
 //----------------------------
 // header
 // fseek‚Å’¼ÚêŠw’è‚µ‚Ä‚¢‚é‚Ì‚Å•Ï”‚Ì‡”Ô‚Í‘å–
