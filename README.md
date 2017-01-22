@@ -30,8 +30,11 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 |NewRecord|Recordモードでファイルを開きます。ファイルの中身は初期化されます。|
 |Play|Replayモードでファイルを開きます。|
 |Stop|ファイルを閉じます。ファイルクローズをするので終了したら呼んでください。|
+|Convert(p2m->p2m2)|旧pcsx2-rrのKeyMovieファイルを再生できるように変換します。まだうまく同期がとれていません|
+|Convert(v1.0~v1.2->v2.0)|KeyMovieフォーマットを変更したのでそれに合わせて古いバージョンのKeyMovieフォーマットが再生できるように変換します。|
+|Open KeyEditor Window...|KeyEditorのウィンドウを開きます。|
 ※Record,PlayともにStop状態で始まります。Pキーを押して再生してください。  
-  
+※[KeyEditor](https://github.com/pocokhc/pcsx2-1.4.0-rr/wiki)に関してはwikiへ  
 
 * ショートカットキー
 
