@@ -30,7 +30,10 @@
 #include "DebugTools/Debug.h"
 #include "R3000A.h"
 
-#include "TAS/TAS.h"	//--TAS--//
+//--TAS--//
+#include "TAS/MovieControle.h"
+#include "TAS/KeyMovie.h"
+//-------//
 
 // renderswitch - tells GSdx to go into dx9 sw if "renderswitch" is set.
 bool renderswitch = false;
@@ -448,17 +451,17 @@ namespace Implementations
 	}
 
 	//--TAS--//
-	void TAS_FrameAdvance()
+	void FrameAdvance()
 	{
-		TAS_FrameAdvanceDoit();
+		g_MovieControle.FrameAdvance();
 	}
-	void TAS_MovieReadToggle()
+	void TogglePause()
 	{
-		TAS_MovieReadToggleDoit();
+		g_MovieControle.TogglePause();
 	}
-	void TAS_Pause()
+	void KeyMovieModeToggle()
 	{
-		TAS_PauseDoit();
+		g_KeyMovie.RecordModeToggle();
 	}
 	void States_SaveSlot(int slot)
 	{
@@ -634,9 +637,9 @@ static const GlobalCommandDescriptor CommandDeclarations[] =
 		NULL,
 	},
 	//--TAS--//
-	{ "TAS_FrameAdvance",Implementations::TAS_FrameAdvance,NULL,NULL, },
-	{ "TAS_MovieReadToggle",Implementations::TAS_MovieReadToggle,NULL,NULL, },
-	{ "TAS_Pause",Implementations::TAS_Pause,NULL,NULL, },
+	{ "FrameAdvance",Implementations::FrameAdvance,NULL,NULL, },
+	{ "TogglePause",Implementations::TogglePause,NULL,NULL, },
+	{ "KeyMovieModeToggle",Implementations::KeyMovieModeToggle,NULL,NULL, },
 	{ "States_SaveSlot0",Implementations::States_SaveSlot0,NULL,NULL, },
 	{ "States_SaveSlot1",Implementations::States_SaveSlot1,NULL,NULL, },
 	{ "States_SaveSlot2",Implementations::States_SaveSlot2,NULL,NULL, },

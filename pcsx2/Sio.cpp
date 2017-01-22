@@ -19,7 +19,7 @@
 #include "Sio.h"
 #include "sio_internal.h"
 
-#include "TAS/TAS.h"	//--TAS--//
+#include "TAS/KeyMovie.h"	//--TAS--//
 
 _sio sio;
 _mcd mcds[2][4];
@@ -175,7 +175,7 @@ SIO_WRITE sioWriteController(u8 data)
 
 	default: 
 		sio.buf[sio.bufCount] = PADpoll(data);
-		TAS_ControllerInterrupt(data, sio.port,sio.bufCount,sio.buf);//--TAS--//
+		g_KeyMovie.ControllerInterrupt(data, sio.port,sio.bufCount,sio.buf);//--TAS--//
 		break;
 	}
 

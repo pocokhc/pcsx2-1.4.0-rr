@@ -31,8 +31,14 @@
 
 #include "Sio.h"
 
+<<<<<<< HEAD
 #include "lua/LuaEngine.h"//--LuaEngine--//
 #include "TAS/TAS.h" //--TAS--//
+=======
+#include "TAS/MovieControle.h" //--TAS--//
+#include "TAS/KeyEditor.h" //--TAS/KeyEditor--//
+#include "app.h"//--TAS/KeyEditor--//
+>>>>>>> develop
 
 using namespace Threading;
 
@@ -508,6 +514,7 @@ __fi void rcntUpdate_vSync()
 	}
 	else	// VSYNC end / VRENDER begin
 	{
+<<<<<<< HEAD
 		TAS_StopCheck();//--TAS--//
 
 		//--LuaEngine--//
@@ -517,6 +524,15 @@ __fi void rcntUpdate_vSync()
 		LuaFrameBoundary();
 		//-------------//
 		
+=======
+		//--TAS KeyEditor--//
+		KeyEditor* dlg = wxGetApp().GetKeyEditorPtr();
+		if(dlg)dlg->FrameUpdate();
+		//-----------------//
+		
+		g_MovieControle.StopCheck();//--TAS--//
+
+>>>>>>> develop
 		VSyncStart(vsyncCounter.sCycle);
 
 

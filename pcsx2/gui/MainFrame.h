@@ -205,7 +205,9 @@ protected:
 	void Menu_KeyMovie_Record(wxCommandEvent &event);
 	void Menu_KeyMovie_Stop(wxCommandEvent &event);
 	void Menu_KeyMovie_Play(wxCommandEvent &event);
-	void Menu_KeyMovie_Open(bool fReadOnly);
+	void Menu_KeyMovie_ConvertP2M(wxCommandEvent &event);
+	void Menu_KeyMovie_ConvertOld(wxCommandEvent &event);
+	void Menu_KeyMovie_OpenKeyEditor(wxCommandEvent &event);
 	//-------//
 
 	//--LuaFrame--//
