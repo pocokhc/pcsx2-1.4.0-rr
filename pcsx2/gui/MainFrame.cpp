@@ -358,12 +358,8 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 	m_menubar.Append( &m_menuConfig,	_("&Config") );
 	m_menubar.Append( &m_menuMisc,		_("&Misc") );
 	m_menubar.Append( &m_menuDebug,		_("&Debug") );
-<<<<<<< HEAD
 	m_menubar.Append(&m_menuMovieDlg, _("&Movie"));	//--TAS--//
 	m_menubar.Append(&m_menuLuaDlg, _("&Lua"));	//--LuaFrame--//
-=======
-	m_menubar.Append(&m_menuMovieDlg,   _("&Movie"));	//--TAS--//
->>>>>>> develop
 
 	SetMenuBar( &m_menubar );
 

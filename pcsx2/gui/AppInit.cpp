@@ -73,17 +73,14 @@ void Pcsx2App::OpenMainFrame()
 	DisassemblyDialog* disassembly = new DisassemblyDialog( mainFrame );
 	m_id_Disassembler = disassembly->GetId();
 
-<<<<<<< HEAD
 	//--LuaFrame--//
 	LuaFrame *luaFrame = new LuaFrame(mainFrame);
 	m_id_LuaFrame = luaFrame->GetId();
 	//------------//
-=======
 	//--TAS--//
 	KeyEditor* keyEditor = new KeyEditor(mainFrame);
 	m_id_KeyEditor = keyEditor->GetId();
 	//-------//
->>>>>>> develop
 
 	if (g_Conf->EmuOptions.Debugger.ShowDebuggerOnStart)
 		disassembly->Show();

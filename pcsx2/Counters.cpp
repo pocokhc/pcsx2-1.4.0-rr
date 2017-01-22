@@ -31,14 +31,10 @@
 
 #include "Sio.h"
 
-<<<<<<< HEAD
 #include "lua/LuaEngine.h"//--LuaEngine--//
-#include "TAS/TAS.h" //--TAS--//
-=======
 #include "TAS/MovieControle.h" //--TAS--//
 #include "TAS/KeyEditor.h" //--TAS/KeyEditor--//
 #include "app.h"//--TAS/KeyEditor--//
->>>>>>> develop
 
 using namespace Threading;
 
@@ -514,25 +510,18 @@ __fi void rcntUpdate_vSync()
 	}
 	else	// VSYNC end / VRENDER begin
 	{
-<<<<<<< HEAD
-		TAS_StopCheck();//--TAS--//
-
 		//--LuaEngine--//
 		// Luaを実行すると、1回目の VSyncStart 内で recExitExecution が呼ばれ失敗する。
 		// 2回目は問題なく実行でき、ぱっと見問題なさそうに見える。
 		// これに関する影響度が不明
 		LuaFrameBoundary();
 		//-------------//
-		
-=======
 		//--TAS KeyEditor--//
 		KeyEditor* dlg = wxGetApp().GetKeyEditorPtr();
 		if(dlg)dlg->FrameUpdate();
 		//-----------------//
 		
 		g_MovieControle.StopCheck();//--TAS--//
-
->>>>>>> develop
 		VSyncStart(vsyncCounter.sCycle);
 
 

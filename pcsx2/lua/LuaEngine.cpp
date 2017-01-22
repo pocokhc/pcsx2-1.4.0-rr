@@ -4,7 +4,7 @@
 #include "MemoryTypes.h"// use"g_FrameCount"
 #include "Counters.h"	// use"g_FrameCount"
 
-#include "TAS/TAS.h"
+#include "TAS/MovieControle.h"
 
 #include "LuaEngine.h"
 #include "LuaFrame.h"
@@ -68,7 +68,7 @@ static LuaEngine luaEngine;
 static int emu_frameadvance(lua_State *L)
 {
 	if (luaEngine.getState() != LuaEngine::RUNNING)return 0;
-	TAS_FrameAdvanceDoit();
+	g_MovieControle.FrameAdvance();
 	luaEngine.setState(LuaEngine::RESUME);
 	return lua_yield(L, 0);
 }

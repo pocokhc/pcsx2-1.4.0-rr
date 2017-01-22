@@ -603,7 +603,6 @@ void MainEmuFrame::Menu_ShowAboutBox(wxCommandEvent &event)
 	AppOpenDialog<AboutBoxDialog>( this );
 }
 
-<<<<<<< HEAD
 //--LuaFrame--//
 void MainEmuFrame::Menu_Lua_Open_Click(wxCommandEvent &event)
 {
@@ -612,7 +611,6 @@ void MainEmuFrame::Menu_Lua_Open_Click(wxCommandEvent &event)
 		dlg->Show();
 }
 //------------//
-=======
 //--TAS--//
 void KeyMovie_Open(wxWindow * parent,bool fReadOnly)
 {
@@ -660,5 +658,3 @@ void MainEmuFrame::Menu_KeyMovie_OpenKeyEditor(wxCommandEvent &event)
 }
 
 //------//
-
->>>>>>> develop

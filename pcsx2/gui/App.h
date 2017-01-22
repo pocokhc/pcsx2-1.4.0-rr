@@ -509,11 +509,8 @@ protected:
 	wxWindowID			m_id_GsFrame;
 	wxWindowID			m_id_ProgramLogBox;
 	wxWindowID			m_id_Disassembler;
-<<<<<<< HEAD
 	wxWindowID			m_id_LuaFrame;//--LuaFrame--//
-=======
 	wxWindowID			m_id_KeyEditor;//--TAS--//
->>>>>>> develop
 
 	wxKeyEvent			m_kevt;
 
@@ -538,11 +535,8 @@ public:
 	GSFrame*			GetGsFramePtr() const		{ return (GSFrame*)wxWindow::FindWindowById( m_id_GsFrame ); }
 	MainEmuFrame*		GetMainFramePtr() const		{ return (MainEmuFrame*)wxWindow::FindWindowById( m_id_MainFrame ); }
 	DisassemblyDialog*	GetDisassemblyPtr() const	{ return (DisassemblyDialog*)wxWindow::FindWindowById(m_id_Disassembler); }
-<<<<<<< HEAD
 	LuaFrame*			GetLuaFramePtr() const { return (LuaFrame*)wxWindow::FindWindowById(m_id_LuaFrame); }//--LuaFrame--//
-=======
 	KeyEditor *			GetKeyEditorPtr() const		{ return (KeyEditor*)wxWindow::FindWindowById(m_id_KeyEditor); }//--TAS--//
->>>>>>> develop
 
 	void enterDebugMode();
 	void leaveDebugMode();
