@@ -455,8 +455,11 @@
     <ClCompile Include="..\..\ps2\LegacyDmac.cpp" />
     <ClCompile Include="..\..\ShiftJisToUnicode.cpp" />
     <ClCompile Include="..\..\sif2.cpp" />
-    <ClCompile Include="..\..\TAS\TAS.cpp" />
-    <ClCompile Include="..\..\TAS\TasMovieDlg.cpp" />
+    <ClCompile Include="..\..\TAS\KeyEditor.cpp" />
+    <ClCompile Include="..\..\TAS\KeyMovie.cpp" />
+    <ClCompile Include="..\..\TAS\MovieControle.cpp" />
+    <ClCompile Include="..\..\TAS\PadData.cpp" />
+    <ClCompile Include="..\..\TAS\KeyMovieOnFile.cpp" />
     <ClCompile Include="..\..\Utilities\FileUtils.cpp" />
     <ClCompile Include="..\..\Dump.cpp" />
     <ClCompile Include="..\..\x86\iMisc.cpp" />
@@ -740,7 +743,11 @@
     <ClInclude Include="..\..\IPU\IPUdma.h" />
     <ClInclude Include="..\..\Patch.h" />
     <ClInclude Include="..\..\PrecompiledHeader.h" />
-    <ClInclude Include="..\..\TAS\TAS.h" />
+    <ClInclude Include="..\..\TAS\KeyEditor.h" />
+    <ClInclude Include="..\..\TAS\KeyMovie.h" />
+    <ClInclude Include="..\..\TAS\MovieControle.h" />
+    <ClInclude Include="..\..\TAS\PadData.h" />
+    <ClInclude Include="..\..\TAS\KeyMovieOnFile.h" />
     <ClInclude Include="..\..\Utilities\AsciiFile.h" />
     <ClInclude Include="..\..\Elfheader.h" />
     <ClInclude Include="..\..\CDVD\IsoFileFormats.h" />

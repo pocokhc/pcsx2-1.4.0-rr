@@ -31,7 +31,9 @@
 
 #include "Sio.h"
 
-#include "TAS/TAS.h" //--TAS--//
+#include "TAS/MovieControle.h" //--TAS--//
+#include "TAS/KeyEditor.h" //--TAS/KeyEditor--//
+#include "app.h"//--TAS/KeyEditor--//
 
 using namespace Threading;
 
@@ -507,9 +509,12 @@ __fi void rcntUpdate_vSync()
 	}
 	else	// VSYNC end / VRENDER begin
 	{
-		//--TAS--//
-		TAS_StopCheck();
-		//-------//
+		//--TAS KeyEditor--//
+		KeyEditor* dlg = wxGetApp().GetKeyEditorPtr();
+		if(dlg)dlg->FrameUpdate();
+		//-----------------//
+		
+		g_MovieControle.StopCheck();//--TAS--//
 
 		VSyncStart(vsyncCounter.sCycle);
 

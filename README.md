@@ -25,21 +25,21 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 * ƒƒjƒ…[ƒo[
 	* Movie
 
-|ƒ{ƒ^ƒ“|‹@”\|
+||‹@”\|
 |---|---|
-|Record|Recordƒ‚[ƒh‚Åƒtƒ@ƒCƒ‹‚ðŠJ‚«‚Ü‚·Bƒtƒ@ƒCƒ‹‚Ì’†g‚Í‰Šú‰»‚³‚ê‚Ü‚·B|
+|NewRecord|Recordƒ‚[ƒh‚Åƒtƒ@ƒCƒ‹‚ðŠJ‚«‚Ü‚·Bƒtƒ@ƒCƒ‹‚Ì’†g‚Í‰Šú‰»‚³‚ê‚Ü‚·B|
 |Play|Replayƒ‚[ƒh‚Åƒtƒ@ƒCƒ‹‚ðŠJ‚«‚Ü‚·B|
 |Stop|ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚Ü‚·Bƒtƒ@ƒCƒ‹ƒNƒ[ƒY‚ð‚·‚é‚Ì‚ÅI—¹‚µ‚½‚çŒÄ‚ñ‚Å‚­‚¾‚³‚¢B|
 ¦Record,Play‚Æ‚à‚ÉStopó‘Ô‚ÅŽn‚Ü‚è‚Ü‚·BPƒL[‚ð‰Ÿ‚µ‚ÄÄ¶‚µ‚Ä‚­‚¾‚³‚¢B  
   
-  
+
 * ƒVƒ‡[ƒgƒJƒbƒgƒL[
 
 |ƒ{ƒ^ƒ“|‹@”\|
 |---|---|
 |P|pause/unpause‚ÌØ‚è‘Ö‚¦|
 |space|frame advance|
-|R|ƒL[ƒ€[ƒr[‚ÌÄ¶ƒ‚[ƒh‚©‚ç˜^‰æƒ‚[ƒh‚Ö‚ÌØ‚è‘Ö‚¦|
+|R|ƒL[ƒ€[ƒr[‚ÌÄ¶ƒ‚[ƒh‚Æ˜^‰æƒ‚[ƒh‚ÌØ‚è‘Ö‚¦|
 
 # ƒVƒ‡[ƒgƒJƒbƒgƒL[‚ÉŠÖ‚µ‚Ä
 ƒL[”z’u‚Í‰º‹Lƒtƒ@ƒCƒ‹‚ð‚¢‚¶‚Á‚Ä‚­‚¾‚³‚¢B  
@@ -60,6 +60,7 @@ F5,F7,PAGE_UP,DELETE,HOME,INSERT ƒL[‚ÍŽg—p‚µ‚È‚¢•û‚ª‚¢‚¢‚Å‚·B
  |ƒ{ƒ^ƒ“|‹@”\|
  |---|---|
  |P    |pause/unpause|
+ |R    |ƒL[ƒ€[ƒr[‚Ìrecord/replay Ø‚è‘Ö‚¦|
  |space|frame advance|
  |F1       |QS|
  |F2       |toggle save slot(+1)|
@@ -69,6 +70,9 @@ F5,F7,PAGE_UP,DELETE,HOME,INSERT ƒL[‚ÍŽg—p‚µ‚È‚¢•û‚ª‚¢‚¢‚Å‚·B
 ¦save‚Ì’ˆÓ“_  
 save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚Æ‚ðŠm”F‚µ‚½‚Ù‚¤‚ª‚¢‚¢‚Å‚·B  
   
+##tips
+ƒL[ƒtƒ@ƒCƒ‹‚Íframe‚ªŠî€‚Æ‚È‚è“Ç‚Ýž‚Ý/ã‘‚«‚ð‚µ‚Ü‚·B  
+‚Å‚·‚Ì‚ÅARƒL[‚Åreplayƒ‚[ƒh‚ÉØ‚è‘Ö‚¦‚Äˆê’èƒtƒŒ[ƒ€i‚Ü‚¹‚½ŒãARƒL[‚Årecordƒ‚[ƒh‚É‚µ‚Ä‹L˜^‚·‚é‚Æ‚¢‚¤‚±‚Æ‚ªo—ˆ‚Ü‚·B  
   
 
 # ˜^‰æ‘z’èŽè‡
@@ -78,7 +82,7 @@ save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚
 ¦Œ ŒÀ‚ª‚È‚¢“™‚Å•Û‘¶‚³‚ê‚È‚¢ê‡‚Å‚àŒx“™‚ ‚è‚Ü‚¹‚ñ‚Ì‚Åƒtƒ@ƒCƒ‹‚ª‚Å‚«‚Ä‚¢‚é‚©Šm”F‚µ‚½‚Ù‚¤‚ª‚¢‚¢‚Å‚·B  
 ¦‰¹ƒtƒ@ƒCƒ‹‚Í•Ê‚Épcsx2‚Ìexeƒtƒ@ƒCƒ‹‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚Éurecording.wavv‚Åì¬‚³‚ê‚Ü‚·B  
 ¦‰¹ƒtƒ@ƒCƒ‹‚Æ‰f‘œƒtƒ@ƒCƒ‹‚ð“¯Šú‚³‚¹‚é‚½‚ß‚É˜^‰æ’†‚ÍPause‚âQL,QS‚Í‚µ‚È‚¢•û‚ª‚¢‚¢‹C‚ª‚µ‚Ü‚·B  
-3. PƒL[‚Åunpause‚µA˜^‰æ‚·‚éB
+3. PƒL[‚Åunpause‚µA˜^‰æ‚·‚éB  
   
 
 # ƒrƒ‹ƒh•û–@(windows10)
@@ -106,10 +110,11 @@ save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚
 
 # ‚»‚Ì‘¼(Žg‚¤‘¤)
 * ƒL[ƒtƒ@ƒCƒ‹‚Å‚·‚ªApcsx2‚Ìp2mƒtƒ@ƒCƒ‹‚Æ‚ÍŒÝŠ·«‚ª‚ ‚è‚Ü‚¹‚ñB  
-  
+•ÏŠ·‹@”\‚ð•t‚¯‚Ü‚µ‚½‚ªA“¯Šú‚¸‚ê‚ªŒƒ‚µ‚­‘½•ªŽg‚¢•¨‚É‚È‚è‚Ü‚¹‚ñc  
+
 * ƒVƒ‡[ƒgƒJƒbƒgƒL[‚ÌƒL[ƒRƒ“ƒtƒBƒO‚ª‚µ‚½‚¢I  
-Ž„‚à‚µ‚½‚¢‚Ì‚Å‚·‚ªA‚±‚ê–{‰Æ‚©‚ç‚ ‚è‚Ü‚¹‚ñcorz  
-¨‚ ‚è‚Ü‚µ‚½orz  
+inis_1.4.0/PCSX2-rr_keys.ini  
+‚ð•ÒW‚µ‚Ä‚­‚¾‚³‚¢B  
 
 * ƒQ[ƒ€‰æ–Ê‚ÅƒL[‚ª”½‰ž‚µ‚È‚¢Žž  
 ðŒ‚Í•s–¾‚Å‚·‚ªAˆê’èŽžŠÔ‰½‚à‚µ‚Ä‚¢‚È‚¢‚Æ‚È‚éŽž‚ª‚ ‚è‚Ü‚·B  
@@ -127,15 +132,11 @@ save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚
 ƒL[ƒtƒ@ƒCƒ‹‚ÍŠ®‘S‚É“à•”‚Ìframe’PˆÊ‚ÅŠÇ—‚·‚é‚æ‚¤‚É‚µ‚Ä‚¢‚é‚Ì‚ÅAEmu‘¤‚Å‚Ç‚ê‚¾‚¯frameŠÇ—‚ª‚Å‚«‚Ä‚¢‚é‚©ŽŸ‘æ‚Å‚·B  
 Œ»ó‚Ídesync‚ÍŠm”F‚µ‚Ä‚¢‚Ü‚¹‚ñB  
   
-* p2m2ƒtƒ@ƒCƒ‹(ƒL[ƒ€[ƒr[ƒtƒ@ƒCƒ‹)‚ª‚â‚½‚çƒTƒCƒY‚ª‘å‚«‚¢  
-Œ»óAƒTƒCƒY“xŠOŽ‹‚ÅƒL[‚Ìî•ñ‚·‚×‚Ä‚ð•Û‘¶‚µ‚Ä‚¢‚Ü‚·B  
-‰ðÍ‚µ‚Ä•K—v‚Èî•ñ‚¾‚¯‚É‚·‚ê‚Î‚à‚¤­‚µŒ¸‚è‚Ü‚·‚ªc  
-‚Ü‚½AƒL[ƒtƒ@ƒCƒ‹‚ÌƒZ[ƒu‚ÌŽd•ûã 3FFFFFFƒtƒŒ[ƒ€(310ŽžŠÔ)‚Ü‚Å‚µ‚©˜^‰æ‚Å‚«‚Ü‚¹‚ñB‚»‚Ìê‡‚Ìƒtƒ@ƒCƒ‹ƒTƒCƒY‚Í4GB‚Ù‚Ç‚Å‚·‚ªc  
 
 * windowƒ^ƒCƒgƒ‹‚Ìframe”‚ÌXV‚ª’x‚¢  
-ˆê’èŽüŠú–ˆ‚ÉXV‚³‚ê‚é‚æ‚¤‚ÅcAƒŠƒAƒ‹ƒ^ƒCƒ€‚ÌŽÀ‘•‚Í•Û—¯‚É‚µ‚Ä‚¢‚Ü‚·B  
-pause’†‚Å‚àXV‚³‚ê‚é‚½‚ßA¡‚Ìframe”‚ð’m‚è‚½‚¢ê‡‚Ípause‚µ‚Ä­‚µ‘Ò‚Á‚Ä‚­‚¾‚³‚¢B  
-
+ˆê’èŽüŠú–ˆ‚ÉXV‚³‚ê‚é‚æ‚¤‚Å‚·B  
+KeyEditor‚Ìƒ^ƒCƒgƒ‹‚ªƒŠƒAƒ‹ƒ^ƒCƒ€‚ÅXV‚³‚ê‚Ü‚·‚Ì‚Å‚»‚¿‚ç‚ð‚²Šm”F‚­‚¾‚³‚¢B  
+  
 
 # ‚»‚Ì‘¼(ì¬‘¤)
 * ƒXƒy[ƒX‰Ÿ‚µ‚Á‚Ï‚È‚µ‚Å•’Ê‚ÉÄ¶‚Å‚«‚È‚¢H  
@@ -159,15 +160,6 @@ github‚Í‰SŽÒ‚Å‚ ‚Ü‚è•ª‚©‚Á‚Ä‚¢‚Ü‚¹‚ñB‰½‚©•s”õ‚â–â‘è‚ª‚ ‚ê‚Î˜A—‚­‚¾‚³‚¢B
 ‚ ‚Æ‰pŒê‚Í‚Ù‚Æ‚ñ‚Ç‚Å‚«‚È‚­APCSX2‚Ìî•ñ‚ð’²‚×‚é‚Ì‚É‹ê˜J‚µ‚Ä‚¢‚Ü‚·c  
 ˜A——pFpocopococpp198@gmail.com  
 
-
-# history
-(‚±‚±‚ÉXV—š—ð‚ð‚Â‚¯‚é‚Ì‚Í‚Ç‚¤‚È‚Ì‚Æ‚©‚¢‚¤“Ë‚Áž‚Ý‚Íc‚ ‚é‚ÆŽv‚¢‚Ü‚·c)  
-* v1.1  
-	1. FrameMAX‚Æ’Ç‹L‰ñ”‚Ì‚Æ‚±‚ë‚ª‚¨‚©‚µ‚¢‚Ì‚ÅC³  
-	2. TAS—p‚ÌKeyConfig‚ð’Ç‰Á‚ÆReadMe‚ÉƒVƒ‡[ƒgƒJƒbƒgƒL[‚ÌÝ’è•û–@‚ð’Ç‹L  
-  
-* v1.0  
-Å’áŒÀ‚Ì‚ß‚Ç‚ª‚Â‚¢‚½‚Ì‚ÅŒöŠJ  
 
 ------------------------
 **Licence**  

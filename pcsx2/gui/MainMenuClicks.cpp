@@ -29,6 +29,8 @@
 
 #include "Utilities/IniInterface.h"
 
+#include "TAS/KeyMovie.h"//--TAS--//
+
 using namespace Dialogs;
 
 void MainEmuFrame::Menu_SysSettings_Click(wxCommandEvent &event)
@@ -599,3 +601,52 @@ void MainEmuFrame::Menu_ShowAboutBox(wxCommandEvent &event)
 {
 	AppOpenDialog<AboutBoxDialog>( this );
 }
+
+//--TAS--//
+void KeyMovie_Open(wxWindow * parent,bool fReadOnly)
+{
+	g_KeyMovie.Stop();
+
+	// wxFileDialog
+	wxFileDialog openFileDialog(parent, _("Select P2M2 record file."), L"", L"",
+		L"p2m2 file(*.p2m2)|*.p2m2", wxFD_OPEN);
+	if (openFileDialog.ShowModal() == wxID_CANCEL)return;	// cancel
+	wxString path = openFileDialog.GetPath();
+	g_KeyMovie.Start(path, fReadOnly);
+}
+void MainEmuFrame::Menu_KeyMovie_Record(wxCommandEvent &event)
+{
+	KeyMovie_Open(this,false);
+}
+void MainEmuFrame::Menu_KeyMovie_Play(wxCommandEvent &event)
+{
+	KeyMovie_Open(this, true);
+}
+void MainEmuFrame::Menu_KeyMovie_Stop(wxCommandEvent &event)
+{
+	g_KeyMovie.Stop();
+}
+void MainEmuFrame::Menu_KeyMovie_ConvertP2M(wxCommandEvent &event)
+{
+	wxFileDialog openFileDialog(this, _("Select P2M record file."), L"", L"",
+		L"p2m file(*.p2m)|*.p2m",wxFD_OPEN);
+	if (openFileDialog.ShowModal() == wxID_CANCEL)return;// cancel
+	wxString path = openFileDialog.GetPath();
+	g_KeyMovieData.ConvertP2M(path);
+}
+void MainEmuFrame::Menu_KeyMovie_ConvertOld(wxCommandEvent &event)
+{
+	wxFileDialog openFileDialog(this, _("Select P2M2 record file."), L"", L"",
+		L"p2m file(*.p2m2)|*.p2m2", wxFD_OPEN);
+	if (openFileDialog.ShowModal() == wxID_CANCEL)return;// cancel
+	wxString path = openFileDialog.GetPath();
+	g_KeyMovieData.ConvertOld(path);
+}
+void MainEmuFrame::Menu_KeyMovie_OpenKeyEditor(wxCommandEvent &event)
+{
+	KeyEditor* dlg = wxGetApp().GetKeyEditorPtr();
+	if (dlg)dlg->Show();
+}
+
+//------//
+

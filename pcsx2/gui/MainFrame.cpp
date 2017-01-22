@@ -246,6 +246,9 @@ void MainEmuFrame::ConnectMenus()
 	ConnectMenu(MenuId_KeyMovie_Record, Menu_KeyMovie_Record);
 	ConnectMenu(MenuId_KeyMovie_Play, Menu_KeyMovie_Play);
 	ConnectMenu(MenuId_KeyMovie_Stop, Menu_KeyMovie_Stop);
+	ConnectMenu(MenuId_KeyMovie_ConvertP2M, Menu_KeyMovie_ConvertP2M);
+	ConnectMenu(MenuId_KeyMovie_ConvertOld, Menu_KeyMovie_ConvertOld);
+	ConnectMenu(MenuId_KeyMovie_OpenKeyEditor, Menu_KeyMovie_OpenKeyEditor);
 	//-------//
 }
 
@@ -350,7 +353,7 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 	m_menubar.Append( &m_menuConfig,	_("&Config") );
 	m_menubar.Append( &m_menuMisc,		_("&Misc") );
 	m_menubar.Append( &m_menuDebug,		_("&Debug") );
-	m_menubar.Append(&m_menuMovieDlg, _("&Movie"));	//--TAS--//
+	m_menubar.Append(&m_menuMovieDlg,   _("&Movie"));	//--TAS--//
 
 	SetMenuBar( &m_menubar );
 
@@ -535,9 +538,14 @@ MainEmuFrame::MainEmuFrame(wxWindow* parent, const wxString& title)
 #endif
 
 	//--TAS--//
-	m_menuMovieDlg.Append(MenuId_KeyMovie_Record, _("Record"));
+	m_menuMovieDlg.Append(MenuId_KeyMovie_Record, _("New Record"));
 	m_menuMovieDlg.Append(MenuId_KeyMovie_Play, _("Play"));
 	m_menuMovieDlg.Append(MenuId_KeyMovie_Stop, _("Stop"));
+	m_menuMovieDlg.AppendSeparator();
+	m_menuMovieDlg.Append(MenuId_KeyMovie_ConvertP2M, _("Convert(p2m -> p2m2)"));
+	m_menuMovieDlg.Append(MenuId_KeyMovie_ConvertOld, _("Convert(v1.0~v1.2 -> v2.0)"));
+	m_menuMovieDlg.AppendSeparator();
+	m_menuMovieDlg.Append(MenuId_KeyMovie_OpenKeyEditor, _("Open KeyEditor Window..."));
 	//-------//
 
 	m_MenuItem_Console.Check( g_Conf->ProgLogBox.Visible );
