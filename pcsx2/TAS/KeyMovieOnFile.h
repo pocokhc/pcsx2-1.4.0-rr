@@ -1,23 +1,8 @@
 #pragma once
-#ifndef __SORT_LIST_ON_FILE_H__
-#define __SORT_LIST_ON_FILE_H__
+#ifndef __KEY_MOVIR_ONFILE_H__
+#define __KEY_MOVIR_ONFILE_H__
 
 #include "PadData.h"
-
-/*
-File
-header
-block1
-block2
-block3
-...
-
-block[
-	u8 id= 1 or 54
-
-]
-
-*/
 
 
 //----------------------------
