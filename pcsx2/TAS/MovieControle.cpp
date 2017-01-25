@@ -39,10 +39,10 @@ void MovieControle::StopCheck()
 			fStop = true;
 		}
 	}
-	if (fStop && CoreThread.IsOpen() && CoreThread.IsRunning()) {
-		CoreThread.PauseSelf();	//self‚¶‚á‚È‚¢‚ÆŽ~‚Ü‚ç‚È‚¢
-		stopFrameCount = g_FrameCount;
+	if (fStop && CoreThread.IsOpen() && CoreThread.IsRunning())
+	{
 		fPauseState = true;
+		CoreThread.PauseSelf();	//self‚¶‚á‚È‚¢‚ÆŽ~‚Ü‚ç‚È‚¢
 	}
 }
 
@@ -53,6 +53,7 @@ void MovieControle::StopCheck()
 //----------------------------------
 void MovieControle::FrameAdvance()
 {
+	stopFrameCount = g_FrameCount;
 	fFrameAdvance = true;
 	fStop = false;
 	fStart = true;
@@ -75,10 +76,4 @@ void MovieControle::UnPause()
 	fStart = true;
 	fFrameAdvance = false;
 }
-
-
-
-
-
-
 

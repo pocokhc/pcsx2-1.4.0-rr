@@ -445,8 +445,10 @@
     <ClCompile Include="..\..\Linux\LnxConsolePipe.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\lua\LuaEngine.cpp" />
+    <ClCompile Include="..\..\lua\LuaFunctions.cpp" />
+    <ClCompile Include="..\..\lua\LuaManager.cpp" />
     <ClCompile Include="..\..\lua\LuaFrame.cpp" />
+    <ClCompile Include="..\..\lua\LuaEngine.cpp" />
     <ClCompile Include="..\..\MultipartFileReader.cpp" />
     <ClCompile Include="..\..\Patch.cpp" />
     <ClCompile Include="..\..\Patch_Memory.cpp" />
@@ -744,8 +746,10 @@
     <ClInclude Include="..\..\gui\Debugger\DisassemblyDialog.h" />
     <ClInclude Include="..\..\gui\Panels\MemoryCardPanels.h" />
     <ClInclude Include="..\..\IPU\IPUdma.h" />
-    <ClInclude Include="..\..\lua\LuaEngine.h" />
+    <ClInclude Include="..\..\lua\LuaFunctions.h" />
+    <ClInclude Include="..\..\lua\LuaManager.h" />
     <ClInclude Include="..\..\lua\LuaFrame.h" />
+    <ClInclude Include="..\..\lua\LuaEngine.h" />
     <ClInclude Include="..\..\Patch.h" />
     <ClInclude Include="..\..\PrecompiledHeader.h" />
     <ClInclude Include="..\..\TAS\KeyEditor.h" />

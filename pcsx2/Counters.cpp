@@ -31,7 +31,7 @@
 
 #include "Sio.h"
 
-#include "lua/LuaEngine.h"//--LuaEngine--//
+#include "lua/LuaManager.h"//--LuaEngine--//
 #include "TAS/MovieControle.h" //--TAS--//
 #include "TAS/KeyEditor.h" //--TAS/KeyEditor--//
 #include "app.h"//--TAS/KeyEditor--//
@@ -511,10 +511,10 @@ __fi void rcntUpdate_vSync()
 	else	// VSYNC end / VRENDER begin
 	{
 		//--LuaEngine--//
-		// Luaを実行すると、1回目の VSyncStart 内で recExitExecution が呼ばれ失敗する。
+		// LuaをwxMilliSleepなしで実行すると、1回目の VSyncStart 内で recExitExecution が呼ばれ失敗する。
 		// 2回目は問題なく実行でき、ぱっと見問題なさそうに見える。
 		// これに関する影響度が不明
-		LuaFrameBoundary();
+		g_Lua.FrameBoundary();
 		//-------------//
 		//--TAS KeyEditor--//
 		KeyEditor* dlg = wxGetApp().GetKeyEditorPtr();
@@ -522,6 +522,7 @@ __fi void rcntUpdate_vSync()
 		//-----------------//
 		
 		g_MovieControle.StopCheck();//--TAS--//
+		
 		VSyncStart(vsyncCounter.sCycle);
 
 

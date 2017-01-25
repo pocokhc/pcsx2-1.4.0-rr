@@ -25,7 +25,6 @@ private:
 private:
 	void OnClose(wxCloseEvent& evt);
 
-	void OnConsoleClear(wxCommandEvent& event);
 	void OnOpenFile(wxCommandEvent& event);
 	void OnStop(wxCommandEvent& event);
 	void OnRun(wxCommandEvent& event);

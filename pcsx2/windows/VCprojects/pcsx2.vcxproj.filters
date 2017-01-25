@@ -901,7 +901,13 @@
     <ClCompile Include="..\..\lua\LuaFrame.cpp">
       <Filter>lua</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lua\LuaManager.cpp">
+      <Filter>lua</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\lua\LuaEngine.cpp">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua\LuaFunctions.cpp">
       <Filter>lua</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1356,7 +1362,13 @@
     <ClInclude Include="..\..\lua\LuaFrame.h">
       <Filter>lua</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\lua\LuaManager.h">
+      <Filter>lua</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\lua\LuaEngine.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua\LuaFunctions.h">
       <Filter>lua</Filter>
     </ClInclude>
   </ItemGroup>
