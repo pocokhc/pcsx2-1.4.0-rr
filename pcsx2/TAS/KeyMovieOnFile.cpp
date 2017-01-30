@@ -33,6 +33,7 @@ bool KeyMovieOnFile::Open(const wxString fn, bool fNewOpen)
 		Console.WriteLn(Color_StrongBlue, "[KeyMovie]file open fail: %s", strerror(errno));
 		return false;
 	}
+	filename = fn;
 	return true;
 }
 bool KeyMovieOnFile::Close()
@@ -41,6 +42,7 @@ bool KeyMovieOnFile::Close()
 	writeHeader();
 	fclose(fp);
 	fp = NULL;
+	filename = "";
 	return true;
 }
 

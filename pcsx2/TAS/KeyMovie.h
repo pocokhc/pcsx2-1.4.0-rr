@@ -35,6 +35,7 @@ public:
 	// getter
 	KEY_MOVIE_MODE getModeState() { return state; }
 	KeyMovieOnFile & getKeyMovieData() {return keyMovieData;}
+	bool isInterruptFrame() { return fInterruptFrame; }
 
 private:
 	KeyMovieOnFile keyMovieData;

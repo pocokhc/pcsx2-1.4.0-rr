@@ -7,16 +7,48 @@
 
 LuaManager g_Lua;
 
-void LuaManager::FrameBoundary(void)
+static PadData nowFramePadData;
+static bool fSetFrameKey=false;
+
+
+void LuaManager::ControllerInterrupt(u8 &data, u8 &port, u16 & BufCount, u8 buf[])
+{
+	if (port < 0 || 1 < port)return;
+	if (BufCount < 1 || 8 < BufCount)return;
+
+	if (fSetFrameKey)
+	{
+		buf[BufCount] = nowFramePadData.buf[port][BufCount];
+	}
+	else {
+		nowFramePadData.buf[port][BufCount] = buf[BufCount];
+	}
+
+	// turn end
+	if (BufCount == 7) {
+		fSetFrameKey = false;
+	}
+}
+PadData & LuaManager::getNowFramePadData() {
+	return nowFramePadData;
+}
+void LuaManager::setNowFramePadData(const PadData & pad)
+{
+	nowFramePadData.deserialize(pad.serialize());
+	fSetFrameKey = true;
+}
+
+void LuaManager::FrameBoundary()
 {
 	lua.Resume();
 }
 
-void LuaManager::Load(wxString filename)
+bool LuaManager::Load(wxString filename)
 {
 	if (!lua.Load(filename)) {
-		return;
+		return false;
 	}
+	return true;
 }
 void LuaManager::Stop() {
 	lua.Close();

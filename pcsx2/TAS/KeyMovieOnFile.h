@@ -54,7 +54,7 @@ public:
 
 private:
 	FILE * fp=NULL;
-
+	wxString filename = "";
 
 private:
 
@@ -71,6 +71,7 @@ public:
 	KeyMovieHeader& getHeader() { return header; }
 	unsigned long& getMaxFrame() { return MaxFrame; }
 	unsigned long& getUndoCount() { return UndoCount; }
+	const wxString & getFilename() { return filename; }
 
 	bool writeHeader();
 	bool writeMaxFrame();

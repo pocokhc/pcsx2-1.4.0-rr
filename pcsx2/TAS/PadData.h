@@ -50,13 +50,13 @@ public:
 	u8 buf[2][6];
 	
 public:
-	wxString serialize();
+	wxString serialize()const;
 	void deserialize(wxString s);
 
 	//------------------------------------------
 	// normalKey
 	//------------------------------------------
-	std::map<wxString, bool> getNormalKeys(int port);
+	std::map<wxString, bool> getNormalKeys(int port)const;
 	void setNormalKeys(int port, std::map<wxString, bool> key);
 	
 	//------------------------------------------
@@ -65,17 +65,17 @@ public:
 	//   neutral        : 127
 	//   max right/down : 255
 	//------------------------------------------
-	std::map<wxString, int> getAnalogKeys(int port);
+	std::map<wxString, int> getAnalogKeys(int port)const;
 	void setAnalogKeys(int port, std::map<wxString, int> key);
 
 
 private:
 	void setNormalButton(int port, wxString button, bool pushed);
-	bool getNormalButton(int port, wxString button);
-	void getKeyBit(byte keybit[2], wxString button);
+	bool getNormalButton(int port, wxString button)const;
+	void getKeyBit(byte keybit[2], wxString button)const;
 
 	void setAnalogButton(int port, wxString button, int push);
-	int getAnalogButton(int port, wxString button);
+	int getAnalogButton(int port, wxString button)const;
 	
 
 };

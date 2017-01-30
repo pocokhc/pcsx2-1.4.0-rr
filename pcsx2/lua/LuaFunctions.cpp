@@ -1,13 +1,18 @@
 #include "PrecompiledHeader.h"
 
-
 #include "MemoryTypes.h"// use"g_FrameCount"
 #include "Counters.h"	// use"g_FrameCount"
 
+#include "AppSaveStates.h"
+
 #include "TAS/MovieControle.h"
+#include "TAS/KeyMovie.h"
 
 #include "LuaManager.h"
 #include "LuaEngine.h"
+
+#include "DebugTools/DebugInterface.h"
+
 
 extern "C" {
 #include <lua.h>
@@ -30,6 +35,10 @@ static int emu_frameadvance(lua_State *L)
 	return lua_yield(L, 0);
 }
 
+
+//=============================================
+// emu
+//=============================================
 static int emu_pause(lua_State *L)
 {
 	g_MovieControle.Pause();
@@ -45,18 +54,192 @@ static int emu_getframecount(lua_State *L)
 	lua_pushinteger(L, g_FrameCount);
 	return 1;
 }
-
-static int memory_readbyte(lua_State * L)
+static int emu_registerbefore(lua_State *L)
 {
-	printf("todo");
-	//DisassemblyDialog *dis = wxGetApp().GetDisassemblyPtr();
-	//dis->currentCpu->getMemoryView()->
+	if (lua_iscfunction(L, 1)) {
+		luaL_error(L, "Invalid input function.");
+	}
+	luaL_checktype(L, 1, LUA_TFUNCTION);
+	lua_settop(L, 1);
+	lua_getfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEMULATION]);
+	lua_insert(L, 1);
+	lua_setfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEMULATION]);
 
-	// return
-	lua_pushnumber(L, 1);
-	return 1;	// return num
+	return 1;
 }
 
+
+
+//=============================================
+// memory
+//=============================================
+static int memory_readbyte(lua_State *L)
+{
+	unsigned long address = luaL_checkinteger(L, 1);
+	lua_pushinteger(L, r3000Debug.read8(address));
+	return 1;
+}
+
+
+//=============================================
+// joypad
+//=============================================
+static int joypad_get(lua_State *L)
+{
+	// Reads the joypads as inputted by the user
+	int which = luaL_checkinteger(L, 1);
+
+	if (which < 0 || 2 < which )
+	{
+		luaL_error(L, "Invalid input port (valid range 0-1, specified %d)", which);
+	}
+
+	lua_newtable(L);
+	const PadData & pad = g_Lua.getNowFramePadData();
+	auto normalKeys = pad.getNormalKeys(which);
+	for (auto it = normalKeys.begin(); it != normalKeys.end(); ++it)
+	{
+		lua_pushboolean(L, it->second);
+		lua_setfield(L, -2, it->first);
+	}
+	auto analogKeys = pad.getAnalogKeys(which);
+	for (auto it = analogKeys.begin(); it != analogKeys.end(); ++it)
+	{
+		lua_pushinteger(L, it->second);
+		lua_setfield(L, -2, it->first);
+	}
+	return 1;
+}
+static int joypad_set(lua_State *L)
+{
+	// Reads the joypads as inputted by the user
+	int which = luaL_checkinteger(L, 1);
+	if (which < 0 || 2 < which)
+	{
+		luaL_error(L, "Invalid input port (valid range 0-1, specified %d)", which);
+	}
+
+	// And the table of buttons.
+	luaL_checktype(L, 2, LUA_TTABLE);
+
+	PadData & pad = g_Lua.getNowFramePadData();
+	auto normalKeys = pad.getNormalKeys(which);
+	for (auto it = normalKeys.begin(); it != normalKeys.end(); ++it)
+	{
+		lua_getfield(L, 2, it->first.c_str() );
+		if (!lua_isnil(L, -1))
+		{
+			normalKeys.at(it->first) = (lua_toboolean(L, -1) != 0);
+		}
+		lua_pop(L, 1);
+	}
+	pad.setNormalKeys(which,normalKeys);
+	auto analogKeys = pad.getAnalogKeys(which);
+	for (auto it = analogKeys.begin(); it != analogKeys.end(); ++it)
+	{
+		lua_getfield(L, 2, it->first.c_str());
+		if (!lua_isnil(L, -1))
+		{
+			analogKeys.at(it->first) = lua_tointeger(L, -1);
+		}
+		lua_pop(L, 1);
+	}
+	pad.setAnalogKeys(which, analogKeys);
+	return 0;
+}
+
+//=============================================
+// savestate
+//=============================================
+static int savestate_save(lua_State *L)
+{
+	int slot = luaL_checkinteger(L, 1);
+	if (slot < 0 || 9 < slot)
+	{
+		luaL_error(L, "Invalid input slot (valid range 0-9, specified %d)", slot);
+	}
+	States_SetCurrentSlot(slot);
+	States_FreezeCurrentSlot();
+	return 0;
+}
+static int savestate_load(lua_State *L)
+{
+	int slot = luaL_checkinteger(L, 1);
+	if (slot < 0 || 9 < slot)
+	{
+		luaL_error(L, "Invalid input slot (valid range 0-9, specified %d)", slot);
+	}
+	States_SetCurrentSlot(slot);
+	States_DefrostCurrentSlot();
+	return 0;
+}
+//=============================================
+// movie
+//=============================================
+static int movie_getmode(lua_State *L)
+{
+	if (g_KeyMovie.getModeState() == KeyMovie::RECORD) {
+		lua_pushstring(L, "record");
+		return 1;
+	}
+	else if (g_KeyMovie.getModeState() == KeyMovie::REPLAY) {
+		lua_pushstring(L, "playback");
+		return 1;
+	}
+	lua_pushnil(L);
+	return 1;
+}
+static int movie_getlength(lua_State *L)
+{
+	if (g_KeyMovie.getModeState() == KeyMovie::NONE) {
+		lua_pushinteger(L, 0);
+		return 1;
+	}
+	lua_pushinteger(L, g_KeyMovieData.getMaxFrame());
+	return 1;
+}
+
+static int movie_getauthor(lua_State *L)
+{
+	if (g_KeyMovie.getModeState() == KeyMovie::NONE) {
+		lua_pushnil(L);
+		return 1;
+	}
+	lua_pushstring(L, g_KeyMovieHeader.author);
+	return 1;
+}
+static int movie_getcdrom(lua_State *L)
+{
+	if (g_KeyMovie.getModeState() == KeyMovie::NONE) {
+		lua_pushnil(L);
+		return 1;
+	}
+	lua_pushstring(L, g_KeyMovieHeader.cdrom);
+	return 1;
+}
+static int movie_getfilename(lua_State *L)
+{
+	if (g_KeyMovie.getModeState() == KeyMovie::NONE) {
+		lua_pushnil(L);
+		return 1;
+	}
+	lua_pushstring(L, g_KeyMovieData.getFilename());
+	return 1;
+}
+static int movie_rerecordcount(lua_State *L)
+{
+	if (g_KeyMovie.getModeState() == KeyMovie::NONE) {
+		lua_pushinteger(L, 0);
+		return 1;
+	}
+	lua_pushinteger(L, g_KeyMovieData.getUndoCount());
+	return 1;
+}
+static int movie_stop(lua_State *L)
+{
+	g_KeyMovie.Stop();
+	return 0;
+}
 
 
 //=============================================
@@ -79,10 +262,10 @@ static const struct luaL_Reg emulib[] =
 	//{"lagged", emu_lagged},
 	//{"emulating", emu_emulating},
 	//{"atframeboundary", emu_atframeboundary},
-	//{"registerbefore", emu_registerbefore},
-	//{"registerafter", emu_registerafter},
+	{"registerbefore", emu_registerbefore},
+	{"registerafter", emu_registerafter},
 	//{"registerstart", emu_registerstart},
-	//{"registerexit", emu_registerexit},
+	{"registerexit", emu_registerexit},
 	//{ "persistglobalvariables", emu_persistglobalvariables },
 	//{ "message", emu_message },
 	//{ "print", print }, // sure, why not
@@ -96,8 +279,8 @@ static const struct luaL_Reg emulib[] =
 const struct luaL_Reg *lua_function_emulib = emulib;
 
 static const struct luaL_Reg memorylib[] = {
-	/*{ "readbyte",				memory_readbyte },
-	{ "readbytesigned",			memory_readbytesigned },
+	{ "readbyte",				memory_readbyte },
+	/*{ "readbytesigned",			memory_readbytesigned },
 	{ "readword",				memory_readword },
 	{ "readwordsigned",			memory_readwordsigned },
 	{ "readdword",				memory_readdword },
@@ -175,6 +358,8 @@ static const struct luaL_Reg movielib[] = {
 	{ "getauthor",		  movie_getauthor },
 	{ "name",			  movie_getfilename },
 	{ "getname",		  movie_getfilename },
+	{ "cdrom",			  movie_getcdrom },
+	{ "getcdrom",		  movie_getcdrom },
 	{ "rerecordcount",	  movie_rerecordcount },
 	{ "stop",			  movie_stop },
 	{ "close",			  movie_stop },

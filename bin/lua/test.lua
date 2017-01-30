@@ -4,11 +4,10 @@ local function sleepOne()
   while os.time() - start < 1 do end
 end 
 
---local m = memory.readbyte();
---print("memory:" .. m);
 
 for i=1,10 do
-	print("frame" .. i);
+	local m = memory.readbyte(0x480000);
+	print("frame" .. i .. " " .. m);
 	--sleepOne();
 	emu.frameadvance();
 end

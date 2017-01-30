@@ -4,15 +4,22 @@
 
 #include "LuaEngine.h"
 
+#include "TAS/PadData.h"
+
+
 class LuaManager {
 public:
 	LuaManager() {}
 	~LuaManager() {}
 public:
 
-	void FrameBoundary(void);
+	void FrameBoundary();
 
-	void Load(wxString filename);
+	void ControllerInterrupt(u8 &data, u8 &port, u16 & BufCount, u8 buf[]);
+	PadData & getNowFramePadData();
+	void setNowFramePadData(const PadData & pad);
+
+	bool Load(wxString filename);
 	void Stop();
 	void Run();
 	void Restart();
@@ -21,6 +28,7 @@ public:
 
 private:
 	LuaEngine lua;
+
 
 };
 extern LuaManager g_Lua;

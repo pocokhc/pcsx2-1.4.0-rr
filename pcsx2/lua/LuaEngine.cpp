@@ -25,14 +25,14 @@ bool LuaEngine::Load()
 	luaL_openlibs(Lthread);	// add lua library
 
 	// luaL_register
-#define LUA_REFISTER( funcs , name ) {luaL_newlib(Lthread, funcs); lua_setglobal(Lthread, name);}
-	LUA_REFISTER(lua_function_emulib, "emu");
-	//LUA_REFISTER(lua_function_memorylib, "memory");
-	LUA_REFISTER(lua_function_joypadlib, "joypad");
-	LUA_REFISTER(lua_function_savestatelib, "savestate");
-	LUA_REFISTER(lua_function_movielib, "movie");
-	//LUA_REFISTER(lua_function_guilib, "gui");
-#undef LUA_REFISTER
+#define LUA_REGISTER( funcs , name ) {luaL_newlib(Lthread, funcs); lua_setglobal(Lthread, name);}
+	LUA_REGISTER(lua_function_emulib, "emu");
+	LUA_REGISTER(lua_function_memorylib, "memory");
+	LUA_REGISTER(lua_function_joypadlib, "joypad");
+	LUA_REGISTER(lua_function_savestatelib, "savestate");
+	LUA_REGISTER(lua_function_movielib, "movie");
+	//LUA_REGISTER(lua_function_guilib, "gui");
+#undef LUA_REGISTER
 
 	// load
 	if (luaL_loadfile(Lthread, file.c_str() ) != LUA_OK) {
@@ -50,9 +50,17 @@ bool LuaEngine::Load()
 //--------------------------------------------------
 void LuaEngine::Resume(void)
 {
+	if (state == CLOSE) {
+		if (L != NULL) {
+			lua_close(L);
+			L = NULL;
+			Lthread = NULL;
+		}
+		return;
+	}
 	if (Lthread == NULL)return;
 	if ( state != RESUME )return;
-
+	
 	setState(RUNNING);
 	int result = lua_resume(Lthread, NULL, 0);
 	if (result == LUA_OK) {
@@ -75,13 +83,9 @@ void LuaEngine::Resume(void)
 //--------------------------------------------------
 // Close
 //--------------------------------------------------
-void LuaEngine::Close(void)
+void LuaEngine::Close()
 {
-	if (L != NULL) {
-		lua_close(L);
-	}
-	L = NULL;
-	Lthread = NULL;
+	
 	setState(CLOSE);
 	
 }

@@ -9,8 +9,6 @@ extern "C" {
 #include <lualib.h>
 }
 
-
-
 class LuaEngine {
 public:
 	LuaEngine() {}
@@ -28,8 +26,8 @@ public:
 
 	bool Load(wxString filename);
 	bool Load();
-	void Resume(void);
-	void Close(void);
+	void Resume();
+	void Close();
 
 	bool isSelf(lua_State* l) { return (l == Lthread); }
 
@@ -38,6 +36,7 @@ private:
 	lua_State* Lthread = NULL;
 	wxString file;
 	LuaState state = NOT_OPEN;
+
 
 private:
 	void CallbackError(lua_State *L);

@@ -1,12 +1,11 @@
 #include "PrecompiledHeader.h"
 
 #include "LuaFrame.h"
-#include "LuaEngine.h"
+#include "LuaManager.h"
 
 
 enum {
-	ID_ConsoleClear = 1,
-	ID_OpenFile,
+	ID_OpenFile=1,
 	ID_Stop,
 	ID_Start,
 	ID_Restart,
@@ -18,17 +17,8 @@ wxEND_EVENT_TABLE()
 
 LuaFrame::LuaFrame(wxWindow * parent)
 	: wxFrame(parent, wxID_ANY, L"Lua", wxPoint(437+680-300,52+560), wxSize(300,120)
-	//, wxDEFAULT_FRAME_STYLE & ~(wxMAXIMIZE_BOX | wxRESIZE_BORDER)
 	)
 {
-	// menu bar
-	wxMenu *menuFile = new wxMenu;
-	menuFile->Append(ID_ConsoleClear, _("&Clear"),
-		_("Help string shown in status bar for this menu item"));
-	wxMenuBar *menuBar = new wxMenuBar;
-	menuBar->Append(menuFile, _("&Console"));
-	SetMenuBar(menuBar);
-
 	// status bar
 	statusbar = CreateStatusBar();
 	statusbar->SetStatusText(_("lua no open"));
@@ -45,7 +35,6 @@ LuaFrame::LuaFrame(wxWindow * parent)
 	restartButton->Hide();
 
 	// event
-	Bind(wxEVT_COMMAND_MENU_SELECTED, &LuaFrame::OnConsoleClear, this, ID_ConsoleClear);
 	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &LuaFrame::OnOpenFile, this, ID_OpenFile);
 	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &LuaFrame::OnStop, this, ID_Stop);
 	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &LuaFrame::OnRun, this, ID_Start);
@@ -71,12 +60,8 @@ void LuaFrame::pushStopState() {
 }
 void LuaFrame::OnClose(wxCloseEvent& evt)
 {
+	g_Lua.Stop();
 	Hide();
-}
-void LuaFrame::OnConsoleClear(wxCommandEvent& event)
-{
-	//no use
-	//メニューバー用においてあるだけ、消してもいいかも
 }
 void LuaFrame::OnOpenFile(wxCommandEvent& event)
 {
@@ -84,25 +69,23 @@ void LuaFrame::OnOpenFile(wxCommandEvent& event)
 	wxFileDialog openFileDialog(this, _("Select lua."), L"", L"",
 		L"lua file(*.lua)|*.lua",
 		wxFD_OPEN);
-	if (openFileDialog.ShowModal() == wxID_CANCEL)
-	{
-		// cancel
-		return;
-	}
+	if (openFileDialog.ShowModal() == wxID_CANCEL)return;
+	
 	wxString path = openFileDialog.GetPath();
-	LoadLuaCode(path);
-	//	LoadLuaCode("C:\\data\\GitHub\\pcsx2-1.4.0-rr\\bin\\lua\\test.lua");
-
+	if (!g_Lua.Load(path))
+	{
+		pushStopState();
+	}
 }
 void LuaFrame::OnStop(wxCommandEvent& event)
 {
-	LuaCodeStop();
+	g_Lua.Stop();
 }
 void LuaFrame::OnRun(wxCommandEvent& event)
 {
-	LuaCodeRun();
+	g_Lua.Run();
 }
 void LuaFrame::OnRestart(wxCommandEvent& event)
 {
-	LuaCodeRestart();
+	g_Lua.Restart();
 }

@@ -511,9 +511,6 @@ __fi void rcntUpdate_vSync()
 	else	// VSYNC end / VRENDER begin
 	{
 		//--LuaEngine--//
-		// LuaをwxMilliSleepなしで実行すると、1回目の VSyncStart 内で recExitExecution が呼ばれ失敗する。
-		// 2回目は問題なく実行でき、ぱっと見問題なさそうに見える。
-		// これに関する影響度が不明
 		g_Lua.FrameBoundary();
 		//-------------//
 		//--TAS KeyEditor--//
