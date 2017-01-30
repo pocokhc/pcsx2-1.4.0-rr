@@ -60,14 +60,24 @@ static int emu_registerbefore(lua_State *L)
 		luaL_error(L, "Invalid input function.");
 	}
 	luaL_checktype(L, 1, LUA_TFUNCTION);
-	lua_settop(L, 1);
+	
+	g_Lua.getLuaEnginPtr(L)->setLuaCallBefore(lua_gettop(L));
+	/*lua_settop(L, 1);
 	lua_getfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEMULATION]);
 	lua_insert(L, 1);
 	lua_setfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEMULATION]);
-
+	*/
 	return 1;
 }
 
+static int emu_registerafter(lua_State *L)
+{
+	return 1;
+}
+static int emu_registerexit(lua_State *L)
+{
+	return 1;
+}
 
 
 //=============================================

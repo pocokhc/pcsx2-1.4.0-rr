@@ -112,7 +112,6 @@ void LuaEngine::setState(LuaEngine::LuaState _state)
 		msg = "lua not open.";
 	}
 	else if (_state == OPEN) {
-		msg = "lua open.";
 	}
 	else if (_state == RUNNING) {
 		msg = "lua running.";
@@ -126,4 +125,17 @@ void LuaEngine::setState(LuaEngine::LuaState _state)
 		frame->pushStopState();
 	}
 	frame->drawState(wxString::Format(L"%s(%s)", msg, file));
+}
+
+void LuaEngine::callAfter()
+{
+	/*if (Lthread == NULL)return;
+	lua_settop(Lthread, 0);
+	lua_pushinteger(Lthread, luaCallBefore);
+	if (lua_isfunction(Lthread, -1))
+	{
+		lua_pcall(Lthread, 0, 0, 0);
+	}
+	lua_settop(Lthread, 0);
+	*/
 }

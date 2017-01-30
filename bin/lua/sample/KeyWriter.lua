@@ -12,7 +12,10 @@ if file == nil then
 end
 
 ----------------------------------------------------------
-while emu.frameadvance do
+-- before
+----------------------------------------------------------
+emu.registerbefore(function()
+	
 	local s=""
 	
 	s=s .. emu.framecount() .. " "
@@ -32,6 +35,11 @@ while emu.frameadvance do
 	
 	s=s .. "\n"
 	file:write(s)
+
+end)
+
+----------------------------------------------------------
+while emu.frameadvance do
 	emu.frameadvance()
 end
 

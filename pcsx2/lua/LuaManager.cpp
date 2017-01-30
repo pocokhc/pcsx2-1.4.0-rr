@@ -40,6 +40,7 @@ void LuaManager::setNowFramePadData(const PadData & pad)
 
 void LuaManager::FrameBoundary()
 {
+	lua.callAfter();
 	lua.Resume();
 }
 

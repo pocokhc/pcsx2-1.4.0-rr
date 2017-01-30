@@ -31,12 +31,21 @@ public:
 
 	bool isSelf(lua_State* l) { return (l == Lthread); }
 
+	void setLuaCallBefore(int id) { luaCallBefore = id; }
+	void setLuaCallAfter(int id) { luaCallAfter = id; }
+	void setLuaCallExit(int id) { luaCallExit = id; }
+
+	void callAfter();
+
 private:
 	lua_State* L = NULL;
 	lua_State* Lthread = NULL;
 	wxString file;
 	LuaState state = NOT_OPEN;
 
+	int luaCallBefore = 0;
+	int luaCallAfter = 0;
+	int luaCallExit = 0;
 
 private:
 	void CallbackError(lua_State *L);

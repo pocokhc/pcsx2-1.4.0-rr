@@ -5,6 +5,14 @@ local function sleepOne()
 end 
 
 
+--print("start")
+----------------------------------------------------------
+-- before
+----------------------------------------------------------
+--emu.registerbefore(function()
+--	print("before")
+--end)
+
 for i=1,10 do
 	local m = memory.readbyte(0x480000);
 	print("frame" .. i .. " " .. m);
