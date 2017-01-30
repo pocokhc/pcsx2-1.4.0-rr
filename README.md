@@ -5,14 +5,14 @@ pcsx2-rr(<https://code.google.com/archive/p/pcsx2-rr/>)‚ðŽQl‚É‚µ‚Ä‚¢‚Ü‚·B
   
 
 # TAS
-ŽÀÛ‚Éì‚Á‚Ä‚Ý‚½TAS‚Í‚±‚¿‚ç‚Ì“®‰æ‚Æ‚È‚è‚Ü‚·B  
+ŽÀÛ‚Éì‚Á‚Ä‚Ý‚½TAS‚Í‚±‚¿‚ç‚Ì“®‰æ‚Æ‚È‚è‚Ü‚·B(ì¬‚Í–{ƒc[ƒ‹v1.0‚ÌŽž‚Ì‚Å‚·)  
 [yTASzƒ`ƒ…ƒEƒŠƒbƒv part0(WIP)ypcsx2-1.4.0-rrz](http://www.nicovideo.jp/watch/sm30385451)  
   
 
 # ƒ_ƒEƒ“ƒ[ƒh
 windows10‚Ì‚Ýƒrƒ‹ƒhŒã‚ÌŽÀsƒtƒ@ƒCƒ‹‚ð’u‚¢‚Ä‚¨‚«‚Ü‚·B  
-‚»‚êˆÈŠO‚ÌOS‚Í–¢Šm”F‚Å‚·Bˆê‰žŒöŽ®‚Å‘Î‰ž‚µ‚Ä‚¢‚éOS‚Å‚Íƒrƒ‹ƒh‚µ‚ÄŽg‚¦‚é‚Í‚¸‚Å‚·B  
 [pcsx2-1.4.0-rr](https://github.com/pocokhc/pcsx2-1.4.0-rr/releases)  
+windows10ˆÈŠO‚ÌOS‚Í–¢Šm”F‚Å‚·Bˆê‰žŒöŽ®‚Å‘Î‰ž‚µ‚Ä‚¢‚éOS‚Å‚Íƒrƒ‹ƒh‚µ‚ÄŽg‚¦‚é‚Í‚¸‚Å‚·B  
   
 “®ì‚³‚¹‚é‚½‚ß‚ÉˆÈ‰º‚ª•K—v‚Å‚·B(ŒöŽ®‚©‚çˆø—p)  
 You need the Visual C++ 2015 x86 Redistributable for this version to work.  
@@ -21,85 +21,25 @@ Download it [HERE](https://www.microsoft.com/en-us/download/details.aspx?id=4814
 ŽÀsŠÂ‹«‚ÍŒöŽ®‚Æ“¯‚¶‚Å‚·B  
 ˆê‰ž [windows10](https://www.microsoft.com/ja-jp/software-download/windows10)‚ðVMã‚ÅV‹K‚ÉƒCƒ“ƒXƒg[ƒ‹‚µ‚½ó‘Ô‚Å‹N“®‚Å‚«‚½‚±‚Æ‚ðŠm”F‚µ‚Ä‚¢‚Ü‚·B  
 
-# ’Ç‰Á‹@”\
-* ƒƒjƒ…[ƒo[
-	* Movie
-
-||‹@”\|
-|---|---|
-|NewRecord|Recordƒ‚[ƒh‚Åƒtƒ@ƒCƒ‹‚ðŠJ‚«‚Ü‚·Bƒtƒ@ƒCƒ‹‚Ì’†g‚Í‰Šú‰»‚³‚ê‚Ü‚·B|
-|Play|Replayƒ‚[ƒh‚Åƒtƒ@ƒCƒ‹‚ðŠJ‚«‚Ü‚·B|
-|Stop|ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚Ü‚·Bƒtƒ@ƒCƒ‹ƒNƒ[ƒY‚ð‚·‚é‚Ì‚ÅI—¹‚µ‚½‚çŒÄ‚ñ‚Å‚­‚¾‚³‚¢B|
-|Convert(p2m->p2m2)|‹Œpcsx2-rr‚ÌKeyMovieƒtƒ@ƒCƒ‹‚ðÄ¶‚Å‚«‚é‚æ‚¤‚É•ÏŠ·‚µ‚Ü‚·B‚Ü‚¾‚¤‚Ü‚­“¯Šú‚ª‚Æ‚ê‚Ä‚¢‚Ü‚¹‚ñ|
-|Convert(v1.0~v1.2->v2.0)|KeyMovieƒtƒH[ƒ}ƒbƒg‚ð•ÏX‚µ‚½‚Ì‚Å‚»‚ê‚É‡‚í‚¹‚ÄŒÃ‚¢ƒo[ƒWƒ‡ƒ“‚ÌKeyMovieƒtƒH[ƒ}ƒbƒg‚ªÄ¶‚Å‚«‚é‚æ‚¤‚É•ÏŠ·‚µ‚Ü‚·B|
-|Open KeyEditor Window...|KeyEditor‚ÌƒEƒBƒ“ƒhƒE‚ðŠJ‚«‚Ü‚·B|
-¦Record,Play‚Æ‚à‚ÉStopó‘Ô‚ÅŽn‚Ü‚è‚Ü‚·BPƒL[‚ð‰Ÿ‚µ‚ÄÄ¶‚µ‚Ä‚­‚¾‚³‚¢B  
-¦[KeyEditor](https://github.com/pocokhc/pcsx2-1.4.0-rr/wiki)‚ÉŠÖ‚µ‚Ä‚Íwiki‚Ö  
-
-* ƒVƒ‡[ƒgƒJƒbƒgƒL[
-
-|ƒ{ƒ^ƒ“|‹@”\|
-|---|---|
-|P|pause/unpause‚ÌØ‚è‘Ö‚¦|
-|space|frame advance|
-|R|ƒL[ƒ€[ƒr[‚ÌÄ¶ƒ‚[ƒh‚Æ˜^‰æƒ‚[ƒh‚ÌØ‚è‘Ö‚¦|
-
-# ƒVƒ‡[ƒgƒJƒbƒgƒL[‚ÉŠÖ‚µ‚Ä
-ƒL[”z’u‚Í‰º‹Lƒtƒ@ƒCƒ‹‚ð‚¢‚¶‚Á‚Ä‚­‚¾‚³‚¢B  
-./inis_1.4.0/PCSX2-rr_keys.ini  
-‚½‚¾‚µAiniƒtƒ@ƒCƒ‹“à‚Ìà–¾‚É‚ ‚é’Ê‚èA  
-F5,F7,PAGE_UP,DELETE,HOME,INSERT ƒL[‚ÍŽg—p‚µ‚È‚¢•û‚ª‚¢‚¢‚Å‚·B  
-
-
-# ƒL[ƒ€[ƒr[ì¬‘z’èŽè‡
-1. ƒQ[ƒ€‚ðŽn‚ß‚é‘O‚ÉRecord/Play‚ðŽÀs‚µ‚Ü‚·B  
-2. Boot CDVD‚©‚çƒQ[ƒ€‚ð‹N“®‚µ‚Ü‚·B  
-¦(full)‚Æ(fast)‚Å‚·‚ªAfast‚Å‹N“®‚µ‚½ƒL[ƒtƒ@ƒCƒ‹‚Ífastê—p‚É‚È‚è‚»‚¤i–¢ŒŸØj  
-@“¯‚¶‹N“®•û–@‚Å‹N“®‚·‚é•û‚ª‚¢‚¢‚ÆŽv‚¢‚Ü‚·B  
-3. ’âŽ~‚µ‚Ä‚¢‚Ü‚·‚Ì‚ÅAPƒL[‚Å“®‚©‚µ‚Ü‚·B  
-4. ì¬‚ðÄŠJ‚µ‚½‚¢ê‡‚ÍAPlay‚ÅŽn‚ß‚Äì¬‚ðÄŠJ‚µ‚½êŠ‚Ü‚Å‚¢‚«A‚»‚±‚ÅRƒL[‚ð‰Ÿ‚µ‚Ü‚·B  
-5. ˆÈ‰ºƒL[‚ðŽg‚Á‚Äì¬‚ði‚ß‚Ü‚·B
-
- |ƒ{ƒ^ƒ“|‹@”\|
- |---|---|
- |P    |pause/unpause|
- |R    |ƒL[ƒ€[ƒr[‚Ìrecord/replay Ø‚è‘Ö‚¦|
- |space|frame advance|
- |F1       |QS|
- |F2       |toggle save slot(+1)|
- |SHIFT+F2 |toggle save slot(-1)|
- |F3       |QL|
-¦‚»‚Ì‘¼ƒVƒ‡[ƒgƒJƒbƒgƒL[‚Ípscx2ŒöŽ®ƒy[ƒW‚ð[ŽQÆ](http://wiki.pcsx2.net/index.php/Hotkeys)  
-¦save‚Ì’ˆÓ“_  
-save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚Æ‚ðŠm”F‚µ‚½‚Ù‚¤‚ª‚¢‚¢‚Å‚·B  
+# ’Ç‰Á‹@”\‚ÌŠT—v  
+* KeyMovie‹@”\  
+* Pause/Unpase/FrameAdvance‹@”\  
+* Lua  
+* KeyMovie‚ÌEditor‹@”\  
   
-##tips
-ƒL[ƒtƒ@ƒCƒ‹‚Íframe‚ªŠî€‚Æ‚È‚è“Ç‚Ýž‚Ý/ã‘‚«‚ð‚µ‚Ü‚·B  
-‚Å‚·‚Ì‚ÅARƒL[‚Åreplayƒ‚[ƒh‚ÉØ‚è‘Ö‚¦‚Äˆê’èƒtƒŒ[ƒ€i‚Ü‚¹‚½ŒãARƒL[‚Årecordƒ‚[ƒh‚É‚µ‚Ä‹L˜^‚·‚é‚Æ‚¢‚¤‚±‚Æ‚ªo—ˆ‚Ü‚·B  
-  
+Še‹@”\‚ÌÚ×‚Í[wiki](/wiki)‚ð‚²——‚­‚¾‚³‚¢B  
 
-# ˜^‰æ‘z’èŽè‡
-1. ƒQ[ƒ€‚ðŽn‚ß‚é‘O‚ÉPlay‚ÅŽn‚ß‚Ü‚·B
-2. ƒQ[ƒ€‚ðŽn‚ß‚½‚çŽ~‚Ü‚Á‚Ä‚¢‚é‚ÆŽv‚¢‚Ü‚·‚Ì‚ÅAF12ƒL[‚Å˜^‰æ‚ðŠJŽn‚µ‚Ü‚·B  
-¦˜^‰æƒtƒ@ƒCƒ‹‚Ì•Û‘¶êŠ‚ÍŒ ŒÀ‚Ì‚ ‚éêŠ‚É‚µ‚Ä‚­‚¾‚³‚¢(windows10‚¾‚ÆCƒhƒ‰ƒCƒuˆÈ‰º‚ÍŒ ŒÀ‚ª‚È‚¢‚Ì‚Åƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ„§)  
-¦Œ ŒÀ‚ª‚È‚¢“™‚Å•Û‘¶‚³‚ê‚È‚¢ê‡‚Å‚àŒx“™‚ ‚è‚Ü‚¹‚ñ‚Ì‚Åƒtƒ@ƒCƒ‹‚ª‚Å‚«‚Ä‚¢‚é‚©Šm”F‚µ‚½‚Ù‚¤‚ª‚¢‚¢‚Å‚·B  
-¦‰¹ƒtƒ@ƒCƒ‹‚Í•Ê‚Épcsx2‚Ìexeƒtƒ@ƒCƒ‹‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚Éurecording.wavv‚Åì¬‚³‚ê‚Ü‚·B  
-¦‰¹ƒtƒ@ƒCƒ‹‚Æ‰f‘œƒtƒ@ƒCƒ‹‚ð“¯Šú‚³‚¹‚é‚½‚ß‚É˜^‰æ’†‚ÍPause‚âQL,QS‚Í‚µ‚È‚¢•û‚ª‚¢‚¢‹C‚ª‚µ‚Ü‚·B  
-3. PƒL[‚Åunpause‚µA˜^‰æ‚·‚éB  
-  
 
-# ƒrƒ‹ƒh•û–@(windows10)
-  
+
+# ƒrƒ‹ƒh•û–@‚É‚Â‚¢‚Ä(windows10)
 ŒöŽ®‚Æ“¯‚¶ƒrƒ‹ƒh•û–@‚Å‚·B  
   
 —pˆÓ‚·‚é‚à‚Ì  
-* Visual Studio Comunnity 2015(<https://www.visualstudio.com/vs/community/>)  
-¦ƒfƒtƒHƒ‹ƒgÝ’è‚¾‚ÆC++‚ª‘«‚è‚È‚¢‚Ì‚ÅA  
-  ƒJƒXƒ^ƒ€¨ƒvƒƒOƒ‰ƒ~ƒ“ƒOŒ¾Œê¨Visual C++‚Éƒ`ƒFƒbƒN‚ð“ü‚ê‚ÄƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B  
-* DirectX Software Development Kit (June 2010)(<https://www.microsoft.com/en-us/download/details.aspx?id=6812>)  
+1. Visual Studio Comunnity 2015(<https://www.visualstudio.com/vs/community/>)  
+¦ƒfƒtƒHƒ‹ƒgÝ’è‚¾‚ÆC++‚ª‘«‚è‚È‚¢‚Ì‚ÅƒJƒXƒ^ƒ€¨ƒvƒƒOƒ‰ƒ~ƒ“ƒOŒ¾Œê¨Visual C++‚Éƒ`ƒFƒbƒN‚ð“ü‚ê‚ÄƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B  
+2. DirectX Software Development Kit (June 2010)(<https://www.microsoft.com/en-us/download/details.aspx?id=6812>)  
 ¦ƒfƒtƒHƒ‹ƒgÝ’è‚ÌƒCƒ“ƒXƒg[ƒ‹‚Å‚¨‚‹‚Å‚·B’Ç‰Á‚Å.NET Framework3.5‚ª•K—v‚È‚Ì‚Å’Ç‰Á‚µ‚Ü‚·‚©H‚Æ•·‚©‚ê‚éê‡‚ÍƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚¨‚«‚Ü‚·B  
-  
-‚ ‚Æ‚ÍAƒ\[ƒXƒR[ƒh“à‚ÌuPCSX2_suite.slnv‚ªŠJ‚¯‚é‚ÆŽv‚¤‚Ì‚ÅŠJ‚¢‚Äƒrƒ‹ƒh‚Å‚¢‚¯‚é‚Í‚¸‚Å‚·B  
+3. ƒ\[ƒXƒR[ƒh“à‚ÌuPCSX2_suite.slnv‚ðŠJ‚«Aƒrƒ‹ƒh‚ð‚·‚éB
   
 [windows10](https://www.microsoft.com/ja-jp/software-download/windows10)‚ðVMã‚ÅV‹K‚ÉƒCƒ“ƒXƒg[ƒ‹‚µ‚½ó‘Ô‚Åƒrƒ‹ƒh‚Å‚«‚½‚±‚Æ‚ðŠm”F‚µ‚Ä‚¢‚Ü‚·B  
 
@@ -107,61 +47,16 @@ save‚µ‚½Œã‚·‚®‚Ésave‚ðs‚¤‚Æ‚¤‚Ü‚­‚¢‚©‚È‚¢‚Æ‚«‚ª‚ ‚è‚Ü‚·Bconsole‚Åsave‚Å‚«‚½‚±‚
 # ƒ\[ƒXƒR[ƒh‚Ì•ÏX‰ÓŠ
 Œ³‚ÌƒR[ƒh‚©‚ç•ÏX‚µ‚Ä‚¢‚é‰ÓŠ‚É‚Í‚·‚×‚ÄƒRƒƒ“ƒg‚Å  
 //--TAS--//  
-‚ð“ü‚ê‚Ä‚ ‚è‚Ü‚·B‚±‚ê‚ÅŒŸõ‚ð‚©‚¯‚ê‚Î‚í‚©‚é‚ÆŽv‚¢‚Ü‚·B  
+//--LuaEngine--//  
+//--TASKeyEditor--//  
+‚ð“ü‚ê‚Ä‚ ‚è‚Ü‚·B  
 
 
+# ƒRƒƒ“ƒg
+‚Ð‚Æ‚Ü‚¸v3.0‚ÅŠJ”­‚ÍŽ~‚ß‚ÄTAS§ì‚ÉˆÚ‚è‚½‚¢‚ÆŽv‚¢‚Ü‚·B  
+TAS‚ðì¬‚µ‚Ä‚¢‚­‚¤‚¦‚Å‹C‚É‚È‚Á‚½“_‚âƒoƒO‚ªo‚ê‚ÎŽž‘Î‰ž‚Í‚µ‚Ä‚¢‚­—\’è‚Å‚·B  
+“Á‚ÉLua‚Í‚ ‚Ü‚èƒeƒXƒg‚µ‚Ä‚¢‚È‚¢‚Ì‚ÅcAƒoƒO‚ªo‚ê‚ÎLua‚ÌŽg—p‚ðT‚¦‚Ä‚à‚ç‚¦‚ê‚Î(‚¦‚Á  
 
-# ‚»‚Ì‘¼(Žg‚¤‘¤)
-* ƒL[ƒtƒ@ƒCƒ‹‚Å‚·‚ªApcsx2‚Ìp2mƒtƒ@ƒCƒ‹‚Æ‚ÍŒÝŠ·«‚ª‚ ‚è‚Ü‚¹‚ñB  
-•ÏŠ·‹@”\‚ð•t‚¯‚Ü‚µ‚½‚ªA“¯Šú‚¸‚ê‚ªŒƒ‚µ‚­‘½•ªŽg‚¢•¨‚É‚È‚è‚Ü‚¹‚ñc  
-
-* ƒVƒ‡[ƒgƒJƒbƒgƒL[‚ÌƒL[ƒRƒ“ƒtƒBƒO‚ª‚µ‚½‚¢I  
-inis_1.4.0/PCSX2-rr_keys.ini  
-‚ð•ÒW‚µ‚Ä‚­‚¾‚³‚¢B  
-
-* ƒQ[ƒ€‰æ–Ê‚ÅƒL[‚ª”½‰ž‚µ‚È‚¢Žž  
-ðŒ‚Í•s–¾‚Å‚·‚ªAˆê’èŽžŠÔ‰½‚à‚µ‚Ä‚¢‚È‚¢‚Æ‚È‚éŽž‚ª‚ ‚è‚Ü‚·B  
-‚»‚Ìê‡‚ÍAƒƒCƒ“ƒƒjƒ…[‚ÉƒtƒH[ƒJƒX‚ð‚ ‚Ä‚Ä‚©‚çƒQ[ƒ€‰æ–Ê‚ÉƒtƒH[ƒJƒX‚µ‚È‚¨‚·‚Æ‚È‚¨‚è‚Ü‚·B  
-  
-* ƒQ[ƒ€‰æ–Ê‚¾‚¯ƒtƒŠ[ƒY‚µ‚½Žž  
-ƒQ[ƒ€‹N“®’†‚Åpause’†‚ÉƒRƒ“ƒgƒ[ƒ‰‚ÌÝ’è‚È‚ÇƒƒCƒ“ƒtƒŒ[ƒ€‚ð“®‚©‚·‚ÆŒÅ‚Ü‚éê‡‚ª‚ ‚è‚Ü‚·B  
-‚»‚ÌŽž‚ÍƒVƒXƒeƒ€‚Ìƒƒjƒ…[‚©‚ç’†’f¨ÄŠJ‚Æ‚·‚é‚Æ‚È‚¨‚è‚Ü‚·B  
-  
-* pscx2Ž–‘Ô‚ªƒtƒŠ[ƒY‚·‚é  
-–Å‘½‚É‚È‚¢‚ÆŽv‚¢‚Ü‚·‚ªA‚à‚µ‚ ‚Á‚½‚çÄ‹N“®‚Å‚·c  
-
-* desync‚Í‰ðŒˆ‚³‚ê‚½H  
-‘½•ª‚³‚ê‚½‚ÆM‚¶‚½‚¢‚Å‚·B  
-ƒL[ƒtƒ@ƒCƒ‹‚ÍŠ®‘S‚É“à•”‚Ìframe’PˆÊ‚ÅŠÇ—‚·‚é‚æ‚¤‚É‚µ‚Ä‚¢‚é‚Ì‚ÅAEmu‘¤‚Å‚Ç‚ê‚¾‚¯frameŠÇ—‚ª‚Å‚«‚Ä‚¢‚é‚©ŽŸ‘æ‚Å‚·B  
-Œ»ó‚Ídesync‚ÍŠm”F‚µ‚Ä‚¢‚Ü‚¹‚ñB  
-  
-
-* windowƒ^ƒCƒgƒ‹‚Ìframe”‚ÌXV‚ª’x‚¢  
-ˆê’èŽüŠú–ˆ‚ÉXV‚³‚ê‚é‚æ‚¤‚Å‚·B  
-KeyEditor‚Ìƒ^ƒCƒgƒ‹‚ªƒŠƒAƒ‹ƒ^ƒCƒ€‚ÅXV‚³‚ê‚Ü‚·‚Ì‚Å‚»‚¿‚ç‚ð‚²Šm”F‚­‚¾‚³‚¢B  
-  
-
-# ‚»‚Ì‘¼(ì¬‘¤)
-* ƒXƒy[ƒX‰Ÿ‚µ‚Á‚Ï‚È‚µ‚Å•’Ê‚ÉÄ¶‚Å‚«‚È‚¢H  
-Œ»óo—ˆ‚È‚¢‚Å‚·BŽÀŒ»‚ÌŽd•û‚ª‚æ‚­‚í‚©‚Á‚Ä‚¢‚Ü‚¹‚ñB  
-
-* Lua‹@”\‚Ì’Ç‰Á‚ÉŠÖ‚µ‚Ä  
-ŽžŠÔ‚ª‚©‚©‚è‚»‚¤‚È‚Ì‚Å¡‚Ì‚Æ‚±‚ëŒ©‘—‚è‚Å‚·B  
-ŽQl‚É‚È‚é‚à‚Ì‚ª‚ ‚ê‚Î‚¢‚¢‚Ì‚Å‚·‚ªc  
-
-* GUI‚ÉŠÖ‚µ‚Ä  
-wxWidgets‚Æ‚¢‚¤‚à‚Ì‚ðŽg‚Á‚Ä‚¢‚Ü‚µ‚½B  
-wxWidgets‚Ì’mŽ¯‚ª‘S‘R‚È‚¢‚Ì‚Å‚ ‚Ü‚èì‚è‚±‚ß‚Ä‚¢‚Ü‚¹‚ñB  
-ì‚ê‚ê‚ÎƒL[î•ñ‚ð˜^‰æ’†‚É‘€ì‚Å‚«‚é‚æ‚¤‚È‹@”\‚Æ‚©‚¢‚¢‚©‚à‚µ‚ê‚Ü‚¹‚ñ‚ËB  
-
-* (PCSX2‚Ì)ÅV”Å‚Å‚Â‚­‚ê‚éH  
-Œ³‚Ì\‘¢‚Í‹É—Í‚¢‚¶‚Á‚Ä‚¢‚È‚¢(‚Â‚à‚è)‚Ì‚ÅAadd TAS code‚Ì‰ÓŠ‚ð“K—p‚·‚ê‚ÎPCSX2‚ÌÅV”Å‚É‚à“K—p‰Â”\‚¾‚ÆŽv‚¢‚Ü‚·B  
-
-# ‚»‚Ì‘¼
-github‚Í‰SŽÒ‚Å‚ ‚Ü‚è•ª‚©‚Á‚Ä‚¢‚Ü‚¹‚ñB‰½‚©•s”õ‚â–â‘è‚ª‚ ‚ê‚Î˜A—‚­‚¾‚³‚¢B  
-‚ ‚ÆA³ŒŽ‚Å“ËŠÑ‚Åì‚Á‚½‚Ì‚Å‚ ‚Ü‚è‚¢‚¢ƒR[ƒh‚Å‚Í‚È‚¢‚ÆŽv‚¢‚Ü‚·B‚±‚ê‚à‰½‚©‚ ‚ê‚Î˜A—‚­‚¾‚³‚¢B  
-‚ ‚Æ‰pŒê‚Í‚Ù‚Æ‚ñ‚Ç‚Å‚«‚È‚­APCSX2‚Ìî•ñ‚ð’²‚×‚é‚Ì‚É‹ê˜J‚µ‚Ä‚¢‚Ü‚·c  
-˜A——pFpocopococpp198@gmail.com  
 
 
 ------------------------
