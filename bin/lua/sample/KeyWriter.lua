@@ -6,41 +6,47 @@
 ----------------------------------------------------------
 -- Open log file first
 ----------------------------------------------------------
-local file = io.open("framedata.txt", "w") -- TODO: modify filename if needed
+local file = io.open("framedata.csv", "w") -- TODO: modify filename if needed
 if file == nil then
     error("File could not be opened.")
 end
 
+
 ----------------------------------------------------------
--- before
-----------------------------------------------------------
-emu.registerbefore(function()
+local key = joypad.get(0)
+local s="frame"
+for k,v in pairs(key) do
+	s=s .. "," .. k
+end
+s=s .. "\n"
+file:write(s)
+
+--------------
+-- main loop
+--------------
+while emu.frameadvance do
+	emu.frameadvance()
 	
 	local s=""
 	
-	s=s .. emu.framecount() .. " "
+	s=s .. emu.framecount() 
 	
 	local key = joypad.get(0)
 	for k,v in pairs(key) do
 		if type(v) == "boolean" then
 			if v then
-				s=s .. k .. "=" .. 1 .. " "
+				s=s .. "," .. 1 
 			else
-				s=s .. k .. "=" .. 0 .. " "
+				s=s .. "," .. 0  
 			end
 		else
-			s=s .. k .. "=" .. v .. " "
+			s=s .. "," .. v 
 		end
 	end
 	
 	s=s .. "\n"
 	file:write(s)
-
-end)
-
-----------------------------------------------------------
-while emu.frameadvance do
-	emu.frameadvance()
+	
 end
 
 io.close(file)

@@ -54,6 +54,7 @@ static int emu_getframecount(lua_State *L)
 	lua_pushinteger(L, g_FrameCount);
 	return 1;
 }
+
 static int emu_registerbefore(lua_State *L)
 {
 	if (lua_iscfunction(L, 1)) {
@@ -61,21 +62,18 @@ static int emu_registerbefore(lua_State *L)
 	}
 	luaL_checktype(L, 1, LUA_TFUNCTION);
 	
-	g_Lua.getLuaEnginPtr(L)->setLuaCallBefore(lua_gettop(L));
-	/*lua_settop(L, 1);
-	lua_getfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEMULATION]);
-	lua_insert(L, 1);
-	lua_setfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEMULATION]);
-	*/
+	/*todo*/
 	return 1;
 }
 
 static int emu_registerafter(lua_State *L)
 {
+	/*todo*/
 	return 1;
 }
 static int emu_registerexit(lua_State *L)
 {
+	/*todo*/
 	return 1;
 }
 
@@ -85,10 +83,90 @@ static int emu_registerexit(lua_State *L)
 //=============================================
 static int memory_readbyte(lua_State *L)
 {
-	unsigned long address = luaL_checkinteger(L, 1);
-	lua_pushinteger(L, r3000Debug.read8(address));
+	wxString cpu = luaL_checkstring(L, 2);
+	DebugInterface &mem = r3000Debug;
+	if (cpu == "r5900") {
+		mem = r5900Debug;
+	}
+	lua_pushinteger(L, mem.read8(luaL_checkinteger(L, 1)));
 	return 1;
 }
+static int memory_readbytesigned(lua_State *L)
+{
+	wxString cpu = luaL_checkstring(L, 2);
+	DebugInterface &mem = r3000Debug;
+	if (cpu == "r5900") {
+		mem = r5900Debug;
+	}
+	unsigned long address = luaL_checkinteger(L, 1);
+	lua_pushinteger(L, (signed)mem.read8(address));
+	return 1;
+}
+static int memory_readword(lua_State *L)
+{
+	wxString cpu = luaL_checkstring(L, 2);
+	DebugInterface &mem = r3000Debug;
+	if (cpu == "r5900") {
+		mem = r5900Debug;
+	}
+	unsigned long address = luaL_checkinteger(L, 1);
+	lua_pushinteger(L, mem.read16(address));
+	return 1;
+}
+static int memory_readwordsigned(lua_State *L)
+{
+	wxString cpu = luaL_checkstring(L, 2);
+	DebugInterface &mem = r3000Debug;
+	if (cpu == "r5900") {
+		mem = r5900Debug;
+	}
+	unsigned long address = luaL_checkinteger(L, 1);
+	lua_pushinteger(L, (signed)mem.read16(address));
+	return 1;
+}
+static int memory_readdword(lua_State *L)
+{
+	wxString cpu = luaL_checkstring(L, 2);
+	DebugInterface &mem = r3000Debug;
+	if (cpu == "r5900") {
+		mem = r5900Debug;
+	}
+	unsigned long address = luaL_checkinteger(L, 1);
+	lua_pushinteger(L, mem.read32(address));
+	return 1;
+}
+static int memory_readdwordsigned(lua_State *L)
+{
+	wxString cpu = luaL_checkstring(L, 2);
+	DebugInterface &mem = r3000Debug;
+	if (cpu == "r5900") {
+		mem = r5900Debug;
+	}
+	unsigned long address = luaL_checkinteger(L, 1);
+	lua_pushinteger(L, (signed)mem.read32(address));
+	return 1;
+}
+static int memory_writebyte(lua_State *L)
+{
+	wxString cpu = luaL_checkstring(L, 3);
+	DebugInterface &mem = r3000Debug;
+	if (cpu == "r5900") {
+		mem = r5900Debug;
+	}
+	mem.write8(luaL_checkinteger(L, 1), luaL_checkinteger(L, 2));
+	return 0;
+}
+static int memory_writedword(lua_State *L)
+{
+	wxString cpu = luaL_checkstring(L, 3);
+	DebugInterface &mem = r3000Debug;
+	if (cpu == "r5900") {
+		mem = r5900Debug;
+	}
+	mem.write32(luaL_checkinteger(L, 1), luaL_checkinteger(L, 2));
+	return 0;
+}
+
 
 
 //=============================================
@@ -290,16 +368,16 @@ const struct luaL_Reg *lua_function_emulib = emulib;
 
 static const struct luaL_Reg memorylib[] = {
 	{ "readbyte",				memory_readbyte },
-	/*{ "readbytesigned",			memory_readbytesigned },
+	{ "readbytesigned",			memory_readbytesigned },
 	{ "readword",				memory_readword },
 	{ "readwordsigned",			memory_readwordsigned },
 	{ "readdword",				memory_readdword },
 	{ "readdwordsigned",		memory_readdwordsigned },
-	{ "readbyterange",			memory_readbyterange },
+	//{ "readbyterange",			memory_readbyterange },
 	{ "writebyte",				memory_writebyte },
-	{ "writeword",				memory_writeword },
+	//{ "writeword",				memory_writeword },
 	{ "writedword",				memory_writedword },
-	{ "getregister",			memory_getregister },
+	/*{ "getregister",			memory_getregister },
 	{ "setregister",			memory_setregister },
 	{ "gbromreadbyte",			memory_gbromreadbyte },
 	{ "gbromreadbytesigned",	memory_gbromreadbytesigned },
