@@ -5,7 +5,7 @@ pcsx2-rr(<https://code.google.com/archive/p/pcsx2-rr/>)を参考にしています。
   
 
 # TAS
-実際に作ってみたTASはこちらの動画となります。(作成は本ツールv1.0の時のです)  
+実際に作ってみたTASはこちらの動画となります。(作成は本ツールv1.0の時のものです)  
 [【TAS】チュウリップ part0(WIP)【pcsx2-1.4.0-rr】](http://www.nicovideo.jp/watch/sm30385451)  
   
 
@@ -21,7 +21,7 @@ You need the Visual C++ 2015 x86 Redistributable for this version to work. Downl
   
 
 # 追加機能
-* KeyMovie機能  
+* KeyMovie録画機能  
 * Pause/Unpase/FrameAdvance機能  
 * Lua  
 * KeyMovieのEditor機能  
@@ -35,9 +35,9 @@ You need the Visual C++ 2015 x86 Redistributable for this version to work. Downl
   
 用意するもの  
 1. Visual Studio Comunnity 2015(<https://www.visualstudio.com/vs/community/>)  
-※デフォルト設定だとC++が足りないのでカスタム→プログラミング言語→Visual C++にチェックを入れてインストールしてください。  
+　※デフォルト設定だとC++が足りないのでカスタム→プログラミング言語→Visual C++にチェックを入れてインストールしてください。  
 2. DirectX Software Development Kit (June 2010)(<https://www.microsoft.com/en-us/download/details.aspx?id=6812>)  
-※デフォルト設定のインストールでおｋです。追加で.NET Framework3.5が必要なので追加しますか？と聞かれる場合はインストールしておきます。  
+　※デフォルト設定のインストールでおｋです。追加で.NET Framework3.5が必要なので追加しますか？と聞かれる場合はインストールしておきます。  
 3. ソースコード内の「PCSX2_suite.sln」を開き、ビルドをします。  
   
 ダウンロードおよびビルドに関しては[windows10](https://www.microsoft.com/ja-jp/software-download/windows10)をVM上で新規にインストールした状態で起動できたことを確認しています。  
@@ -48,7 +48,12 @@ You need the Visual C++ 2015 x86 Redistributable for this version to work. Downl
 //--TAS--//  
 //--LuaEngine--//  
 //--TASKeyEditor--//  
-
+  
+また、新規追加したファイルは以下ディレクトリです。  
+./pcsx2/TAS/  
+./pcsx2/lua/  
+./3rdparty/lua/  
+  
 
 # コメント
 ひとまずv3.0で開発は止めてTAS制作に移りたいと思います。  
