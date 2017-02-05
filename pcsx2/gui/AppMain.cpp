@@ -38,6 +38,7 @@
 
 #include "TAS/MovieControle.h"//--TAS--//
 #include "TAS/KeyMovie.h"//--TAS--//
+#include "lua/LuaManager.h"//--LuaEngine--//
 
 #ifdef __WXMSW__
 #	include <wx/msw/wrapwin.h>		// needed to implement the app!
@@ -1041,6 +1042,7 @@ void Pcsx2App::OnProgramLogClosed( wxWindowID id )
 void Pcsx2App::OnMainFrameClosed( wxWindowID id )
 {
 	g_KeyMovie.Stop();//--TAS--//
+	g_Lua.Stop();//--LuaEngine--//
 
 	// Nothing threaded depends on the mainframe (yet) -- it all passes through the main wxApp
 	// message handler.  But that might change in the future.

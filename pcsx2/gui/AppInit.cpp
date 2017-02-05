@@ -30,6 +30,8 @@
 #include <wx/intl.h>
 #include <wx/stdpaths.h>
 
+#include "lua/LuaFrame.h"//--LuaEngine--//
+
 using namespace pxSizerFlags;
 
 void Pcsx2App::DetectCpuAndUserMode()
@@ -71,6 +73,10 @@ void Pcsx2App::OpenMainFrame()
 	DisassemblyDialog* disassembly = new DisassemblyDialog( mainFrame );
 	m_id_Disassembler = disassembly->GetId();
 
+	//--LuaEngine--//
+	LuaFrame *luaFrame = new LuaFrame(mainFrame);
+	m_id_LuaFrame = luaFrame->GetId();
+	//------------//
 	//--TAS--//
 	KeyEditor* keyEditor = new KeyEditor(mainFrame);
 	m_id_KeyEditor = keyEditor->GetId();
