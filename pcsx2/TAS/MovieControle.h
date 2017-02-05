@@ -17,7 +17,7 @@ public:
 	// doit
 	void Pause();
 	void UnPause();
-	
+
 	// getter
 	bool getStopFlag() { return (fStop || fFrameAdvance); }
 

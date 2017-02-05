@@ -20,6 +20,7 @@
 #include "sio_internal.h"
 
 #include "TAS/KeyMovie.h"	//--TAS--//
+#include "lua/LuaManager.h"	//--LuaEngine--//
 
 _sio sio;
 _mcd mcds[2][4];
@@ -176,6 +177,12 @@ SIO_WRITE sioWriteController(u8 data)
 	default: 
 		sio.buf[sio.bufCount] = PADpoll(data);
 		g_KeyMovie.ControllerInterrupt(data, sio.port,sio.bufCount,sio.buf);//--TAS--//
+		//--LuaEngine--//
+		if (g_KeyMovie.isInterruptFrame()) {
+			g_Lua.ControllerInterrupt(data, sio.port, sio.bufCount, sio.buf);
+		}
+		//------------//
+
 		break;
 	}
 

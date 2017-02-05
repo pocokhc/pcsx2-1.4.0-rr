@@ -40,7 +40,7 @@ void deserializeConvert(u8 & n , wxString s)
 	catch (std::invalid_argument e) {/*none*/ }
 	catch (std::out_of_range e) {/*none*/ }
 }
-wxString PadData::serialize()
+wxString PadData::serialize()const
 {
 	if (!fExistKey)return L"";
 	wxString s = wxString::Format(L"%X", buf[0][0]);
@@ -73,7 +73,7 @@ void PadData::deserialize(wxString s)
 //=====================================
 // normal key
 //=====================================
-std::map<wxString, bool> PadData::getNormalKeys(int port)
+std::map<wxString, bool> PadData::getNormalKeys(int port)const
 {
 	std::map<wxString, bool> key;
 	for (int i = 0; i < PadDataNormalKeysSize; i++)
@@ -108,7 +108,7 @@ void PadData::setNormalButton(int port,wxString button, bool fpushed)
 	}
 }
 
-bool PadData::getNormalButton(int port, wxString button)
+bool PadData::getNormalButton(int port, wxString button)const
 {
 	if (port < 0 || 1 < port)return false;
 	byte keybit[2];
@@ -118,7 +118,7 @@ bool PadData::getNormalButton(int port, wxString button)
 	return (f1 || f2);
 }
 
-void PadData::getKeyBit(byte keybit[2], wxString button)
+void PadData::getKeyBit(byte keybit[2], wxString button)const
 {
 	if (button == L"up") {         keybit[0] = 0b00010000; keybit[1] = 0b00000000; }
 	else if (button == L"left") {  keybit[0] = 0b10000000; keybit[1] = 0b00000000; }
@@ -149,7 +149,7 @@ void PadData::getKeyBit(byte keybit[2], wxString button)
 //=====================================
 // analog key
 //=====================================
-std::map<wxString, int> PadData::getAnalogKeys(int port)
+std::map<wxString, int> PadData::getAnalogKeys(int port)const
 {
 	std::map<wxString, int> key;
 	for (int i = 0; i < PadDataAnalogKeysSize; i++)
@@ -178,7 +178,7 @@ void PadData::setAnalogButton(int port, wxString button, int push)
 	else if (button == L"r_updown") {    buf[port][3] = push; }
 }
 
-int PadData::getAnalogButton(int port, wxString button)
+int PadData::getAnalogButton(int port, wxString button)const
 {
 	if (port < 0 || 1 < port)return 0;
 	int val = 127;

@@ -26,6 +26,7 @@
 #include "Dialogs/ConfigurationDialog.h"
 #include "Dialogs/LogOptionsDialog.h"
 #include "Debugger/DisassemblyDialog.h"
+#include "lua/LuaFrame.h"//--LuaEngine--//
 
 #include "Utilities/IniInterface.h"
 
@@ -602,6 +603,14 @@ void MainEmuFrame::Menu_ShowAboutBox(wxCommandEvent &event)
 	AppOpenDialog<AboutBoxDialog>( this );
 }
 
+//--LuaEngine--//
+void MainEmuFrame::Menu_Lua_Open_Click(wxCommandEvent &event)
+{
+	LuaFrame* dlg = wxGetApp().GetLuaFramePtr();
+	if (dlg)
+		dlg->Show();
+}
+//------------//
 //--TAS--//
 void KeyMovie_Open(wxWindow * parent,bool fReadOnly)
 {
@@ -649,4 +658,3 @@ void MainEmuFrame::Menu_KeyMovie_OpenKeyEditor(wxCommandEvent &event)
 }
 
 //------//
-
