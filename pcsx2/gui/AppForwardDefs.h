@@ -29,7 +29,7 @@ class Pcsx2App;
 class MainEmuFrame;
 class GSFrame;
 class ConsoleLogFrame;
-class LuaFrame;	//--LuaFrame--//
+class LuaFrame;	//--LuaEngine--//
 class PipeRedirectionBase;
 class AppCoreThread;
 class Pcsx2AppMethodEvent;

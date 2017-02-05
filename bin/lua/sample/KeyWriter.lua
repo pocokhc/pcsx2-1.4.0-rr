@@ -12,7 +12,7 @@ if file == nil then
 	lua.close()
 	return
 end
-emu.registerexit(function
+emu.registerexit(function()
 	io.close(file)
 end)
 
@@ -52,7 +52,7 @@ emu.registerbefore(function()
 	s=s .. "\n"
 	file:write(s)
 	
-end
+end)
 
 
 

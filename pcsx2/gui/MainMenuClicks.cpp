@@ -26,7 +26,7 @@
 #include "Dialogs/ConfigurationDialog.h"
 #include "Dialogs/LogOptionsDialog.h"
 #include "Debugger/DisassemblyDialog.h"
-#include "lua/LuaFrame.h"//--LuaFrame--//
+#include "lua/LuaFrame.h"//--LuaEngine--//
 
 #include "Utilities/IniInterface.h"
 
@@ -603,7 +603,7 @@ void MainEmuFrame::Menu_ShowAboutBox(wxCommandEvent &event)
 	AppOpenDialog<AboutBoxDialog>( this );
 }
 
-//--LuaFrame--//
+//--LuaEngine--//
 void MainEmuFrame::Menu_Lua_Open_Click(wxCommandEvent &event)
 {
 	LuaFrame* dlg = wxGetApp().GetLuaFramePtr();

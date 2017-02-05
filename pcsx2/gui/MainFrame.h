@@ -112,7 +112,7 @@ protected:
 	wxMenu&			m_menuMisc;
 	wxMenu&			m_menuDebug;
 	wxMenu&			m_menuMovieDlg;	//--TAS--//
-	wxMenu&			m_menuLuaDlg;	//--LuaFrame--//
+	wxMenu&			m_menuLuaDlg;	//--LuaEngine--//
 
 	wxMenu&			m_LoadStatesSubmenu;
 	wxMenu&			m_SaveStatesSubmenu;
@@ -210,7 +210,7 @@ protected:
 	void Menu_KeyMovie_OpenKeyEditor(wxCommandEvent &event);
 	//-------//
 
-	//--LuaFrame--//
+	//--LuaEngine--//
 	void Menu_Lua_Open_Click(wxCommandEvent &event);
 	//------------//
 

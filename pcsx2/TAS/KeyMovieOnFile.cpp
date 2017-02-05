@@ -241,18 +241,18 @@ void KeyMovieHeader::init()
 //===========================================================
 void KeyMovieOnFile::ConvertP2M(wxString filename)
 {
-	Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie] Convert start.[%s]", filename));
+	Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie]Convert start.[%s]", WX_STR(filename) ));
 	FILE * fp;
 	FILE * fp2;
 	fopen_s(&fp, filename, "rb");
 	if (fp == NULL) {
-		Console.WriteLn(Color_StrongBlue, L"[KeyMovie]convert fail: %s ", strerror(errno));
+		Console.WriteLn(Color_StrongBlue, L"[KeyMovie]Convert fail: %s ", WX_STR(wxString(strerror(errno))) );
 		return;
 	}
 	wxString outfile = wxString::Format(L"%s.p2m2", filename);
 	fopen_s(&fp2, outfile, "wb");
 	if (fp2 == NULL) {
-		Console.WriteLn(Color_StrongBlue, L"[KeyMovie]convert fail: %s ", strerror(errno));
+		Console.WriteLn(Color_StrongBlue, L"[KeyMovie]Convert fail: %s ", WX_STR(wxString(strerror(errno))));
 		fclose(fp);
 		return;
 	}
@@ -297,7 +297,7 @@ void KeyMovieOnFile::ConvertP2M(wxString filename)
 	}
 	fclose(fp);
 	fclose(fp2);
-	Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie] Convert success. OutFile[%s]", outfile));
+	Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie]Convert success. OutFile[%s]",WX_STR(outfile)));
 }
 
 //===========================================================
@@ -305,18 +305,18 @@ void KeyMovieOnFile::ConvertP2M(wxString filename)
 //===========================================================
 void KeyMovieOnFile::ConvertOld(wxString filename)
 {
-	Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie] Convert start.[%s]", filename));
+	Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie]Convert start.[%s]", WX_STR(filename)));
 	FILE * fp;
 	FILE * fp2;
 	fopen_s(&fp, filename, "rb");
 	if (fp == NULL) {
-		Console.WriteLn(Color_StrongBlue, wxString::Format( L"[KeyMovie]convert fail: %s ", strerror(errno)));
+		Console.WriteLn(Color_StrongBlue, wxString::Format( L"[KeyMovie]Convert fail: %s ", WX_STR(wxString(strerror(errno)))));
 		return;
 	}
 	wxString outfile = wxString::Format(L"%s_new.p2m2", filename);
 	fopen_s(&fp2, outfile, "wb");
 	if (fp2 == NULL) {
-		Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie]convert fail: %s ", strerror(errno)));
+		Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie]convert fail: %s ", WX_STR(wxString(strerror(errno)))));
 		fclose(fp);
 		return;
 	}
@@ -357,7 +357,7 @@ void KeyMovieOnFile::ConvertOld(wxString filename)
 	}
 	fclose(fp);
 	fclose(fp2);
-	Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie] Convert success. OutFile[%s]", outfile));
+	Console.WriteLn(Color_StrongBlue, wxString::Format(L"[KeyMovie]Convert success. OutFile[%s]", WX_STR(outfile)));
 }
 
 
