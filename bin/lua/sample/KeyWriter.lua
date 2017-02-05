@@ -19,10 +19,12 @@ end)
 --------------
 -- file header
 --------------
+local keyKeys = {}
 local key = joypad.get(0)
 local s="frame"
 for k,v in pairs(key) do
 	s=s .. "," .. k
+	keyKeys[#keyKeys+1] = k
 end
 s=s .. "\n"
 file:write(s)
@@ -37,7 +39,9 @@ emu.registerbefore(function()
 	s=s .. emu.framecount() 
 	
 	local key = joypad.get(0)
-	for k,v in pairs(key) do
+	
+	for i=1 , #keyKeys do
+		local v = key[ keyKeys[i] ]
 		if type(v) == "boolean" then
 			if v then
 				s=s .. "," .. 1 

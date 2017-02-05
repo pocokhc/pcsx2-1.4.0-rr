@@ -31,7 +31,6 @@ void SaveStateBase::keymovieFreeze()
 //----------------------------------
 void KeyMovie::ControllerInterrupt(u8 &data, u8 &port, u16 & BufCount, u8 buf[])
 {
-	if (state == NONE)return;
 	if (port < 0 || 1 < port )return;
 	if (BufCount < 1 || 8 < BufCount)return;
 
@@ -63,6 +62,7 @@ void KeyMovie::ControllerInterrupt(u8 &data, u8 &port, u16 & BufCount, u8 buf[])
 
 	int bufIndex = BufCount - 3;
 	if (bufIndex < 0 || 6 < bufIndex)return;
+	if (state == NONE)return;
 
 	//---------------
 	// read/write

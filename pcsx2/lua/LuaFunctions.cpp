@@ -196,20 +196,23 @@ static int joypad_get(lua_State *L)
 	{
 		luaL_error(L, "Invalid input port (valid range 0-1, specified %d)", which);
 	}
-
 	lua_newtable(L);
 	const PadData & pad = g_Lua.getNowFramePadData();
 	auto normalKeys = pad.getNormalKeys(which);
 	for (auto it = normalKeys.begin(); it != normalKeys.end(); ++it)
 	{
+		lua_pushstring(L, it->first);
 		lua_pushboolean(L, it->second);
-		lua_setfield(L, -2, it->first);
+		lua_settable(L, -3);
 	}
 	auto analogKeys = pad.getAnalogKeys(which);
 	for (auto it = analogKeys.begin(); it != analogKeys.end(); ++it)
 	{
+		lua_pushstring(L, it->first);
 		lua_pushinteger(L, it->second);
-		lua_setfield(L, -2, it->first);
+		lua_settable(L, -3);
+		//lua_pushinteger(L, it->second);
+		//lua_setfield(L, -2, it->first);
 	}
 	return 1;
 }

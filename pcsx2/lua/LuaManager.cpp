@@ -14,14 +14,15 @@ static bool fSetFrameKey=false;
 void LuaManager::ControllerInterrupt(u8 &data, u8 &port, u16 & BufCount, u8 buf[])
 {
 	if (port < 0 || 1 < port)return;
-	if (BufCount < 1 || 8 < BufCount)return;
+	int bufIndex = BufCount - 3;
+	if (bufIndex < 0 || 6 < bufIndex)return;
 
 	if (fSetFrameKey)
 	{
-		buf[BufCount] = nowFramePadData.buf[port][BufCount];
+		buf[BufCount] = nowFramePadData.buf[port][bufIndex];
 	}
 	else {
-		nowFramePadData.buf[port][BufCount] = buf[BufCount];
+		nowFramePadData.buf[port][bufIndex] = buf[BufCount];
 	}
 
 	// turn end
