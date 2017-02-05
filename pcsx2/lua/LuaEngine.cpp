@@ -7,18 +7,27 @@
 #include "App.h"	// use "LuaFrame"
 
 
+LuaEngine:: LuaEngine():
+	L(NULL),
+	Lthread(NULL),
+	state(NONE),
+	refCallBefore(LUA_NOREF),
+	refCallAfter(LUA_NOREF),
+	refCallExit(LUA_NOREF)
+{}
+
 // --------------------------------------------------------------------------------------
 //  LoadLuaCode
 // --------------------------------------------------------------------------------------
-bool LuaEngine::Load(wxString filename)
+void LuaEngine::setFileName(wxString filename)
 {
-	Close();
 	file = filename;
-	return Load();
+	setState(NOT_OPEN);
 }
 bool LuaEngine::Load()
 {
 	Close();
+	if (state != NOT_OPEN)return false;
 
 	L = luaL_newstate();
 	Lthread = lua_newthread(L);
@@ -32,11 +41,16 @@ bool LuaEngine::Load()
 	LUA_REGISTER(lua_function_savestatelib, "savestate");
 	LUA_REGISTER(lua_function_movielib, "movie");
 	//LUA_REGISTER(lua_function_guilib, "gui");
+	LUA_REGISTER(lua_function_lualib, "lua");
 #undef LUA_REGISTER
+
+	// single refister
+	lua_register(Lthread, "print", lua_function_print);
+
 
 	// load
 	if (luaL_loadfile(Lthread, file.c_str() ) != LUA_OK) {
-		CallbackError(Lthread);
+		CallbackError(L"load", Lthread);
 		Close();
 		return false;
 	}
@@ -50,14 +64,7 @@ bool LuaEngine::Load()
 //--------------------------------------------------
 void LuaEngine::Resume(void)
 {
-	if (state == CLOSE) {
-		if (L != NULL) {
-			lua_close(L);
-			L = NULL;
-			Lthread = NULL;
-		}
-		return;
-	}
+	
 	if (Lthread == NULL)return;
 	if ( state != RESUME )return;
 	
@@ -73,7 +80,7 @@ void LuaEngine::Resume(void)
 	}
 	else {
 		// error
-		CallbackError(Lthread);
+		CallbackError("", Lthread);
 		Close();
 		return;
 	}
@@ -85,17 +92,47 @@ void LuaEngine::Resume(void)
 //--------------------------------------------------
 void LuaEngine::Close()
 {
+	if (L == NULL)return;
+
+	callExit();
 	
-	setState(CLOSE);
-	
+	unRegistryBefore();
+	unRegistryAfter();
+	unRegistryExit();
+
+	lua_close(L);
+	L = NULL;
+	Lthread = NULL;
+	setState(NOT_OPEN);
+
+}
+void LuaEngine::unRegistry(int & refCall)
+{
+	if (refCall != LUA_NOREF) {
+		luaL_unref(Lthread, LUA_REGISTRYINDEX, refCall);
+		refCall = LUA_NOREF;
+	}
+}
+void LuaEngine::unRegistryBefore()
+{
+	unRegistry(refCallBefore);
+}
+void LuaEngine::unRegistryAfter()
+{
+	unRegistry(refCallAfter);
+}
+void LuaEngine::unRegistryExit()
+{
+	unRegistry(refCallExit);
 }
 
 //--------------------------------------------------
-// print
+// CallbackError
 //--------------------------------------------------
-void LuaEngine::CallbackError(lua_State *L)
+void LuaEngine::CallbackError(wxString cat,lua_State *L)
 {
-	Console.WriteLn(Color_StrongBlue, "[lua]Lua Error:%s", lua_tostring(L, -1));
+	wxString error = lua_tostring(L, -1);
+	Console.WriteLn(Color_StrongBlue, L"[lua]Lua Error(%s):%s", WX_STR(cat), WX_STR(error));
 }
 
 //--------------------------------------------------
@@ -110,6 +147,7 @@ void LuaEngine::setState(LuaEngine::LuaState _state)
 	
 	if (_state == NOT_OPEN) {
 		msg = "lua not open.";
+		frame->pushStopState();
 	}
 	else if (_state == OPEN) {
 	}
@@ -120,22 +158,35 @@ void LuaEngine::setState(LuaEngine::LuaState _state)
 		msg = "lua resume.";
 		frame->pushRunState();
 	}
-	else if (_state == CLOSE) {
-		msg = "lua close.";
-		frame->pushStopState();
-	}
 	frame->drawState(wxString::Format(L"%s(%s)", msg, file));
 }
 
+
+//--------------------------------------------------
+// call
+//--------------------------------------------------
+void LuaEngine::callLuaFunc(int & refCall)
+{
+	if (Lthread == NULL)return;
+	if (refCall == LUA_NOREF)return;
+
+	lua_rawgeti(Lthread, LUA_REGISTRYINDEX, refCall);
+	if (lua_pcall(Lthread, 0, 0, 0) != LUA_OK)
+	{
+		// error
+		CallbackError(L"regester", Lthread);
+	}
+}
+void LuaEngine::callBefore()
+{
+	callLuaFunc(refCallBefore);
+}
 void LuaEngine::callAfter()
 {
-	/*if (Lthread == NULL)return;
-	lua_settop(Lthread, 0);
-	lua_pushinteger(Lthread, luaCallBefore);
-	if (lua_isfunction(Lthread, -1))
-	{
-		lua_pcall(Lthread, 0, 0, 0);
-	}
-	lua_settop(Lthread, 0);
-	*/
+	callLuaFunc(refCallAfter);
 }
+void LuaEngine::callExit()
+{
+	callLuaFunc(refCallExit);
+}
+

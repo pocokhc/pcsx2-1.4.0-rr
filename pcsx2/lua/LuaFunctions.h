@@ -8,6 +8,9 @@ extern const struct luaL_Reg *lua_function_joypadlib;
 extern const struct luaL_Reg *lua_function_savestatelib;
 extern const struct luaL_Reg *lua_function_movielib;
 extern const struct luaL_Reg *lua_function_guilib;
+extern const struct luaL_Reg *lua_function_lualib;
+
+extern int lua_function_print(lua_State *L);
 
 
 #endif

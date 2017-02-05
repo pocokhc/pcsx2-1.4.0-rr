@@ -72,10 +72,9 @@ void LuaFrame::OnOpenFile(wxCommandEvent& event)
 	if (openFileDialog.ShowModal() == wxID_CANCEL)return;
 	
 	wxString path = openFileDialog.GetPath();
-	if (!g_Lua.Load(path))
-	{
-		pushStopState();
-	}
+	g_Lua.setFileName(path);
+	pushStopState();
+
 }
 void LuaFrame::OnStop(wxCommandEvent& event)
 {

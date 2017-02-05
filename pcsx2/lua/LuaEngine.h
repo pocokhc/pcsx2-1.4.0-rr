@@ -11,44 +11,53 @@ extern "C" {
 
 class LuaEngine {
 public:
-	LuaEngine() {}
+	LuaEngine();
 	~LuaEngine() {}
 public:
-	enum LuaState {
+	enum LuaState
+	{
+		NONE,
 		NOT_OPEN,
 		OPEN,
 		RUNNING,
 		RESUME,
-		CLOSE
 	};
 	void setState(LuaState _state);
 	LuaState getState() { return state; }
 
-	bool Load(wxString filename);
+	void setFileName(wxString filename);
 	bool Load();
 	void Resume();
 	void Close();
 
 	bool isSelf(lua_State* l) { return (l == Lthread); }
 
-	void setLuaCallBefore(int id) { luaCallBefore = id; }
-	void setLuaCallAfter(int id) { luaCallAfter = id; }
-	void setLuaCallExit(int id) { luaCallExit = id; }
-
+	// registry
+	void registryBefore(int ref) { refCallBefore = ref; }
+	void registryAfter(int ref) { refCallAfter = ref; }
+	void registryExit(int ref) { refCallExit = ref; }
+	void unRegistryBefore();
+	void unRegistryAfter();
+	void unRegistryExit();
+	void callBefore();
 	void callAfter();
+	void callExit();
 
 private:
-	lua_State* L = NULL;
-	lua_State* Lthread = NULL;
+	lua_State* L;
+	lua_State* Lthread;
 	wxString file;
-	LuaState state = NOT_OPEN;
+	LuaState state;
 
-	int luaCallBefore = 0;
-	int luaCallAfter = 0;
-	int luaCallExit = 0;
+	int refCallBefore;
+	int refCallAfter;
+	int refCallExit;
 
 private:
-	void CallbackError(lua_State *L);
+	void CallbackError(wxString cat,lua_State *L);
+
+	void unRegistry(int & refCall);
+	void callLuaFunc(int & refCall);
 
 };
 

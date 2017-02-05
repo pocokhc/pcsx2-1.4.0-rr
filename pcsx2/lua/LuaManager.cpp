@@ -41,32 +41,27 @@ void LuaManager::setNowFramePadData(const PadData & pad)
 void LuaManager::FrameBoundary()
 {
 	lua.callAfter();
+	lua.callBefore();
 	lua.Resume();
 }
 
-bool LuaManager::Load(wxString filename)
+void LuaManager::setFileName(wxString filename)
 {
-	if (!lua.Load(filename)) {
-		return false;
-	}
-	return true;
+	lua.setFileName(filename);
 }
-void LuaManager::Stop() {
+void LuaManager::Stop()
+{
 	lua.Close();
-	lua.setState(LuaEngine::CLOSE);
 }
 void LuaManager::Run() {
 	if (!lua.Load()) {
 		return;
 	}
 	lua.setState(LuaEngine::RESUME);
-	g_MovieControle.FrameAdvance();
+	lua.Resume();
 }
 void LuaManager::Restart() {
-	if (!lua.Load()) {
-		return;
-	}
-	lua.setState(LuaEngine::RESUME);
+	Run();
 }
 
 // lua scriptÇï°êîìÆÇ©ÇπÇÈÇÊÇ§Ç…ägí£Ç∑ÇÈéûóp

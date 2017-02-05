@@ -26,10 +26,10 @@ extern "C" {
 //=============================================
 static int emu_frameadvance(lua_State *L)
 {
-	LuaEngine * pLua = g_Lua.getLuaEnginPtr(L);
+	LuaEngine *pLua = g_Lua.getLuaEnginPtr(L);
 	if (pLua == NULL)return 0;
-
 	if (pLua->getState() != LuaEngine::RUNNING)return 0;
+
 	g_MovieControle.FrameAdvance();
 	pLua->setState(LuaEngine::RESUME);
 	return lua_yield(L, 0);
@@ -54,27 +54,42 @@ static int emu_getframecount(lua_State *L)
 	lua_pushinteger(L, g_FrameCount);
 	return 1;
 }
-
 static int emu_registerbefore(lua_State *L)
 {
 	if (lua_iscfunction(L, 1)) {
 		luaL_error(L, "Invalid input function.");
 	}
-	luaL_checktype(L, 1, LUA_TFUNCTION);
-	
-	/*todo*/
-	return 1;
+	LuaEngine *pLua = g_Lua.getLuaEnginPtr(L);
+	if (pLua == NULL)return 0;
+
+	pLua->unRegistryBefore();
+	pLua->registryBefore(luaL_ref(L, LUA_REGISTRYINDEX));
+	return 0;
 }
 
 static int emu_registerafter(lua_State *L)
 {
-	/*todo*/
-	return 1;
+	if (lua_iscfunction(L, 1)) {
+		luaL_error(L, "Invalid input function.");
+	}
+	LuaEngine *pLua = g_Lua.getLuaEnginPtr(L);
+	if (pLua == NULL)return 0;
+
+	pLua->unRegistryAfter();
+	pLua->registryAfter(luaL_ref(L, LUA_REGISTRYINDEX));
+	return 0;
 }
 static int emu_registerexit(lua_State *L)
 {
-	/*todo*/
-	return 1;
+	if (lua_iscfunction(L, 1)) {
+		luaL_error(L, "Invalid input function.");
+	}
+	LuaEngine *pLua = g_Lua.getLuaEnginPtr(L);
+	if (pLua == NULL)return 0;
+	
+	pLua->unRegistryExit();
+	pLua->registryExit(luaL_ref(L, LUA_REGISTRYINDEX));
+	return 0;
 }
 
 
@@ -329,6 +344,26 @@ static int movie_stop(lua_State *L)
 	return 0;
 }
 
+//=============================================
+// lua
+//=============================================
+static int lua_func_close(lua_State *L)
+{
+	LuaEngine *pLua = g_Lua.getLuaEnginPtr(L);
+	if (pLua == NULL)return 0;
+	pLua->Close();
+	return 0;
+}
+
+//=============================================
+// other
+//=============================================
+int lua_function_print(lua_State *L)
+{
+	wxString str = luaL_checkstring(L, 1);
+	Console.WriteLn(Color_StrongBlue, str);
+	return 0;
+}
 
 //=============================================
 // lua library name
@@ -493,4 +528,9 @@ static const struct luaL_Reg soundlib[] = {
 };
 const struct luaL_Reg *lua_function_soundlib = soundlib;
 
+static const struct luaL_Reg lualib[] = {
+	{ "close",  lua_func_close },
 
+	{ NULL,	  NULL }
+};
+const struct luaL_Reg *lua_function_lualib = lualib;

@@ -19,7 +19,7 @@ public:
 	PadData & getNowFramePadData();
 	void setNowFramePadData(const PadData & pad);
 
-	bool Load(wxString filename);
+	void setFileName(wxString filename);
 	void Stop();
 	void Run();
 	void Restart();
