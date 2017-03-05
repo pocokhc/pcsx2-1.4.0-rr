@@ -6,8 +6,11 @@ pcsx2-rr(<https://code.google.com/archive/p/pcsx2-rr/>)を参考にしています。
 
 # TAS
 実際に作ってみたTASはこちらの動画となります。(作成は本ツールv1.0の時のものです)  
-[【TAS】チュウリップ part0(WIP)【pcsx2-1.4.0-rr】](http://www.nicovideo.jp/watch/sm30385451)  
+[【TAS】チュウリップ part0(WIP)【pcsx2-1.4.0-rr】(ニコニコ)](http://www.nicovideo.jp/watch/sm30385451)  
+[【TAS】チュウリップ part0(WIP)【pcsx2-1.4.0-rr】(youtube)](https://youtu.be/ovbd0FV1pxo)  
+
   
+
 
 # ダウンロード
 windows10のみビルド後の実行ファイルを置いておきます。  
