@@ -9,8 +9,9 @@ pcsx2-rr(<https://code.google.com/archive/p/pcsx2-rr/>)を参考にしています。
 [【TAS】チュウリップ part0(WIP)【pcsx2-1.4.0-rr】(ニコニコ)](http://www.nicovideo.jp/watch/sm30385451)  
 [【TAS】チュウリップ part0(WIP)【pcsx2-1.4.0-rr】(youtube)](https://youtu.be/Ib2MnRfCCzc)  
 
-  
 
+# desyncについて
+現状分かっている範囲で[キームービー作成想定手順](https://github.com/pocokhc/pcsx2-1.4.0-rr/wiki#%E3%82%AD%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%93%E3%83%BC%E4%BD%9C%E6%88%90%E6%83%B3%E5%AE%9A%E6%89%8B%E9%A0%86201749%E6%9B%B4%E6%96%B0)をupdateしました。(2017/4/9)  
 
 # ダウンロード
 windows10のみビルド後の実行ファイルを置いておきます。  
